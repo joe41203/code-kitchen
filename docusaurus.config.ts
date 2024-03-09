@@ -33,6 +33,16 @@ const config: Config = {
     locales: ['ja'],
   },
 
+  plugins: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        indexDocs: true,
+        language: "ja",
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',
