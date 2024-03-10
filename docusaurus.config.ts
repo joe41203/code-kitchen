@@ -56,6 +56,8 @@ const config: Config = {
         },
         blog: {
           showReadingTime: true,
+          path: './articles',
+          routeBasePath: 'articles',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -84,7 +86,7 @@ const config: Config = {
         //   position: 'left',
         //   label: 'Tutorial',
         // },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/articles', label: '記事', position: 'left'},
         // {
         //   href: 'https://github.com/facebook/docusaurus',
         //   label: 'GitHub',
