@@ -19,7 +19,7 @@ export default function ArticleLayout({
         <div className="flex flex-col items-center gap-5">
           <div className="profile flex flex-col gap-5 items-center">
             <Image src={'/code-kitchen/leo.webp'} alt={'logo'} width={'250'} height={'250'} />
-            <p>web developer</p>
+            <p>Web Developer</p>
           </div>
           <div className="pr">
           </div>
