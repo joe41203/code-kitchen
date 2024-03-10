@@ -75,7 +75,7 @@ const config: Config = {
       title: 'Code Kitchen',
       logo: {
         alt: 'Code Kitchen Logo',
-        src: 'img/leo.png',
+        src: 'img/leo.webp',
       },
       items: [
         // {
