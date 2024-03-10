@@ -37,6 +37,61 @@ Squooshは、シンプルで直感的なユーザーインターフェースを�
 
 ![Squooshのプレビュー画面](./squoosh-preview.webp)
 
+## Squoosh CLI
+
+Squooshは、Webアプリケーションとしてだけでなく、コマンドラインインターフェース（CLI）としても利用できます。Squoosh CLIを使うことで、画像の最適化をバッチ処理したり、自動化したりすることが可能です。
+
+:::warning
+Project no longer maintained
+
+メンテナンス終了しているようなので注意が必要です
+:::
+
+### インストール方法
+
+Squoosh CLIを使用するには、Node.jsがインストールされている必要があります。
+
+Node.jsがインストールされていれば、以下のコマンドでSquoosh CLIをグローバルにインストールできます。
+
+```
+npm install -g @squoosh/cli
+```
+
+### 基本的な使い方
+
+Squoosh CLIの基本的な使い方は以下の通りです。
+
+```
+squoosh-cli [options] <input> [output]
+```
+
+- `[options]`: 圧縮オプションを指定します。例えば、`--mozjpeg '{"quality":75}'`のように、使用するコーデックとそのオプションを指定します。
+- `<input>`: 入力ファイルまたはディレクトリを指定します。
+- `[output]`: 出力ファイルまたはディレクトリを指定します。省略した場合、入力ファイルは上書きされます。
+
+### 使用例
+
+以下は、Squoosh CLIを使用する具体的な例です。
+
+1. JPEGファイルを圧縮する場合：
+```
+squoosh-cli --mozjpeg '{"quality":75}' image.jpg
+```
+
+2. PNGファイルを圧縮する場合：
+```
+squoosh-cli --oxipng '{"level":3}' image.png
+```
+
+3. ディレクトリ内のすべての画像を圧縮する場合：
+```
+squoosh-cli --mozjpeg '{"quality":75}' --oxipng '{"level":3}' images/ optimized/
+```
+
+Squoosh CLIには他にも多くのオプションがあります。詳細については、公式ドキュメント (https://www.npmjs.com/package/@squoosh/cli) を参照してください。
+
+Squoosh CLIを活用することで、大量の画像を一括で最適化したり、ビルドプロセスに画像の最適化を組み込んだりすることができます。Webアプリケーションと組み合わせることで、より効率的な画像の最適化ワークフローを構築できるでしょう。
+
 ## Squooshの活用例
 
 Squooshは、様々な場面で画像の最適化に役立ちます。ここでは、Squooshの代表的な活用例をいくつか紹介します。
