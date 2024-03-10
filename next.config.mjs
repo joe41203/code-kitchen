@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
+  basePath: "/code-kitchen",
+  assetPrefix: "/code-kitchen"
 };
 
 export default nextConfig;
