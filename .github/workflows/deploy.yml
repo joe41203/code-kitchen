@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
 
       - name: Cache dependencies
         uses: actions/cache@v4
@@ -40,7 +40,7 @@ jobs:
       - name: Upload Documents
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build
+          path: ./.next
 
       - name: deployment
         uses: actions/deploy-pages@v4
