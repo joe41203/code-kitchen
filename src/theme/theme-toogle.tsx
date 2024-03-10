@@ -15,7 +15,7 @@ export const ThemeToogle = () => {
       />
       <Moon
         size={20}
-        className="rotate-90 scale-0 transition-all dark:-rotate-0 dark:scale-100 absolute"
+        className="rotate-90 scale-0 transition-all dark:-rotate-0 dark:scale-100 absolute prose dark:prose-invert"
       />
       <span className="sr-only">Toggle theme</span>
     </Button>

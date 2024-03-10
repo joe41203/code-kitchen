@@ -21,10 +21,17 @@ export default function RootLayout({
   return (
     <html lang="ja" className="h-full" suppressHydrationWarning>
       <body className={clsx(inter.className, 'h-full bg-background')}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider
+          attribute="class"
+          enableSystem
+          defaultTheme="system"
+          disableTransitionOnChange
+        >
           <div className="h-full flex flex-col">
             <Header />
-            <div className="flex-1 max-w-full m-auto py-20 w-full">{children}</div>
+            <div className="flex-1 max-w-full m-auto py-20 w-full prose dark:prose-invert">
+              {children}
+            </div>
             <Footer />
           </div>
         </ThemeProvider>

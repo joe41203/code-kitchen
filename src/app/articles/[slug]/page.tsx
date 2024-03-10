@@ -12,7 +12,7 @@ export default async function ArticlePage({ params }: Props) {
   const article = getArticleBySlug(params.slug);
 
   return (
-    <article className="prose prose-sm sm:prose lg:prose-lg xl:prose-xl">
+    <article className='dark:prose-invert prose prose-sm sm:prose lg:prose-lg xl:prose-xl'>
       <h1>{article.title}</h1>
       <ReactMarkdown>{article.content}</ReactMarkdown>
     </article>

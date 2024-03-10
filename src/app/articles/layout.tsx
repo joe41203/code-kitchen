@@ -13,7 +13,7 @@ export default function ArticleLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex gap-5 justify-center">
+    <div className="flex gap-5 justify-center ">
       <div className="px-10 w-4/4">{children}</div>
       <div className="px-10 w-1/4">
         <div className="flex flex-col items-center gap-5">

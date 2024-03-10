@@ -7,7 +7,7 @@ export default function Header() {
     <header className="flex p-4 items-center place-content-between">
       <div className="flex items-center gap-4">
         <Image src={"/leo.webp"} alt={"logo"} width={"36"} height={"36"}/>
-        <div>CodeKichen</div>
+        <div className='prose dark:prose-invert'>CodeKichen</div>
       </div>
       <ThemeToogle/>
     </header>
