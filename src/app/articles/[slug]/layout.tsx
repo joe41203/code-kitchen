@@ -12,17 +12,14 @@ export default function ArticleLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex gap-5 justify-center ">
-      <div className="px-10 w-4/4">{children}</div>
-      <div className="px-10 w-1/4">
-        <div className="flex flex-col items-center gap-5">
-          <div className="profile flex flex-col gap-5 items-center">
-            <Image src={'/code-kitchen/leo.webp'} alt={'logo'} width={'250'} height={'250'} />
-            <p>Web Developer</p>
-          </div>
-          <div className="pr">
-          </div>
+    <div className='flex flex-col md:flex-row md:px-10'>
+      <div className="article w-full flex justify-center p-5 md:w-3/4">{children}</div>
+      <div className="sidebar w-full p-5 flex flex-col gap-3 md:w-1/4">
+        <div className="profile w-full flex flex-col items-center">
+          <Image src={'/code-kitchen/leo.webp'} alt={'logo'} width={250} height={250} className='m-0'/>
+          <p>Web Developer</p>
         </div>
+        <div className="pr"></div>
       </div>
     </div>
   );
