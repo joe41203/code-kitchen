@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 import Prose from '../components/Prose.astro';
 import Sidebar from '../components/Sidebar.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'articles'>['data'];
 
 const { title, description } = Astro.props;
 ---

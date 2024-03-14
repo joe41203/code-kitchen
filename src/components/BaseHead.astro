@@ -11,9 +11,9 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
-
 const base_url = import.meta.env.BASE_URL;
+
+const { title, description, image = `${base_url}/images/profile.webp` } = Astro.props;
 ---
 
 <!-- Global Metadata -->
