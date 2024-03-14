@@ -37,11 +37,9 @@ if (currentPage.startsWith('/_astro/')) {
           <slot />
         </Prose>
       </article>
-      <aside class="hidden lg:block lg:w-1/4 lg:pl-8">
-        <Sidebar client:load />
-      </aside>
+      <Sidebar />
     </main>
     <Footer />
-    <script is:inline src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js" defer></script>
+    <script is:inline src="../../src/scripts/mermaid.min.js" defer></script>
   </body>
 </html>
