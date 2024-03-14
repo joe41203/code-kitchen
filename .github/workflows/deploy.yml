@@ -40,7 +40,7 @@ jobs:
       - name: Upload Documents
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./dist
 
       - name: deployment
         uses: actions/deploy-pages@v4
