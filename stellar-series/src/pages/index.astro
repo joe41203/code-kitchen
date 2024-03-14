@@ -1,0 +1,45 @@
+---
+import TopLayout from '../layouts/TopLayout.astro';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import { Image } from 'astro:assets';
+
+const articles = (await getCollection('blog')).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+
+const base_url = import.meta.env.BASE_URL;
+---
+
+<TopLayout>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    {
+      articles.map((article) => (
+        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+          <a href={`${base_url}/articles/${article.slug}/`}>
+            <div>
+              <Image src={article.data.cover} alt={article.data.description} />
+              <div class="px-6 py-4">
+                <h4 class="font-bold text-xl mb-2">{article.data.title}</h4>
+                <p class="date">
+                  <FormattedDate date={article.data.pubDate} />
+                </p>
+              </div>
+              <div class="px-6 pt-4 pb-2">
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                  #photography
+                </span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                  #travel
+                </span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                  #winter
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</TopLayout>
