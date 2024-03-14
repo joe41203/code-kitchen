@@ -12,7 +12,11 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), tailwind(), robotsTxt()],
   base: '/',
   markdown: {
-    syntaxHighlight: 'prism',
     remarkPlugins: [remarkDiagram],
+    shikiConfig: {
+      theme: 'dracula',
+      langs: [],
+      wrap: false,
+    },
   }
 });
