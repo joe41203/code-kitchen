@@ -14,7 +14,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkDiagram],
     shikiConfig: {
-      theme: 'dracula',
+      theme: 'github-dark',
       langs: [],
       wrap: false,
     },
