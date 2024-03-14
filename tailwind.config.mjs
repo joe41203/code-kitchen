@@ -1,11 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  darkMode: "selector",
+	content: ['./src/**/*.{astro,mdx,ts,tsx}'],
+  darkMode: "class",
 	theme: {
 		extend: {},
 	},
 	plugins: [
     require('@tailwindcss/typography'),
   ],
+  purge: {
+    enabled: true,
+    content: ['./src/**/*.{astro,mdx,ts,tsx}'],
+    options: {
+      safelist: [],
+    },
+  },
 }
