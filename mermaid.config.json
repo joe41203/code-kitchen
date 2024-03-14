@@ -1,0 +1,55 @@
+{
+  "theme": "default",
+  "themeVariables": {
+    "fontSize": "16px",
+    "fontFamily": "sans-serif",
+    "nodeBorder": 2,
+    "nodeBorderRadius": 4,
+    "nodeMargin": 50,
+    "edgeMargin": 10,
+    "edgeThickness": 2,
+    "edgeColor": "#333",
+    "lineHeight": 1.5,
+    "messageFontSize": "16px",
+    "messageFontFamily": "sans-serif",
+    "messageMargin": 10,
+    "messageAlign": "center",
+    "noteFontSize": "14px",
+    "noteFontFamily": "sans-serif",
+    "noteMargin": 10,
+    "noteAlign": "left",
+    "wrap": true,
+    "wrapWidth": 400
+  },
+  "flowchart": {
+    "diagramPadding": 20,
+    "htmlLabels": true,
+    "curve": "linear"
+  },
+  "sequence": {
+    "diagramMarginX": 50,
+    "diagramMarginY": 10,
+    "actorMargin": 50,
+    "width": 150,
+    "height": 65,
+    "boxMargin": 10,
+    "boxTextMargin": 5,
+    "noteMargin": 10,
+    "messageMargin": 35,
+    "mirrorActors": true,
+    "bottomMarginAdj": 1,
+    "useMaxWidth": true
+  },
+  "gantt": {
+    "titleTopMargin": 25,
+    "barHeight": 20,
+    "barGap": 4,
+    "topPadding": 50,
+    "leftPadding": 75,
+    "gridLineStartPadding": 35,
+    "fontSize": 11,
+    "fontFamily": "sans-serif",
+    "numberSectionStyles": 4,
+    "axisFormat": "%Y-%m-%d"
+  }
+}
