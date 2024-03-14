@@ -6,9 +6,9 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://joe41203.github.io',
+  site: 'https://code-kitchen.pages.dev',
   integrations: [mdx(), sitemap(), tailwind()],
-  base: '/code-kitchen',
+  base: '/',
   markdown: {
     syntaxHighlight: 'prism',
   }
