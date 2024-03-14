@@ -8,11 +8,4 @@ export default {
 	plugins: [
     require('@tailwindcss/typography'),
   ],
-  purge: {
-    enabled: true,
-    content: ['./src/**/*.{astro,mdx,ts,tsx}'],
-    options: {
-      safelist: [],
-    },
-  },
 }
