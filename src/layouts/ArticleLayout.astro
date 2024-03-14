@@ -25,9 +25,11 @@ const { title, description } = Astro.props;
           <slot />
         </Prose>
       </article>
-      <Sidebar />
+      <aside class="hidden lg:block lg:w-1/4 lg:pl-8">
+        <Sidebar client:load />
+      </aside>
     </main>
     <Footer />
-    <script is:inline src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script is:inline src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js" defer></script>
   </body>
 </html>
