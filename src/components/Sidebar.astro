@@ -3,6 +3,17 @@ import { Image } from 'astro:assets';
 ---
 
 <div class="flex flex-col items-center gap-5 py-20 lg:py-0">
-  <Image src={`/images/profile.webp`} alt="logo" width={250} height={250} />
-  <div class="profile">Web Developer</div>
+  <Image
+    src={`/images/profile.webp`}
+    alt="logo"
+    width={250}
+    height={250}
+    loading="lazy"
+    decoding="async"
+  />
+  <div class="profile flex flex-col items-center">
+    <p>RailsやTerraformを得意とするエンジニア</p>
+    <p>最近はフロントエンドに興味があります</p>
+    <p>技術に関すること幅広く投稿します</p>
+  </div>
 </div>
