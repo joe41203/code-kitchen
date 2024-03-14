@@ -26,13 +26,9 @@ Scrapy は、Python で書かれた強力な Web クローリングおよびス�
 
 6. アイテムパイプライン: Scrapy は、抽出したデータを処理するためのアイテムパイプラインを提供しています。パイプラインを使用することで、データのクリーニング、検証、保存などを簡単に行うことができます。
 
-7. 統合されたシェルと Web クローラー: Scrapy には、対話型のシェルと Web クローラーが統合されています。これにより、クローリングのデバッグやテストを簡単に行うことができます。
-
-8. コミュニティのサポート: Scrapy は、活発なコミュニティを持っており、豊富なドキュメントや事例が提供されています。これにより、初心者でも簡単に学習を始めることができます。
-
 ## 2. Scrapy の主要コンポーネント
 
-### コンポーネントの概要と関係性 (Mermaid フローチャート)
+### コンポーネントの概要と関係性
 
 ```mermaid
 graph LR
@@ -67,11 +63,9 @@ Scrapy は、いくつかの主要なコンポーネントで構成されてい�
       start_urls = ['http://example.com']
 
       def parse(self, response):
-          # ページから必要なデータを抽出
           title = response.css('h1::text').get()
           description = response.xpath('//p[@class="description"]/text()').get()
 
-          # 抽出したデータをItemに格納
           item = MyItem()
           item['title'] = title
           item['description'] = description
@@ -86,7 +80,7 @@ Scrapy は、いくつかの主要なコンポーネントで構成されてい�
 ### Items
 
 - Items の役割と定義方法
-  Items は、抽出したデータを構造化するためのコンテナです。Items を使用することで、データをフィールドごとに整理し、後処理を行うことができます。Items は、Python のクラスとして定義します。
+  Items は、抽出したデータを構造化するためのコンテナです。Items を使用することで、データをフィールドごとに整理し、後処理を行うことができます。
 
 - Items のサンプルコード
 
@@ -102,7 +96,7 @@ Scrapy は、いくつかの主要なコンポーネントで構成されてい�
 
 ### Middlewares
 
-- Middlewares の種類と役割 (Mermaid フローチャート)
+- Middlewares の種類と役割
 
   ```mermaid
   graph LR
@@ -128,7 +122,6 @@ Scrapy は、いくつかの主要なコンポーネントで構成されてい�
       def process_response(self, request, response, spider):
           # レスポンス受信後の処理
           if response.status == 404:
-              # 404エラーの場合の処理
               return None
           return response
   ```
@@ -164,7 +157,6 @@ Scrapy は、いくつかの主要なコンポーネントで構成されてい�
 
   class MyPipeline:
       def process_item(self, item, spider):
-          # itemに対する処理
           if item['price'] is None:
               # 価格が存在しない場合はitemを破棄
               raise DropItem("Missing price")
@@ -216,7 +208,7 @@ Web クローリングを行う際、一定の制限を超えてアクセスす�
 
 ### IP アドレスの分散
 
-- IP アドレスを分散させる方法 (Mermaid シーケンス図)
+- IP アドレスを分散させる方法
 
   ```mermaid
   sequenceDiagram
@@ -254,7 +246,7 @@ Web クローリングを行う際、一定の制限を超えてアクセスす�
   }
   ```
 
-  Scrapy-Rotating-Proxies というミドルウェアを使用することで、リクエストごとに Proxy を切り替えることができます。
+  [scrapy-rotating-proxies](https://github.com/TeamHG-Memex/scrapy-rotating-proxies) というミドルウェアを使用することで、リクエストごとに Proxy を切り替えることができます。
 
 ### User-Agent の変更
 
@@ -298,8 +290,6 @@ Web クローリングを行う際、一定の制限を超えてアクセスす�
       name = 'myspider'
 
       def parse(self, response):
-          # ページの解析処理
-
           # 次のリクエストを遅延してスケジュール
           delay = randint(1, 3)  # 1~3秒の遅延をランダムに生成
           yield scrapy.Request(next_url, callback=self.parse, dont_filter=True, meta={'download_delay': delay})
