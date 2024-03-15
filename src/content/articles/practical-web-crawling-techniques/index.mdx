@@ -31,22 +31,87 @@ Scrapy は、Python で書かれた強力な Web クローリングおよびス�
 ### コンポーネントの概要と関係性
 
 ```mermaid
-graph LR
-    A[Spider] --> B[Downloader Middleware]
-    B --> C[Downloader]
-    C --> D[Spider Middleware]
-    D --> A
-    A --> E[Items]
-    E --> F[Item Pipeline]
-    F --> G[Data Storage]
-    H[Settings] --> A
-    H --> B
-    H --> D
-    H --> F
-    I[scrapy.cfg] --> H
+graph TB
+    scrapy.cfg-->Scrapy_Project
+    Scrapy_Project-->Scrapy_Engine
+
+    Scrapy_Engine((Scrapy Engine))
+    Target_Website[(Target Website)]
+
+    Scrapy_Engine-->Scheduler
+    Scheduler-->Downloader
+    Downloader-->Internet
+    Internet-->Target_Website
+    Target_Website-->Internet
+    Internet-->Downloader
+    Downloader-->Downloader_Middlewares
+    Downloader_Middlewares-->Spider_Middlewares
+    Spider_Middlewares-->Spider
+
+    Spider-->Items
+    Items-->Item_Pipeline
+    Item_Pipeline-->Cleaned_Data[(Cleaned Data)]
+    Cleaned_Data-->Data_Output[(Data Output)]
+
+    classDef config fill:#f96,stroke:#333,stroke-width:2px
+    class scrapy.cfg config
+
+    classDef project fill:#9c6,stroke:#333,stroke-width:2px
+    class Scrapy_Project project
+
+    classDef component fill:#69f,stroke:#333,stroke-width:2px
+    class Scrapy_Engine,Scheduler,Downloader,Internet,Downloader_Middlewares,Spider_Middlewares,Spider,Item_Pipeline component
+
+    classDef data fill:#c9f,stroke:#333,stroke-width:2px
+    class Items,Cleaned_Data,Data_Output data
+
+    classDef website fill:#fc9,stroke:#333,stroke-width:2px
+    class Target_Website website
 ```
 
-Scrapy は、いくつかの主要なコンポーネントで構成されています。これらのコンポーネントが連携して、Web クローリングとスクレイピングのプロセスを実現します。
+この図は、Scrapyのコンポーネントの概要と関係性を示しています。`scrapy.cfg`の設定ファイルからScrapyプロジェクトが作成され、Scrapy Engineが起動します。Scrapy Engineは、Scheduler、Downloader、Middlewares、Spider、Item Pipelineなどの主要なコンポーネントを制御し、データの流れを管理します。Downloaderはインターネットを介してターゲットのウェブサイトにリクエストを送信し、レスポンスを受け取ります。Spiderはレスポンスからアイテムを生成し、Item Pipelineがアイテムのクリーニングと検証を行います。最終的に、クリーンアップされたデータが出力されます。
+
+### Scrapyのデータフロー
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant scrapy.cfg
+    participant Scrapy_Project
+    participant Scrapy_Engine
+    participant Scheduler
+    participant Downloader
+    participant Internet
+    participant Target_Website
+    participant Downloader_Middlewares
+    participant Spider_Middlewares
+    participant Spider
+    participant Items
+    participant Item_Pipeline
+    participant Cleaned_Data
+    participant Data_Output
+
+    User->>scrapy.cfg: Configure Scrapy
+    scrapy.cfg->>Scrapy_Project: Create Scrapy Project
+    Scrapy_Project->>Scrapy_Engine: Start Scrapy Engine
+    Scrapy_Engine->>Scheduler: Schedule Requests
+    Scheduler->>Downloader: Send Requests
+    Downloader->>Internet: Send Requests
+    Internet->>Target_Website: Request Website
+    Target_Website-->>Internet: Return Response
+    Internet-->>Downloader: Return Response
+    Downloader-->>Downloader_Middlewares: Process Response
+    Downloader_Middlewares-->>Spider_Middlewares: Process Response
+    Spider_Middlewares-->>Spider: Process Response
+    Spider-->>Items: Generate Items
+    Items-->>Item_Pipeline: Process Items
+    Item_Pipeline-->>Cleaned_Data: Clean and Validate Data
+    Cleaned_Data-->>Data_Output: Output Data
+```
+
+このシーケンス図は、Scrapyのデータフローを時系列に沿って表現しています。ユーザーがscrapy.cfgを設定し、Scrapyプロジェクトを作成すると、Scrapy Engineが起動します。Scrapy Engineはリクエストをスケジュールし、DownloaderがInternetを介してターゲットのウェブサイトにリクエストを送信します。ウェブサイトからのレスポンスは、DownloaderとMiddlewaresで処理された後、Spiderに渡されます。Spiderはレスポンスからアイテムを生成し、Item Pipelineに渡します。Item Pipelineはアイテムのクリーニングと検証を行い、最終的にクリーンアップされたデータが出力されます。
+
+(見づらくて申し訳ないです🙇)
 
 ### Spider
 
