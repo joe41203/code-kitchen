@@ -11,6 +11,7 @@ export default defineConfig({
   site: 'https://code-kitchen.pages.dev',
   integrations: [mdx(), sitemap(), tailwind(), robotsTxt()],
   base: '/',
+  trailingSlash: "ignore",
   markdown: {
     remarkPlugins: [remarkMermaid],
     shikiConfig: {
