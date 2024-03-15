@@ -190,69 +190,39 @@ mdxファイルでmermaidを使用するには、以下のようにコードブ�
 
 ````md
 ```mermaid
-graph TB
-  A[Astro] --> B[mermaid]
-  B --> C{Page Speed Insights}
-  C -->|Low Score| D[SVG Conversion]
-  C -->|High Score| E[Optimized Performance]
+sequenceDiagram
+  participant MDX as mdxファイル
+  participant RMP as remark-mermaidプラグイン
+  participant SVG as SVGファイル
+  participant HTML as HTMLファイル
+
+  MDX->>RMP: mermaidコードブロック
+  RMP->>RMP: コードブロックの処理
+  RMP->>SVG: mermaidコードのSVGへの変換
+  SVG->>RMP: 生成されたSVG
+  RMP->>HTML: SVGのHTMLへの埋め込み
+  HTML->>MDX: 変換後のHTMLコード
 ```
 ````
 
-上記のコードは、以下のようなフローチャートを生成します。
-
 ```mermaid
-graph TB
-  A[Astro] --> B[mermaid]
-  B --> C{Page Speed Insights}
-  C -->|Low Score| D[SVG Conversion]
-  C -->|High Score| E[Optimized Performance]
+sequenceDiagram
+  participant MDX as mdxファイル
+  participant RMP as remark-mermaidプラグイン
+  participant SVG as SVGファイル
+  participant HTML as HTMLファイル
+
+  MDX->>RMP: mermaidコードブロック
+  RMP->>RMP: コードブロックの処理
+  RMP->>SVG: mermaidコードのSVGへの変換
+  SVG->>RMP: 生成されたSVG
+  RMP->>HTML: SVGのHTMLへの埋め込み
+  HTML->>MDX: 変換後のHTMLコード
 ```
 
-このように、mermaid記法を使用することで、簡単に図を描画することができます。
+このシーケンス図では、mdxファイルでのmermaidの記述から、remark-mermaidプラグインによる処理、SVGファイルの生成、HTMLへの埋め込みまでの流れを示しています。
 
-### クラス定義によるスタイル適用
-
-mermaidで生成されるSVGにスタイルを適用するには、クラス定義を使用します。以下は、クラス定義の例です。
-
-````md
-```mermaid
-graph TB
-  classDef default fill:#f9f,stroke:#333,stroke-width:2px
-  classDef optimized fill:#9f9,stroke:#333,stroke-width:2px
-
-  A[Astro] --> B[mermaid]
-  B --> C{Page Speed Insights}
-  C -->|Low Score| D[SVG Conversion]
-  C -->|High Score| E[Optimized Performance]
-
-  class A,B,C,D,E default
-  class E optimized
-```
-````
-
-上記のコードでは、`classDef`を使用して`default`と`optimized`の2つのクラスを定義しています。`default`クラスは、塗りつぶしに`#f9f`、線に`#333`、線の太さに`2px`を指定しています。`optimized`クラスは、塗りつぶしに`#9f9`を指定しています。
-
-次に、`class`を使用して、各ノードにクラスを適用しています。`A`、`B`、`C`、`D`、`E`のノードには`default`クラスを適用し、`E`ノードには`optimized`クラスを適用しています。
-
-これにより、以下のようなスタイルが適用されたフローチャートが生成されます。
-
-```mermaid
-graph TB
-  classDef default fill:#f9f,stroke:#333,stroke-width:2px
-  classDef optimized fill:#9f9,stroke:#333,stroke-width:2px
-
-  A[Astro] --> B[mermaid]
-  B --> C{Page Speed Insights}
-  C -->|Low Score| D[SVG Conversion]
-  C -->|High Score| E[Optimized Performance]
-
-  class A,B,C,D,E default
-  class E optimized
-```
-
-このように、クラス定義を使用することで、生成されるSVGにスタイルを適用することができます。
-
-以上が、mdxファイルでmermaidを使用する際の記述方法です。コードブロックでmermaid記法を使用し、クラス定義でスタイルを適用することで、見やすく分かりやすい図を作成することができます。
+これらのシーケンス図を使うことで、mdxファイルでのmermaidの記述方法をより明確に説明することができます。
 
 ## 6. まとめ
 
