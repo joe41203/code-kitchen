@@ -235,9 +235,9 @@ Web クローリングを行う際、一定の制限を超えてアクセスす�
   ```python
   # settings.py
   ROTATING_PROXY_LIST = [
-      'http://proxy1.example.com:8080',
-      'http://proxy2.example.com:8080',
-      'http://proxy3.example.com:8080',
+      'username:password@ip:port',
+      'username:password@ip:port',
+      'username:password@ip:port',
   ]
 
   DOWNLOADER_MIDDLEWARES = {
@@ -269,6 +269,8 @@ Web クローリングを行う際、一定の制限を超えてアクセスす�
   ```
 
   settings.py で User-Agent を設定するか、ミドルウェアでリクエストごとに User-Agent を変更することができます。
+
+  また、[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)を利用するとランダムなUser-Agentでリクエストを送ることができます。
 
 ### リクエストの間隔調整
 
