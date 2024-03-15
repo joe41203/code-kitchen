@@ -42,7 +42,7 @@
   {
     "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
     "id": "performance",
-    "score": 0.98
+    "score": 0.99
   },
   {
     "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
@@ -76,6 +76,26 @@
   },
   {
     "url": "https://code-kitchen.pages.dev/articles/00004-improve-performance-when-using-mermaid-with-astro/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00005-astro-page-speed-insights-integration/",
+    "id": "performance",
+    "score": 0.98
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00005-astro-page-speed-insights-integration/",
+    "id": "accessibility",
+    "score": 0.96
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00005-astro-page-speed-insights-integration/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00005-astro-page-speed-insights-integration/",
     "id": "seo",
     "score": 1
   }
