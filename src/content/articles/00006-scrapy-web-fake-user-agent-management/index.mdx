@@ -1,6 +1,6 @@
 ---
-title: 'Scrapy Fake User Agent: Webスクレイピングでのユーザーエージェント管理の効率化'
-description: 'Scrapy Fake User Agent: Webスクレイピングでのユーザーエージェント管理の効率化'
+title: 'Scrapy Fake User Agent: WebスクレイピングでのUser-Agent管理の効率化'
+description: 'Scrapy Fake User Agent: WebスクレイピングでのUser-Agent管理の効率化'
 pubDate: '2024-03-17'
 cover: './hero.webp'
 tags: [Python, Scrapy]
@@ -8,40 +8,90 @@ tags: [Python, Scrapy]
 
 ## 1. はじめに
 
-近年、Webスクレイピングは様々な分野で活用されており、データ収集や分析に欠かせない技術となっています。しかし、Webサイトによっては、スクレイピングを防ぐために様々な対策を講じています。その中でも、ユーザーエージェントによる制限は一般的な手法の1つです。
+近年、Webスクレイピングは様々な分野で活用されており、データ収集や分析に欠かせない技術となっています。しかし、Webサイトによっては、スクレイピングを防ぐために様々な対策を講じています。その中でも、User-Agentによる制限は一般的な手法の1つです。
 
-ユーザーエージェントとは、Webブラウザやスクレイピングツールがサーバーに送信するHTTPリクエストヘッダーの一部で、クライアントのソフトウェアやバージョンなどの情報を含んでいます。Webサイトは、ユーザーエージェントを分析することで、スクレイピングツールからのアクセスを識別し、ブロックすることができます。
+User-Agentとは、Webブラウザやスクレイピングツールがサーバーに送信するHTTPリクエストヘッダーの一部で、クライアントのソフトウェアやバージョンなどの情報を含んでいます。Webサイトは、User-Agentを分析することで、スクレイピングツールからのアクセスを識別し、ブロックすることができます。
 
-このような状況下で、スクレイピングを円滑に行うためには、ユーザーエージェントを適切に管理する必要があります。[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)は、Pythonの人気スクレイピングフレームワークであるScrapyに対して、ユーザーエージェントをランダムに切り替える機能を提供するライブラリです。
+このような状況下で、スクレイピングを円滑に行うためには、User-Agentを適切に管理する必要があります。[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)は、Pythonの人気スクレイピングフレームワークであるScrapyに対して、User-Agentをランダムに切り替える機能を提供するライブラリです。
 
 本記事では、[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)の概要と目的について説明し、インストール方法や設定、動作原理など、詳細な情報を提供します。また、コード例を交えながら、実際の使用方法や利点、注意点などについても解説していきます。
 
-[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)を活用することで、Webサイトからのブロックを回避し、効率的なスクレイピングを実現できるでしょう。それでは、次の章から、[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)の詳細について見ていきましょう。
+[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)を活用することで、Webサイトからのブロックを回避し、効率的なスクレイピングを実現できるでしょう。
 
 ## 2. [scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)パッケージの詳細
 
-[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリは、実在するユーザーエージェント情報を含むデータベースを提供しています。このデータベースには、様々なWebブラウザやデバイス、オペレーティングシステムのユーザーエージェント情報が含まれています。[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)は、このデータベースを活用して、リクエストごとにユーザーエージェントをランダムに選択し、設定します。
+[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリは、実在する様々なWebブラウザやデバイス、オペレーティングシステムのUser-Agent情報を提供しています。リクエストごとにUser-Agentをランダムに選択し、設定します。
 
 [scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)の主な機能は以下の通りです：
 
-1. ユーザーエージェントのランダム化：リクエストごとに、ユーザーエージェントをランダムに選択し、設定します。
-2. ユーザーエージェントのローテーション：設定されたユーザーエージェントリストを順番に使用し、ローテーションします。
-3. カスタムユーザーエージェントリストのサポート：ユーザー独自のユーザーエージェントリストを設定し、使用することができます。
+1. User-Agentのランダム化：リクエストごとに、User-Agentをランダムに選択し、設定します。
+2. User-Agentのローテーション：設定されたUser-Agentリストを順番に使用し、ローテーションします。
+3. カスタムUser-Agentリストのサポート：ユーザー独自のUser-Agentリストを設定し、使用することができます。
 
-[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)のパッケージ構成は、以下のようになっています：
+[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)のパッケージ構成は、以下の様になっています：
 
+```bash
+scrapy-fake-useragent(master): tree -L 3
+.
+├── CHANGELOG.rst
+├── LICENSE.txt
+├── README.rst
+├── dev-requirements.txt
+├── pytest.ini
+├── requirements.txt
+├── scrapy_fake_useragent
+│   ├── __init__.py
+│   ├── middleware.py
+│   └── providers.py
+├── setup.cfg
+├── setup.py
+├── tests
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── test_random_ua_middleware
+│   │   ├── __init__.py
+│   │   ├── test_fallback_setting.py
+│   │   ├── test_load_providers.py
+│   │   └── test_providers
+│   └── test_retry_middleware.py
+└── tox.ini
 ```
+
+scrapy_fake_useragentに着目します。
+
+```bash
 scrapy_fake_useragent/
 ├── __init__.py
 ├── middleware.py
-└── settings.py
+└── providers.py
 ```
 
-- `__init__.py`：パッケージの初期化を行います。
-- `middleware.py`：[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)のミドルウェアクラスが定義されています。
-- `settings.py`：パッケージの設定項目が定義されています。
+1. `__init__.py`:
+  - `scrapy_fake_useragent`モジュールの初期化ファイルです。
+  - モジュールがパッケージとして認識されるために必要です。
+  - モジュールレベルの定数や関数、クラスなどを定義することができます。
 
-これらのモジュールが連携して、[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)の機能を実現しています。
+2. `middleware.py`:
+  - Scrapyのミドルウェアクラスを定義するファイルです。
+  - `RandomUserAgentMiddleware`クラスは、リクエストにランダムなUser-Agentを設定するミドルウェアです。
+  - `RetryUserAgentMiddleware`クラスは、リトライ時にランダムなUser-Agentを設定するミドルウェアです。
+  - これらのミドルウェアクラスは、Scrapyのリクエスト/レスポンス処理パイプラインに組み込まれます。
+
+3. `providers.py`:
+  - User-Agentを提供するプロバイダークラスを定義するファイルです。
+  - `BaseProvider`クラスは、すべてのプロバイダークラスの基底クラスです。
+  - `FixedUserAgentProvider`クラスは、設定で指定された固定のUser-Agentを提供します。
+  - `FakeUserAgentProvider`クラスは、`fake_useragent`ライブラリを使用してランダムな実際のUser-Agentを提供します。
+  - `FakerProvider`クラスは、`Faker`ライブラリを使用してランダムなUser-Agentを生成します。
+  - これらのプロバイダークラスは、ミドルウェアクラスからUser-Agentを取得するために使用されます。
+
+これらのファイルを組み合わせることで、`scrapy_fake_useragent`モジュールは以下の機能を提供します。
+
+1. ランダムなUser-Agentを設定するためのミドルウェア。
+2. リトライ時にランダムなUser-Agentを設定するためのミドルウェア。
+3. 様々なUser-Agentプロバイダーの選択肢と柔軟性。
+
+このモジュールをScrapyプロジェクトに組み込むことで、リクエストに対してランダムなUser-Agentを設定し、Webサイトからのスクレイピングをよりスムーズに行うことができます。また、設定ファイルを通じてカスタマイズ可能であり、独自のUser-Agentプロバイダーを追加することもできます。
 
 ## 3. Scrapy Fake User Agentのインストールと設定
 
@@ -56,88 +106,44 @@ pip install scrapy-fake-useragent
 ```python
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
     'scrapy_fake_useragent.middleware.RandomUserAgentMiddleware': 400,
+    'scrapy_fake_useragent.middleware.RetryUserAgentMiddleware': 401,
 }
 ```
 
-この設定では、Scrapyデフォルトの`UserAgentMiddleware`を無効化し、代わりに`RandomUserAgentMiddleware`を有効化しています。ミドルウェアの優先度は400に設定されています。
-
-また、以下の設定を追加することで、Scrapy Fake User Agentの動作を制御できます。
-
-```python
-FAKE_USERAGENT_ENABLED = True
-FAKE_USERAGENT_FALLBACK = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36'
-```
-
-- `FAKE_USERAGENT_ENABLED`：Scrapy Fake User Agentを有効化するかどうかを設定します。デフォルトは`True`です。
-- `FAKE_USERAGENT_FALLBACK`：ユーザーエージェントの選択に失敗した場合に使用されるフォールバックのユーザーエージェントを設定します。
+この設定では、Scrapyデフォルトの`UserAgentMiddleware`と`RetryMiddleware`を無効化し、代わりに`RandomUserAgentMiddleware`と`RetryUserAgentMiddleware`を有効化しています。ミドルウェアの優先度は400と401に設定されています。
 
 以上の設定を行うことで、Scrapy Fake User Agentを使用する準備が整います。
 
-## 4. ユーザーエージェントの設定オプション
+## 4. User-Agentの設定オプション
 
-Scrapy Fake User Agentは、様々な方法でユーザーエージェントを設定できます。以下に、主な設定オプションを説明します。
+Scrapy Fake User Agentは、様々な方法でUser-Agentを設定できます。以下に、主な設定オプションを説明します。
 
-### デフォルトのユーザーエージェント
+### デフォルトのUser-Agent
 
-特に設定を行わない場合、Scrapy Fake User Agentは、[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリに含まれるデフォルトのユーザーエージェントリストからランダムに選択します。このリストには、一般的なWebブラウザのユーザーエージェントが含まれています。
+特に設定を行わない場合、Scrapy Fake User Agentは、[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリに含まれるデフォルトのUser-Agentリストからランダムに選択します。このリストには、一般的なWebブラウザのUser-Agentが含まれています。
 
-### ユーザーエージェントのランダム化
+### User-Agentのランダム化
 
-`settings.py`に以下の設定を追加することで、リクエストごとにランダムなユーザーエージェントを選択できます。
-
-```python
-FAKEUSERAGENT_PROVIDERS = [
-    'scrapy_fake_useragent.providers.FakeUserAgentProvider',
-    'scrapy_fake_useragent.providers.FakerProvider',
-    'scrapy_fake_useragent.providers.FixedUserAgentProvider',
-]
-```
-
-- `FakeUserAgentProvider`：[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリに含まれるデフォルトのユーザーエージェントリストからランダムに選択します。
-- `FakerProvider`：Fakerライブラリを使用して、ランダムなユーザーエージェントを生成します。
-- `FixedUserAgentProvider`：固定のユーザーエージェントを使用します。
-
-### ユーザーエージェントのローテーション
-
-`settings.py`に以下の設定を追加することで、設定されたユーザーエージェントリストを順番に使用し、ローテーションすることができます。
+`settings.py`に以下の設定を追加することで、リクエストごとにランダムなUser-Agentを選択できます。
 
 ```python
 FAKEUSERAGENT_PROVIDERS = [
-    'scrapy_fake_useragent.providers.FixedUserAgentProvider',
+    'scrapy_fake_useragent.providers.FakeUserAgentProvider',  # 最初に試すプロバイダー
+    'scrapy_fake_useragent.providers.FakerProvider',  # FakeUserAgentProviderが失敗した場合に使用するプロバイダー
+    'scrapy_fake_useragent.providers.FixedUserAgentProvider',  # USER_AGENT値にフォールバックするプロバイダー
 ]
-
-FAKEUSERAGENT_FIXED_USER_AGENTS = [
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36',
-    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36',
-]
+USER_AGENT = '<すべてのプロバイダーが失敗した場合にフォールバックするUser-Agent文字列>'
 ```
 
-この設定では、`FixedUserAgentProvider`を使用し、`FAKEUSERAGENT_FIXED_USER_AGENTS`で指定されたユーザーエージェントリストを順番に使用します。
-
-### カスタムユーザーエージェントリストの使用
-
-`settings.py`に以下の設定を追加することで、ユーザー独自のユーザーエージェントリストを使用できます。
-
-```python
-FAKEUSERAGENT_PROVIDERS = [
-    'scrapy_fake_useragent.providers.FixedUserAgentProvider',
-]
-
-FAKEUSERAGENT_FIXED_USER_AGENTS = [
-    'カスタムユーザーエージェント1',
-    'カスタムユーザーエージェント2',
-    'カスタムユーザーエージェント3',
-]
-```
-
-この設定では、`FixedUserAgentProvider`を使用し、`FAKEUSERAGENT_FIXED_USER_AGENTS`で指定されたカスタムユーザーエージェントリストを使用します。
-
+- `FakeUserAgentProvider`：[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリに含まれるデフォルトのUser-Agentリストからランダムに選択します。
+- `FakerProvider`：Fakerライブラリを使用して、ランダムなUser-Agentを生成します。
+- `FixedUserAgentProvider`：固定のUser-Agentを使用します。
 
 ## 5. Scrapy Fake User Agentの動作原理（Mermaidチャートを使った説明）
 
-Scrapy Fake User Agentは、Scrapyのリクエストにランダムなユーザーエージェントを設定するためのミドルウェアです。以下のMermaidチャートを使って、その動作原理を説明します。
+Scrapy Fake User Agentは、ScrapyのリクエストにランダムなUser-Agentを設定するためのミドルウェアです。以下のMermaidチャートを使って、その動作原理を説明します。
 
 ```mermaid
 graph TB
@@ -156,17 +162,17 @@ graph TB
 
 1. Scrapyがリクエストを生成します。
 2. リクエストは、Fake User Agent Middlewareに渡されます。
-3. ミドルウェアは、設定に基づいてユーザーエージェントを選択します。
-  - デフォルト：[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリに含まれるデフォルトのユーザーエージェントリストから選択します。
-  - ランダム：設定されたプロバイダ（`FakeUserAgentProvider`、`FakerProvider`、`FixedUserAgentProvider`）からランダムにユーザーエージェントを選択します。
-  - ローテーション：設定されたユーザーエージェントリストを順番に使用します。
-  - カスタムリスト：ユーザー独自のユーザーエージェントリストから選択します。
-4. 選択されたユーザーエージェントがリクエストのヘッダーに設定されます。
-5. ユーザーエージェントが設定されたリクエストがWebサーバーに送信されます。
+3. ミドルウェアは、設定に基づいてUser-Agentを選択します。
+  - デフォルト：[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリに含まれるデフォルトのUser-Agentリストから選択します。
+  - ランダム：設定されたプロバイダ（`FakeUserAgentProvider`、`FakerProvider`、`FixedUserAgentProvider`）からランダムにUser-Agentを選択します。
+  - ローテーション：設定されたUser-Agentリストを順番に使用します。
+  - カスタムリスト：ユーザー独自のUser-Agentリストから選択します。
+4. 選択されたUser-Agentがリクエストのヘッダーに設定されます。
+5. User-Agentが設定されたリクエストがWebサーバーに送信されます。
 
-Scrapy Fake User Agentは、内部で[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリを活用しています。このライブラリは、実在のユーザーエージェント情報を提供し、ランダムな選択やローテーションを可能にします。
+Scrapy Fake User Agentは、内部で[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリを活用しています。このライブラリは、実在のUser-Agent情報を提供し、ランダムな選択やローテーションを可能にします。
 
-ミドルウェアは、リクエストごとにユーザーエージェントを選択し、設定するため、Webサイトからのブロックを回避しながら、効率的にスクレイピングを行うことができます。
+ミドルウェアは、リクエストごとにUser-Agentを選択し、設定するため、Webサイトからのブロックを回避しながら、効率的にスクレイピングを行うことができます。
 
 ## 6. Scrapy Fake User Agentの利点
 
@@ -174,24 +180,24 @@ Scrapy Fake User Agentを使用することで、以下のような利点があ�
 
 ### Webサイトからのブロックを回避
 
-多くのWebサイトは、同じユーザーエージェントを使用して大量のリクエストを送信するスクレイピングツールを検出し、ブロックする仕組みを持っています。Scrapy Fake User Agentを使用することで、リクエストごとにランダムなユーザーエージェントを設定し、Webサイトからのブロックを回避できます。
+多くのWebサイトは、同じUser-Agentを使用して大量のリクエストを送信するスクレイピングツールを検出し、ブロックする仕組みを持っています。Scrapy Fake User Agentを使用することで、リクエストごとにランダムなUser-Agentを設定し、Webサイトからのブロックを回避できます。
 
 ### スクレイピングの効率化
 
-ユーザーエージェントをランダムに切り替えることで、Webサイトからのブロックを回避し、スクレイピングを継続的に行うことができます。これにより、スクレイピングの効率が向上し、より多くのデータを収集できます。
+User-Agentをランダムに切り替えることで、Webサイトからのブロックを回避し、スクレイピングを継続的に行うことができます。これにより、スクレイピングの効率が向上し、より多くのデータを収集できます。
 
-### 多様なユーザーエージェントによるデータ収集
+### 多様なUser-Agentによるデータ収集
 
-Webサイトによっては、ユーザーエージェントに応じて異なるコンテンツを返す場合があります。Scrapy Fake User Agentを使用することで、様々なユーザーエージェントを使用してデータを収集できます。これにより、より多様なデータを収集し、分析の精度を向上させることができます。
+Webサイトによっては、User-Agentに応じて異なるコンテンツを返す場合があります。Scrapy Fake User Agentを使用することで、様々なUser-Agentを使用してデータを収集できます。これにより、より多様なデータを収集し、分析の精度を向上させることができます。
 
 
 ## 7. 注意点とベストプラクティス
 
 Scrapy Fake User Agentを使用する際には、以下の点に注意し、ベストプラクティスに従うことが重要です。
 
-### 適切なユーザーエージェントの選択
+### 適切なUser-Agentの選択
 
-Scrapy Fake User Agentは、実在のユーザーエージェント情報を使用しますが、Webサイトによっては、特定のユーザーエージェントを使用するとブロックされる場合があります。そのため、スクレイピング対象のWebサイトに適したユーザーエージェントを選択することが重要です。
+Scrapy Fake User Agentは、実在のUser-Agent情報を使用しますが、Webサイトによっては、特定のUser-Agentを使用するとブロックされる場合があります。そのため、スクレイピング対象のWebサイトに適したUser-Agentを選択することが重要です。
 
 ### リクエスト間隔の調整
 
@@ -208,23 +214,21 @@ DOWNLOAD_DELAY = 1  # リクエスト間隔を1秒に設定
 以上が、Scrapy Fake User Agentの注意点とベストプラクティスです。これらの点に留意しながら、Scrapy Fake User Agentを効果的に活用してください。
 
 
-はい、承知しました。9章を詳しく書いていきます。
-
 ## 8. まとめ
 
-本記事では、Scrapy Fake User Agentについて詳細に解説しました。Scrapy Fake User Agentは、Scrapyフレームワークでのスクレイピングにおいて、ユーザーエージェントをランダムに切り替えることで、Webサイトからのブロックを回避し、効率的にデータを収集するためのツールです。
+本記事では、Scrapy Fake User Agentについて詳細に解説しました。Scrapy Fake User Agentは、Scrapyフレームワークでのスクレイピングにおいて、User-Agentをランダムに切り替えることで、Webサイトからのブロックを回避し、効率的にデータを収集するためのツールです。
 
 記事の内容を振り返ると、以下のようになります。
 
-1. Webスクレイピングにおけるユーザーエージェントの重要性と、Scrapy Fake User Agentの概要について説明しました。
+1. WebスクレイピングにおけるUser-Agentの重要性と、Scrapy Fake User Agentの概要について説明しました。
 2. Scrapy Fake User Agentのパッケージ構成と提供する機能について詳細に解説しました。
 3. Scrapy Fake User Agentのインストール方法と、Scrapyプロジェクトでの設定方法を示しました。
-4. ユーザーエージェントの設定オプションについて、デフォルト、ランダム化、ローテーション、カスタムリストの使用方法を説明しました。
+4. User-Agentの設定オプションの使用方法を説明しました。
 5. Mermaidチャートを使用して、Scrapy Fake User Agentの動作原理を視覚的に表現し、説明しました。
 6. Scrapy Fake User Agentを使用することによる利点について、Webサイトからのブロック回避、スクレイピングの効率化、多様なデータ収集の観点から説明しました。
-7. 実際のScrapyプロジェクトでのScrapy Fake User Agentの使用例と実装方法を示しました。
-8. Scrapy Fake User Agentを使用する際の注意点とベストプラクティスについて、適切なユーザーエージェントの選択、リクエスト間隔の調整、Webサイトの利用規約の遵守の観点から説明しました。
+7. Scrapy Fake User Agentを使用する際の注意点とベストプラクティスについて、適切なUser-Agentの選択、リクエスト間隔の調整、Webサイトの利用規約の遵守の観点から説明しました。
 
-Scrapy Fake User Agentは、Webスクレイピングにおける重要なツールの1つです。Webサイトからのブロックを回避し、効率的にデータを収集するために、ユーザーエージェントを適切に管理することが求められます。
+Scrapy Fake User Agentは、Webスクレイピングにおける重要なツールの1つです。Webサイトからのブロックを回避し、効率的にデータを収集するために、User-Agentを適切に管理することが求められます。
 
 今後、Webスクレイピングを行う際には、Scrapy Fake User Agentを活用し、適切な設定とベストプラクティスに従うことで、より効果的なデータ収集が可能になるでしょう。
+
