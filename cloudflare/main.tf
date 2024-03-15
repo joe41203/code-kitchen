@@ -4,7 +4,7 @@ resource "cloudflare_pages_project" "main" {
   production_branch = var.profuction_branch
 
   build_config {
-    build_caching   = false
+    build_caching   = true
     build_command   = "npm run build"
     destination_dir = "dist"
   }
