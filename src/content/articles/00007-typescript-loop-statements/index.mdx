@@ -1,0 +1,74 @@
+---
+title: 'TypeScriptのループ文まとめ - for, while, forEach, mapなど'
+description: 'TypeScriptのループ文まとめ - for, while, forEach, mapなど'
+pubDate: '2024-03-17'
+cover: './hero.webp'
+tags: [Typescript]
+---
+
+TypeScriptのループ文には以下のようなものがあります。
+
+## 1. for文
+```typescript
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+```
+
+## 2. for...in文
+```typescript
+const obj = { a: 1, b: 2, c: 3 };
+for (const key in obj) {
+  console.log(key);
+}
+```
+
+## 3. for...of文
+```typescript
+const arr = [1, 2, 3];
+for (const value of arr) {
+  console.log(value);
+}
+```
+
+## 4. while文
+```typescript
+let i = 0;
+while (i < 5) {
+  console.log(i);
+  i++;
+}
+```
+
+## 5. do...while文
+```typescript
+let i = 0;
+do {
+  console.log(i);
+  i++;
+} while (i < 5);
+```
+
+## 6. forEach文
+```typescript
+const arr = [1, 2, 3];
+arr.forEach((value) => {
+  console.log(value);
+});
+```
+
+## 7. map文
+```typescript
+const arr = [1, 2, 3];
+const newArr = arr.map((value) => value * 2);
+console.log(newArr);
+```
+
+## 8. filter文
+```typescript
+const arr = [1, 2, 3];
+const filteredArr = arr.filter((value) => value > 1);
+console.log(filteredArr);
+```
+
+これらのループ文を使い分けることで、配列やオブジェクトの要素に対して様々な処理を行うことができます。for文やwhile文は基本的なループ処理に使われ、for...in文はオブジェクトのプロパティに対してループ処理を行います。for...of文は配列やイテラブルオブジェクトの要素に対してループ処理を行います。forEach文、map文、filter文は配列に対して使われる高階関数で、それぞれ要素に対する処理、要素の変換、要素のフィルタリングを行います。
