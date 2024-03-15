@@ -12,23 +12,22 @@ tags: [Python, Scrapy]
 
 User-Agentとは、Webブラウザやスクレイピングツールがサーバーに送信するHTTPリクエストヘッダーの一部で、クライアントのソフトウェアやバージョンなどの情報を含んでいます。Webサイトは、User-Agentを分析することで、スクレイピングツールからのアクセスを識別し、ブロックすることができます。
 
-このような状況下で、スクレイピングを円滑に行うためには、User-Agentを適切に管理する必要があります。[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)は、Pythonの人気スクレイピングフレームワークであるScrapyに対して、User-Agentをランダムに切り替える機能を提供するライブラリです。
+このような状況下で、スクレイピングを円滑に行うためには、User-Agentを適切に管理する必要があります。scrapy-fake-useragentは、Pythonの人気スクレイピングフレームワークであるScrapyに対して、User-Agentをランダムに切り替える機能を提供するライブラリです。
 
-本記事では、[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)の概要と目的について説明し、インストール方法や設定、動作原理など、詳細な情報を提供します。また、コード例を交えながら、実際の使用方法や利点、注意点などについても解説していきます。
+本記事では、scrapy-fake-useragentの概要と目的について説明し、インストール方法や設定、動作原理など、詳細な情報を提供します。また、コード例を交えながら、実際の使用方法や利点、注意点などについても解説していきます。
 
-[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)を活用することで、Webサイトからのブロックを回避し、効率的なスクレイピングを実現できるでしょう。
+scrapy-fake-useragentを活用することで、Webサイトからのブロックを回避し、効率的なスクレイピングを実現できるでしょう。
 
-## 2. [scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)パッケージの詳細
+## 2. scrapy-fake-useragentパッケージの詳細
 
-[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリは、実在する様々なWebブラウザやデバイス、オペレーティングシステムのUser-Agent情報を提供しています。リクエストごとにUser-Agentをランダムに選択し、設定します。
+scrapy-fake-useragentライブラリは、実在する様々なWebブラウザやデバイス、オペレーティングシステムのUser-Agent情報を提供しています。リクエストごとにUser-Agentをランダムに選択し、設定します。
 
-[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)の主な機能は以下の通りです：
+scrapy-fake-useragentの主な機能は以下の通りです：
 
 1. User-Agentのランダム化：リクエストごとに、User-Agentをランダムに選択し、設定します。
 2. User-Agentのローテーション：設定されたUser-Agentリストを順番に使用し、ローテーションします。
-3. カスタムUser-Agentリストのサポート：ユーザー独自のUser-Agentリストを設定し、使用することができます。
 
-[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)のパッケージ構成は、以下の様になっています：
+scrapy-fake-useragentのパッケージ構成は、以下の様になっています：
 
 ```bash
 scrapy-fake-useragent(master): tree -L 3
@@ -40,20 +39,20 @@ scrapy-fake-useragent(master): tree -L 3
 ├── pytest.ini
 ├── requirements.txt
 ├── scrapy_fake_useragent
-│   ├── __init__.py
-│   ├── middleware.py
-│   └── providers.py
+│   ├── __init__.py
+│   ├── middleware.py
+│   └── providers.py
 ├── setup.cfg
 ├── setup.py
 ├── tests
-│   ├── __init__.py
-│   ├── conftest.py
-│   ├── test_random_ua_middleware
-│   │   ├── __init__.py
-│   │   ├── test_fallback_setting.py
-│   │   ├── test_load_providers.py
-│   │   └── test_providers
-│   └── test_retry_middleware.py
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── test_random_ua_middleware
+│   │   ├── __init__.py
+│   │   ├── test_fallback_setting.py
+│   │   ├── test_load_providers.py
+│   │   └── test_providers
+│   └── test_retry_middleware.py
 └── tox.ini
 ```
 
@@ -118,28 +117,61 @@ DOWNLOADER_MIDDLEWARES = {
 
 ## 4. User-Agentの設定オプション
 
-Scrapy Fake User Agentは、様々な方法でUser-Agentを設定できます。以下に、主な設定オプションを説明します。
+Scrapy Fake User Agentは、様々な方法でUser-Agentを設定できます。以下に、実際に使用される設定オプションを説明します。
 
-### デフォルトのUser-Agent
+### プロキシごとのUser-Agent割り当て
 
-特に設定を行わない場合、Scrapy Fake User Agentは、[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリに含まれるデフォルトのUser-Agentリストからランダムに選択します。このリストには、一般的なWebブラウザのUser-Agentが含まれています。
+`RANDOM_UA_PER_PROXY`設定を使用することで、プロキシごとにUser-Agentを割り当てることができます。デフォルトは`False`です。
 
-### User-Agentのランダム化
+```python
+RANDOM_UA_PER_PROXY = True
+```
 
-`settings.py`に以下の設定を追加することで、リクエストごとにランダムなUser-Agentを選択できます。
+### User-Agentプロバイダーの指定
+
+`FAKEUSERAGENT_PROVIDERS`設定を使用して、使用するUser-Agentプロバイダーを指定できます。デフォルトは`None`で、`FakeUserAgentProvider`が使用されます。
 
 ```python
 FAKEUSERAGENT_PROVIDERS = [
-    'scrapy_fake_useragent.providers.FakeUserAgentProvider',  # 最初に試すプロバイダー
-    'scrapy_fake_useragent.providers.FakerProvider',  # FakeUserAgentProviderが失敗した場合に使用するプロバイダー
-    'scrapy_fake_useragent.providers.FixedUserAgentProvider',  # USER_AGENT値にフォールバックするプロバイダー
+    'scrapy_fake_useragent.providers.FakeUserAgentProvider',
+    'scrapy_fake_useragent.providers.FakerProvider',
+    'scrapy_fake_useragent.providers.FixedUserAgentProvider',
 ]
-USER_AGENT = '<すべてのプロバイダーが失敗した場合にフォールバックするUser-Agent文字列>'
 ```
 
-- `FakeUserAgentProvider`：[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリに含まれるデフォルトのUser-Agentリストからランダムに選択します。
-- `FakerProvider`：Fakerライブラリを使用して、ランダムなUser-Agentを生成します。
-- `FixedUserAgentProvider`：固定のUser-Agentを使用します。
+### 固定のUser-Agent文字列
+
+`USER_AGENT`設定を使用して、`FixedUserAgentProvider`で使用される固定のUser-Agent文字列を設定できます。デフォルトは空の文字列です。
+
+```python
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36'
+```
+
+### FakeUserAgentProviderのUser-Agentの種類
+
+`FAKE_USERAGENT_RANDOM_UA_TYPE`設定を使用して、`FakeUserAgentProvider`で使用するUser-Agentの種類を指定できます。デフォルトは`random`です。
+
+```python
+FAKE_USERAGENT_RANDOM_UA_TYPE = 'chrome'
+```
+
+### FakeUserAgentProviderのフォールバック値
+
+`FAKEUSERAGENT_FALLBACK`設定を使用して、`FakeUserAgentProvider`で選択したUser-Agentの種類が失敗した場合のフォールバック値を設定できます。デフォルトは空の文字列です。
+
+```python
+FAKEUSERAGENT_FALLBACK = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36'
+```
+
+### FakerProviderのUser-Agentの種類
+
+`FAKER_RANDOM_UA_TYPE`設定を使用して、`FakerProvider`で使用するUser-Agentの種類を指定できます。デフォルトは`user_agent`です。
+
+```python
+FAKER_RANDOM_UA_TYPE = 'chrome'
+```
+
+これらの設定オプションを適切に組み合わせることで、スクレイピングの要件に合わせてUser-Agentを柔軟に管理できます。
 
 ## 5. Scrapy Fake User Agentの動作原理（Mermaidチャートを使った説明）
 
@@ -152,7 +184,6 @@ graph TB
     C -->|Default| D[Default User Agent]
     C -->|Random| E[Random User Agent]
     C -->|Rotate| F[Rotated User Agent]
-    C -->|Custom List| G[Custom User Agent]
     D --> H[Request with User Agent]
     E --> H
     F --> H
@@ -163,14 +194,14 @@ graph TB
 1. Scrapyがリクエストを生成します。
 2. リクエストは、Fake User Agent Middlewareに渡されます。
 3. ミドルウェアは、設定に基づいてUser-Agentを選択します。
-  - デフォルト：[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリに含まれるデフォルトのUser-Agentリストから選択します。
+  - デフォルト：scrapy-fake-useragentライブラリに含まれるデフォルトのUser-Agentリストから選択します。
   - ランダム：設定されたプロバイダ（`FakeUserAgentProvider`、`FakerProvider`、`FixedUserAgentProvider`）からランダムにUser-Agentを選択します。
   - ローテーション：設定されたUser-Agentリストを順番に使用します。
   - カスタムリスト：ユーザー独自のUser-Agentリストから選択します。
 4. 選択されたUser-Agentがリクエストのヘッダーに設定されます。
 5. User-Agentが設定されたリクエストがWebサーバーに送信されます。
 
-Scrapy Fake User Agentは、内部で[scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)ライブラリを活用しています。このライブラリは、実在のUser-Agent情報を提供し、ランダムな選択やローテーションを可能にします。
+Scrapy Fake User Agentは、内部でscrapy-fake-useragentライブラリを活用しています。このライブラリは、実在のUser-Agent情報を提供し、ランダムな選択やローテーションを可能にします。
 
 ミドルウェアは、リクエストごとにUser-Agentを選択し、設定するため、Webサイトからのブロックを回避しながら、効率的にスクレイピングを行うことができます。
 
