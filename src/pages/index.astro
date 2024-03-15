@@ -1,7 +1,7 @@
 ---
-import TopLayout from '../layouts/TopLayout.astro';
+import TopLayout from '@layouts/TopLayout.astro';
 import { getCollection } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
+import FormattedDate from '@components/FormattedDate.astro';
 import { Image } from 'astro:assets';
 
 const articles = (await getCollection('articles')).sort(
