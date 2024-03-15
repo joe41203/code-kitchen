@@ -4,7 +4,7 @@ import path from "path";
 import { visit } from "unist-util-visit";
 
 export function remarkMermaid() {
-  return function (tree, { __ }) {
+  return function (tree) {
     visit(tree, "code", (node) => {
       if (node.lang == "mermaid") {
         const tempDir = path.join(process.cwd(), "tmp");
