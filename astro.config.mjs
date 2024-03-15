@@ -2,7 +2,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
 import { defineConfig } from 'astro/config';
-import { remarkDiagram } from "./remark-diagram.mjs";
+import { remarkMermaid } from "./remark-mermaid.mjs";
 
 import robotsTxt from "astro-robots-txt";
 
@@ -12,7 +12,7 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), tailwind(), robotsTxt()],
   base: '/',
   markdown: {
-    remarkPlugins: [remarkDiagram],
+    remarkPlugins: [remarkMermaid],
     shikiConfig: {
       theme: 'github-dark',
       langs: [],

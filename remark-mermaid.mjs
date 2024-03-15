@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from "
 import path from "path";
 import { visit } from "unist-util-visit";
 
-export function remarkDiagram() {
+export function remarkMermaid() {
   return function (tree, { __ }) {
     visit(tree, "code", (node) => {
       if (node.lang == "mermaid") {
