@@ -1,5 +1,5 @@
 ---
-import TopLayout from '@layouts/TopLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 import reportData from 'public/insights/data.json';
 
 interface ReportData {
@@ -19,7 +19,7 @@ reportData.forEach((data: ReportData) => {
 });
 ---
 
-<TopLayout>
+<BaseLayout>
   <h1 class="text-3xl font-bold mb-6">PageSpeed Inights Report</h1>
   <div class="overflow-x-auto">
     <table class="w-full text-left border-collapse">
@@ -55,4 +55,4 @@ reportData.forEach((data: ReportData) => {
       </tbody>
     </table>
   </div>
-</TopLayout>
+</BaseLayout>

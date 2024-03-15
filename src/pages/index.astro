@@ -1,15 +1,15 @@
 ---
-import TopLayout from '@layouts/TopLayout.astro';
-import { getCollection } from 'astro:content';
 import FormattedDate from '@components/FormattedDate.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 
 const articles = (await getCollection('articles')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
-<TopLayout>
+<BaseLayout>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
     {
       articles.map((article) => (
@@ -39,4 +39,4 @@ const articles = (await getCollection('articles')).sort(
       ))
     }
   </div>
-</TopLayout>
+</BaseLayout>
