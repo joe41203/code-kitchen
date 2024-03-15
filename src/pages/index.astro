@@ -14,8 +14,8 @@ const articles = (await getCollection('articles')).sort(
     {
       articles.map((article) => (
         <div class="max-w-sm rounded overflow-hidden shadow-lg">
-          <a href={`/articles/${article.slug}/`}>
-            <div>
+          <div>
+            <a href={`/articles/${article.slug}/`}>
               <Image src={article.data.cover} alt={article.data.description} />
               <div class="px-6 py-4">
                 <h4 class="font-bold text-xl mb-2">{article.data.title}</h4>
@@ -23,20 +23,20 @@ const articles = (await getCollection('articles')).sort(
                   <FormattedDate date={article.data.pubDate} />
                 </p>
               </div>
-              {article.data.tags ? (
-                <div class="px-6 pt-4 pb-2">
-                  {article.data.tags?.map((tag) => (
-                    <a href=`/tags/${tag}` >
-                      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                        {tag}
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              ) : null}
-              <div class="px-6 pt-4 pb-2" />
-            </div>
-          </a>
+            </a>
+            {article.data.tags ? (
+              <div class="px-6 pt-4 pb-2">
+                {article.data.tags?.map((tag) => (
+                  <a href=`/tags/${tag}`>
+                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                      {tag}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            ) : null}
+            <div class="px-6 pt-4 pb-2" />
+          </div>
         </div>
       ))
     }
