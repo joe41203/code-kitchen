@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import fetch from 'node-fetch';
+import path from 'path';
 
 interface PageSpeedApiResponse {
   captchaResult: string;
@@ -154,12 +155,27 @@ interface ReportData {
   score: number;
 }
 
+const base_url: string = "https://code-kitchen.pages.dev"
+
 const getUrlsFromAstroBuild = async (): Promise<string[]> => {
-  // Astroのビルド出力からURLを収集するロジックを実装
-  // 例えば、`dist`ディレクトリのHTMLファイルからURLを抽出するなど
-  return [
-    'https://code-kitchen.pages.dev/articles/00004-improve-performance-when-using-mermaid-with-astro/',
-  ];
+  const distDir = path.join(process.cwd(), 'dist');
+  const articleDir = path.join(distDir, 'articles');
+  const files = await fs.readdir(articleDir);
+
+  const urls: string[] = [];
+
+  for (const file of files) {
+    const articlePath = path.join(articleDir, file, 'index.html');
+    try {
+      await fs.access(articlePath);
+      const url = `${base_url}/articles/${file}/`;
+      urls.push(url);
+    } catch (error) {
+      console.warn(`Skipping ${file} directory, index.html not found.`);
+    }
+  }
+
+  return urls;
 };
 
 const fetchPageSpeedData = async (
@@ -176,6 +192,10 @@ const fetchPageSpeedData = async (
 };
 
 const extractReportData = (response: PageSpeedApiResponse, categoryId: CategoryId): ReportData => {
+  if (!response.lighthouseResult.categories || !response.lighthouseResult.categories[categoryId]) {
+    throw new Error(`Category '${categoryId}' not found in the response for URL: ${response.id}`);
+  }
+
   return {
     url: response.id,
     id: response.lighthouseResult.categories[categoryId]["id"],
@@ -195,7 +215,7 @@ const main = async (): Promise<void> => {
     'accessibility',
     'best-practices',
     'seo',
-    'pwa',
+    // 'pwa',
   ];
 
   if (!apiKey) {
