@@ -6,12 +6,12 @@
 interface Props {
   title: string;
   description: string;
-  image?: string;
+  cover?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = `/images/profile.webp` } = Astro.props;
+const { title, description, cover = `/images/profile.webp` } = Astro.props;
 ---
 
 <!-- Global Metadata -->

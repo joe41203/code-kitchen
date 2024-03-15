@@ -1,14 +1,14 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import BaseHead from '@components/BaseHead.astro';
-import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
 import Prose from '@components/Prose.astro';
 import Sidebar from '@components/Sidebar.astro';
+import type { CollectionEntry } from 'astro:content';
 
 type Props = CollectionEntry<'articles'>['data'];
 
-const { title, description } = Astro.props;
+const { title, description, cover } = Astro.props;
 
 // キャッシュ設定の定義
 const cacheControl = {
@@ -25,7 +25,7 @@ if (currentPage.startsWith('/_astro/')) {
 
 <html lang="ja">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} cover={cover.src} />
   </head>
 
   <body class="bg-white dark:bg-black dark:text-white">
