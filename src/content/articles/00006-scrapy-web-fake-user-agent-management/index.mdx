@@ -185,65 +185,7 @@ Scrapy Fake User Agentを使用することで、以下のような利点があ�
 Webサイトによっては、ユーザーエージェントに応じて異なるコンテンツを返す場合があります。Scrapy Fake User Agentを使用することで、様々なユーザーエージェントを使用してデータを収集できます。これにより、より多様なデータを収集し、分析の精度を向上させることができます。
 
 
-## 7. 使用例と実装
-
-Scrapy Fake User Agentを実際のScrapyプロジェクトで使用する方法を説明します。
-
-### Scrapyプロジェクトでの実装方法
-
-1. Scrapy Fake User Agentをインストールします。
-
-```
-pip install [scrapy-fake-useragent](https://github.com/alecxe/scrapy-fake-useragent)
-```
-
-2. Scrapyプロジェクトの`settings.py`ファイルに、以下の設定を追加します。
-
-```python
-DOWNLOADER_MIDDLEWARES = {
-    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
-    'scrapy_fake_useragent.middleware.RandomUserAgentMiddleware': 400,
-}
-
-FAKEUSERAGENT_PROVIDERS = [
-    'scrapy_fake_useragent.providers.FakeUserAgentProvider',
-    'scrapy_fake_useragent.providers.FakerProvider',
-    'scrapy_fake_useragent.providers.FixedUserAgentProvider',
-]
-
-FAKEUSERAGENT_FALLBACK = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36'
-```
-
-3. Spiderを実行します。
-
-```
-scrapy crawl your_spider_name
-```
-
-### リクエストヘッダーの確認
-
-Scrapy Fake User Agentがリクエストヘッダーに正しくユーザーエージェントを設定していることを確認するには、以下のようにSpiderのコールバック関数内でリクエストヘッダーを出力します。
-
-```python
-def parse(self, response):
-    user_agent = response.request.headers.get('User-Agent')
-    print(f'User-Agent: {user_agent}')
-    # スクレイピングのロジックを記述
-```
-
-### ログの出力とユーザーエージェントの確認
-
-Scrapy Fake User Agentのログを有効にして、使用されているユーザーエージェントを確認することができます。`settings.py`に以下の設定を追加します。
-
-```python
-FAKEUSERAGENT_DEBUG = True
-```
-
-この設定を有効にすると、Scrapy Fake User Agentは、使用されているユーザーエージェントをログに出力します。
-
-以上が、Scrapy Fake User Agentの使用例と実装方法です。次の章では、使用する際の注意点とベストプラクティスについて説明します。
-
-## 8. 注意点とベストプラクティス
+## 7. 注意点とベストプラクティス
 
 Scrapy Fake User Agentを使用する際には、以下の点に注意し、ベストプラクティスに従うことが重要です。
 
@@ -268,7 +210,7 @@ DOWNLOAD_DELAY = 1  # リクエスト間隔を1秒に設定
 
 はい、承知しました。9章を詳しく書いていきます。
 
-## 9. まとめ
+## 8. まとめ
 
 本記事では、Scrapy Fake User Agentについて詳細に解説しました。Scrapy Fake User Agentは、Scrapyフレームワークでのスクレイピングにおいて、ユーザーエージェントをランダムに切り替えることで、Webサイトからのブロックを回避し、効率的にデータを収集するためのツールです。
 
