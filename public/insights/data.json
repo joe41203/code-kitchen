@@ -35,56 +35,51 @@
     "score": 1
   },
   {
-    "url": "https://code-kitchen.pages.dev/articles/00002-image-resizing-methods-comparison/",
-    "id": "seo",
+    "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
+    "id": "performance",
     "score": 1
   },
   {
     "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
+    "id": "accessibility",
+    "score": 0.96
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00004-improve-performance-when-using-mermaid-with-astro/",
+    "id": "performance",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00004-improve-performance-when-using-mermaid-with-astro/",
+    "id": "accessibility",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00004-improve-performance-when-using-mermaid-with-astro/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00004-improve-performance-when-using-mermaid-with-astro/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00005-astro-page-speed-insights-integration/",
     "id": "performance",
     "score": 0.99
   },
   {
-    "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
-    "id": "accessibility",
-    "score": 0.96
-  },
-  {
-    "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
-    "id": "best-practices",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
-    "id": "seo",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.pages.dev/articles/00004-improve-performance-when-using-mermaid-with-astro/",
-    "id": "performance",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.pages.dev/articles/00004-improve-performance-when-using-mermaid-with-astro/",
-    "id": "accessibility",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.pages.dev/articles/00004-improve-performance-when-using-mermaid-with-astro/",
-    "id": "best-practices",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.pages.dev/articles/00004-improve-performance-when-using-mermaid-with-astro/",
-    "id": "seo",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.pages.dev/articles/00005-astro-page-speed-insights-integration/",
-    "id": "performance",
-    "score": 0.98
-  },
-  {
     "url": "https://code-kitchen.pages.dev/articles/00005-astro-page-speed-insights-integration/",
     "id": "accessibility",
     "score": 0.96
@@ -96,6 +91,26 @@
   },
   {
     "url": "https://code-kitchen.pages.dev/articles/00005-astro-page-speed-insights-integration/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00006-scrapy-web-fake-user-agent-management/",
+    "id": "performance",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00006-scrapy-web-fake-user-agent-management/",
+    "id": "accessibility",
+    "score": 0.96
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00006-scrapy-web-fake-user-agent-management/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00006-scrapy-web-fake-user-agent-management/",
     "id": "seo",
     "score": 1
   }
