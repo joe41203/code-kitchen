@@ -36,7 +36,11 @@ reportData.forEach((data: ReportData) => {
         {
           Object.entries(reports).map(([url, scores]) => (
             <tr class="hover:bg-gray-200 dark:hover:bg-gray-700">
-              <td class="py-2 px-4 border">{url}</td>
+              <td class="py-2 px-4 border">
+                <a href={url} target="_blank" rel="noopener noreferrer">
+                  {url}
+                </a>
+              </td>
               <td class="py-2 px-4 border">
                 {scores.performance ? (scores.performance * 100).toFixed(0) + '%' : '-'}
               </td>
