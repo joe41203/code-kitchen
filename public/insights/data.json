@@ -1,0 +1,82 @@
+[
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00001-squoosh-image-compression-tool/",
+    "id": "performance",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00001-squoosh-image-compression-tool/",
+    "id": "accessibility",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00001-squoosh-image-compression-tool/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00001-squoosh-image-compression-tool/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00002-image-resizing-methods-comparison/",
+    "id": "performance",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00002-image-resizing-methods-comparison/",
+    "id": "accessibility",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00002-image-resizing-methods-comparison/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00002-image-resizing-methods-comparison/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
+    "id": "performance",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
+    "id": "accessibility",
+    "score": 0.96
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00004-improve-performance-when-using-mermaid-with-astro/",
+    "id": "performance",
+    "score": 0.68
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00004-improve-performance-when-using-mermaid-with-astro/",
+    "id": "accessibility",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00004-improve-performance-when-using-mermaid-with-astro/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00004-improve-performance-when-using-mermaid-with-astro/",
+    "id": "seo",
+    "score": 1
+  }
+]

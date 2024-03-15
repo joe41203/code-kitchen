@@ -8,7 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "postbuild": "tsx ./src/scripts/pagespeed.ts"
+    "speed-insights": "npm run build && tsx ./src/scripts/speed-insights.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.9",
