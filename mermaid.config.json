@@ -19,12 +19,25 @@
     "noteMargin": 10,
     "noteAlign": "left",
     "wrap": true,
-    "wrapWidth": 400
+    "wrapWidth": 200
   },
   "flowchart": {
     "diagramPadding": 20,
-    "htmlLabels": true,
-    "curve": "linear"
+    "htmlLabels": false,
+    "curve": "linear",
+    "nodeSpacing": 50,
+    "rankSpacing": 50,
+    "padding": 20,
+    "defaultRenderer": "dagre-wrapper",
+    "wrappingWidth": 200,
+    "titleTopMargin": 25,
+    "subGraphTitleMargin": {
+      "top": 25,
+      "bottom": 10,
+      "left": 25,
+      "right": 25
+    },
+    "arrowMarkerAbsolute": true
   },
   "sequence": {
     "diagramMarginX": 50,
@@ -39,17 +52,5 @@
     "mirrorActors": true,
     "bottomMarginAdj": 1,
     "useMaxWidth": true
-  },
-  "gantt": {
-    "titleTopMargin": 25,
-    "barHeight": 20,
-    "barGap": 4,
-    "topPadding": 50,
-    "leftPadding": 75,
-    "gridLineStartPadding": 35,
-    "fontSize": 11,
-    "fontFamily": "sans-serif",
-    "numberSectionStyles": 4,
-    "axisFormat": "%Y-%m-%d"
   }
 }
