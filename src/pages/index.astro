@@ -10,7 +10,7 @@ const articles = (await getCollection('articles')).sort(
 ---
 
 <BaseLayout>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
     {
       articles.map((article) => (
         <div class="max-w-sm rounded overflow-hidden shadow-lg">
