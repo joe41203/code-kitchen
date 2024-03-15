@@ -204,7 +204,7 @@ const extractReportData = (response: PageSpeedApiResponse, categoryId: CategoryI
 };
 
 const saveReportData = async (reportsData: ReportData[]): Promise<void> => {
-  await fs.writeFile('tmp/PageSpeedInsightsResult.json', JSON.stringify(reportsData, null, 2));
+  await fs.writeFile('dist/PageSpeedInsightsResult.json', JSON.stringify(reportsData, null, 2));
 };
 
 const main = async (): Promise<void> => {
