@@ -205,19 +205,23 @@ const main = async (): Promise<void> => {
     process.exit(1);
   }
 
-  const reportsData: ReportData[] = [];
+  const fetchTasks: Promise<ReportData | null>[] = [];
 
   for (const url of urls) {
     for (const categoryId of categoryIds) {
-      try {
-        const response = await fetchPageSpeedData(url, categoryId, apiKey);
-        const reportData = extractReportData(response, categoryId);
-        reportsData.push(reportData);
-      } catch (error) {
-        console.error(`Error fetching data for URL: ${url}`, error);
-      }
+      const fetchTask = fetchPageSpeedData(url, categoryId, apiKey)
+        .then((response) => extractReportData(response, categoryId))
+        .catch((error) => {
+          console.error(`Error fetching data for URL: ${url}`, error);
+          return null;
+        });
+
+      fetchTasks.push(fetchTask);
     }
   }
+
+  const reportsDataWithNull = await Promise.all(fetchTasks);
+  const reportsData: ReportData[] = reportsDataWithNull.filter((reportData): reportData is ReportData => reportData !== null);
 
   await saveReportData(reportsData);
 };
