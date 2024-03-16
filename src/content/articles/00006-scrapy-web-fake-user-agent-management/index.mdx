@@ -173,35 +173,39 @@ FAKER_RANDOM_UA_TYPE = 'chrome'
 
 これらの設定オプションを適切に組み合わせることで、スクレイピングの要件に合わせてUser-Agentを柔軟に管理できます。
 
-## 5. Scrapy Fake User Agentの動作原理（Mermaidチャートを使った説明）
+## 5. Scrapy Fake User Agentの動作原理
 
 Scrapy Fake User Agentは、ScrapyのリクエストにランダムなUser-Agentを設定するためのミドルウェアです。以下のMermaidチャートを使って、その動作原理を説明します。
 
 ```mermaid
 graph TB
     A[Scrapy Request] --> B[Fake User Agent Middleware]
-    B --> C{User Agent Selection}
-    C -->|Default| D[Default User Agent]
-    C -->|Random| E[Random User Agent]
-    C -->|Rotate| F[Rotated User Agent]
-    D --> H[Request with User Agent]
-    E --> H
-    F --> H
-    G --> H
-    H --> I[Web Server]
+    B --> C{User Agent Provider Selection}
+    C -->|FakeUserAgentProvider| D[fake_useragent library]
+    C -->|FakerProvider| E[Faker library]
+    C -->|FixedUserAgentProvider| F[USER_AGENT setting]
+    D --> G{Select User Agent}
+    E --> G
+    F --> G
+    G -->|Random| H[Random User Agent]
+    G -->|Fallback| I[Fallback User Agent]
+    H --> J[Set User Agent in Request Headers]
+    I --> J
+    J --> K[Send Request to Web Server]
 ```
 
 1. Scrapyがリクエストを生成します。
 2. リクエストは、Fake User Agent Middlewareに渡されます。
-3. ミドルウェアは、設定に基づいてUser-Agentを選択します。
-  - デフォルト：scrapy-fake-useragentライブラリに含まれるデフォルトのUser-Agentリストから選択します。
-  - ランダム：設定されたプロバイダ（`FakeUserAgentProvider`、`FakerProvider`、`FixedUserAgentProvider`）からランダムにUser-Agentを選択します。
-  - ローテーション：設定されたUser-Agentリストを順番に使用します。
-  - カスタムリスト：ユーザー独自のUser-Agentリストから選択します。
-4. 選択されたUser-Agentがリクエストのヘッダーに設定されます。
-5. User-Agentが設定されたリクエストがWebサーバーに送信されます。
+3. ミドルウェアは、設定されたUser-Agentプロバイダーを選択します。
+  - `FakeUserAgentProvider`: `fake_useragent`ライブラリを使用してUser-Agentを取得します。
+  - `FakerProvider`: `Faker`ライブラリを使用してUser-Agentを生成します。
+  - `FixedUserAgentProvider`: `USER_AGENT`設定で指定された固定のUser-Agentを使用します。
+4. 選択されたプロバイダーからUser-Agentを取得します。
+  - ランダムなUser-Agentが選択されます。
+  - 選択されたUser-Agentが利用できない場合は、フォールバックのUser-Agentが使用されます。
+5. 選択されたUser-Agentがリクエストのヘッダーに設定されます。
+6. User-Agentが設定されたリクエストがWebサーバーに送信されます。
 
-Scrapy Fake User Agentは、内部でscrapy-fake-useragentライブラリを活用しています。このライブラリは、実在のUser-Agent情報を提供し、ランダムな選択やローテーションを可能にします。
 
 ミドルウェアは、リクエストごとにUser-Agentを選択し、設定するため、Webサイトからのブロックを回避しながら、効率的にスクレイピングを行うことができます。
 
