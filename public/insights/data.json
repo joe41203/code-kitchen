@@ -35,9 +35,14 @@
     "score": 1
   },
   {
+    "url": "https://code-kitchen.pages.dev/articles/00002-image-resizing-methods-comparison/",
+    "id": "seo",
+    "score": 1
+  },
+  {
     "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
     "id": "performance",
-    "score": 1
+    "score": 0.98
   },
   {
     "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
@@ -77,7 +82,7 @@
   {
     "url": "https://code-kitchen.pages.dev/articles/00005-astro-page-speed-insights-integration/",
     "id": "performance",
-    "score": 0.99
+    "score": 0.96
   },
   {
     "url": "https://code-kitchen.pages.dev/articles/00005-astro-page-speed-insights-integration/",
@@ -111,6 +116,46 @@
   },
   {
     "url": "https://code-kitchen.pages.dev/articles/00006-scrapy-web-fake-user-agent-management/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00007-typescript-loop-statements/",
+    "id": "performance",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00007-typescript-loop-statements/",
+    "id": "accessibility",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00007-typescript-loop-statements/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00007-typescript-loop-statements/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00008-javascript-module-system/",
+    "id": "performance",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00008-javascript-module-system/",
+    "id": "accessibility",
+    "score": 0.95
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00008-javascript-module-system/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00008-javascript-module-system/",
     "id": "seo",
     "score": 1
   }
