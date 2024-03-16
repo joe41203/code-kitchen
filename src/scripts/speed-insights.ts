@@ -188,10 +188,17 @@ const fetchPageSpeedData = async (
     url
   )}&key=${apiKey}&category=${categoryId}&strategy=${strategy}`;
   const response = await fetch(apiUrl);
+
+  if (response.status === 429) {
+    console.error('Quota exceeded. Exiting the process.');
+    process.exit(1);
+  }
+
   return response.json() as Promise<PageSpeedApiResponse>;
 };
 
 const extractReportData = (response: PageSpeedApiResponse, categoryId: CategoryId): ReportData => {
+  console.log({response})
   if (!response.lighthouseResult.categories || !response.lighthouseResult.categories[categoryId]) {
     throw new Error(`Category '${categoryId}' not found in the response for URL: ${response.id}`);
   }
@@ -225,22 +232,24 @@ const main = async (): Promise<void> => {
     process.exit(1);
   }
 
-  const fetchTasks: Promise<ReportData | null>[] = [];
+  const reportsDataWithNull: (ReportData | null)[] = [];
 
   for (const url of urls) {
     for (const categoryId of categoryIds) {
-      const fetchTask = fetchPageSpeedData(url, categoryId, apiKey)
-        .then((response) => extractReportData(response, categoryId))
-        .catch((error) => {
-          console.error(`Error fetching data for URL: ${url}`, error);
-          return null;
-        });
+      try {
+        const response = await fetchPageSpeedData(url, categoryId, apiKey);
+        const reportData = extractReportData(response, categoryId);
+        reportsDataWithNull.push(reportData);
+      } catch (error) {
+        console.error(`Error fetching data for URL: ${url}`, error);
+        reportsDataWithNull.push(null);
+      }
 
-      fetchTasks.push(fetchTask);
+      // スリープ処理を追加 (例: 1秒待機)
+      await new Promise(resolve => setTimeout(resolve, 1000));
     }
   }
 
-  const reportsDataWithNull = await Promise.all(fetchTasks);
   const reportsData: ReportData[] = reportsDataWithNull.filter((reportData): reportData is ReportData => reportData !== null);
 
   await saveReportData(reportsData);
