@@ -91,7 +91,52 @@ Futureオブジェクトは、非同期操作の結果を表します。Future�
 
 `asyncio.Future()`関数を使用して、新しいFutureオブジェクトを作成できます。ただし、通常は`asyncio.create_task()`を使用してタスクを作成する方が便利です。
 
-これらの概念が組み合わさることで、Pythonのasync/awaitは非同期プログラミングを直感的かつ効率的に実現します。次のセクションでは、async/awaitを使用した基本的なコード例を見ていきます。
+### イベントループとコルーチンの相互作用
+
+以下は、イベントループとコルーチンの相互作用を示すシーケンス図です。
+
+```mermaid
+sequenceDiagram
+    participant EventLoop
+    participant Coroutine1
+    participant Coroutine2
+
+    EventLoop->>Coroutine1: コルーチン1を実行
+    activate Coroutine1
+
+    Coroutine1->>EventLoop: 非同期操作を待機 (await)
+    deactivate Coroutine1
+
+    EventLoop->>Coroutine2: コルーチン2を実行
+    activate Coroutine2
+
+    Coroutine2->>EventLoop: 非同期操作を待機 (await)
+    deactivate Coroutine2
+
+    EventLoop->>Coroutine1: 非同期操作が完了したらコルーチン1を再開
+    activate Coroutine1
+
+    Coroutine1->>EventLoop: 処理が完了
+    deactivate Coroutine1
+
+    EventLoop->>Coroutine2: 非同期操作が完了したらコルーチン2を再開
+    activate Coroutine2
+
+    Coroutine2->>EventLoop: 処理が完了
+    deactivate Coroutine2
+```
+
+1. イベントループがコルーチン1の実行を開始します。
+2. コルーチン1が非同期操作を待機する際に、awaitキーワードを使用してイベントループに制御を戻します。
+3. イベントループは、コルーチン2の実行を開始します。
+4. コルーチン2も非同期操作を待機する際に、awaitキーワードを使用してイベントループに制御を戻します。
+5. 非同期操作が完了すると、イベントループはコルーチン1の実行を再開します。
+6. コルーチン1の処理が完了すると、イベントループに制御が戻ります。
+7. 次に、非同期操作が完了したコルーチン2の実行が再開されます。
+8. コルーチン2の処理が完了すると、イベントループに制御が戻ります。
+
+このようにして、イベントループは複数のコルーチンを効率的に管理し、非同期操作の完了を待ちながら、他のコルーチンを実行することができます。
+
 
 ## 4. async/awaitの基本的な使い方
 
