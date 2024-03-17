@@ -21,3 +21,29 @@ resource "cloudflare_pages_project" "main" {
     }
   }
 }
+
+resource "cloudflare_zone" "main" {
+  account_id = var.cloudflare_account_id
+  zone       = var.zone
+  plan       = "free"
+}
+
+resource "cloudflare_zone_dnssec" "main" {
+  zone_id = cloudflare_zone.main.id
+}
+
+resource "cloudflare_pages_domain" "main" {
+  account_id   = var.cloudflare_account_id
+  project_name = var.project_name
+  domain       = var.zone
+}
+
+
+resource "cloudflare_record" "cname" {
+  zone_id = cloudflare_zone.main.id
+  name    = "@"
+  value   = "${cloudflare_pages_project.main.name}.pages.dev"
+  type    = "CNAME"
+  ttl     = 1
+  proxied = true
+}

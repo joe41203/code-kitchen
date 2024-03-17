@@ -9,7 +9,7 @@ import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://code-kitchen.pages.dev",
+  site: "https://code-kitchen.tech",
   integrations: [
     mdx(),
     sitemap(),

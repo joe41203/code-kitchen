@@ -159,7 +159,7 @@ interface ReportData {
   score: number;
 }
 
-const base_url: string = "https://code-kitchen.pages.dev";
+const base_url: string = "https://code-kitchen.tech";
 
 const getUrlsFromAstroBuild = async (): Promise<string[]> => {
   const distDir = path.join(process.cwd(), "dist");

@@ -17,3 +17,7 @@ variable "profuction_branch" {
 variable "github_username" {
   type = string
 }
+
+variable "zone" {
+  type = string
+}
