@@ -24,7 +24,20 @@ export default defineConfig({
         forward: ["dataLayer.push"],
       },
     }),
-    serviceWorker({ workbox: { inlineWorkboxRuntime: true } }),
+    serviceWorker({
+      workbox: {
+        inlineWorkboxRuntime: true,
+        globPatterns: ['**/*.{js,css,html,svg}'],
+        cacheableResponseOptions: {
+          statuses: [0, 200],
+          headers: {
+            "Cache-Control": "max-age=1800",
+          },
+        },
+        skipWaiting: true,
+        clientsClaim: true,
+      },
+    }),
     webmanifest({
       name: "CodeKitchen",
       short_name: "CodeKitchen",
