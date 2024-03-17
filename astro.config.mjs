@@ -3,13 +3,14 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
 import { defineConfig } from 'astro/config';
 import { remarkMermaid } from "./remark-mermaid.mjs";
-
 import robotsTxt from "astro-robots-txt";
+
+import compress from "astro-compress";
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://code-kitchen.pages.dev',
-  integrations: [mdx(), sitemap(), tailwind(), robotsTxt()],
+  integrations: [mdx(), sitemap(), tailwind(), robotsTxt(), compress()],
   base: '/',
   trailingSlash: "ignore",
   markdown: {
@@ -17,7 +18,7 @@ export default defineConfig({
     shikiConfig: {
       theme: 'github-dark',
       langs: [],
-      wrap: false,
-    },
+      wrap: false
+    }
   }
 });
