@@ -35,15 +35,20 @@ const { title, description, cover = `/images/profile.webp` } = Astro.props;
 
 <!-- Font preloads -->
 <link
+  rel="preconnect"
+  href="https://code-kitchen.tech"
+  crossorigin
+/>
+<link
   rel="preload"
-  href=`/fonts/atkinson-regular.woff`
+  href="/fonts/atkinson-regular.woff"
   as="font"
   type="font/woff"
   crossorigin
 />
 <link
   rel="preload"
-  href=`/fonts/atkinson-bold.woff`
+  href="/fonts/atkinson-bold.woff"
   as="font"
   type="font/woff"
   crossorigin
