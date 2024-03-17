@@ -56,3 +56,17 @@ resource "cloudflare_page_rule" "cache" {
     edge_cache_ttl = 2419200
   }
 }
+
+resource "cloudflare_zone_settings_override" "brotli" {
+  zone_id = cloudflare_zone.main.id
+  settings {
+    brotli = "on"
+  }
+}
+
+resource "cloudflare_zone_settings_override" "http3" {
+  zone_id = cloudflare_zone.main.id
+  settings {
+    http3 = "on"
+  }
+}
