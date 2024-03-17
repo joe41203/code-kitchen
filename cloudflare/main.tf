@@ -70,3 +70,20 @@ resource "cloudflare_zone_settings_override" "http3" {
     http3 = "on"
   }
 }
+
+# Rocket Loaderの有効化
+resource "cloudflare_zone_settings_override" "rocket_loader" {
+  zone_id = cloudflare_zone.main.id
+  settings {
+    rocket_loader = "on"
+  }
+}
+
+# AMP Real URLの有効化
+resource "cloudflare_zone_settings_override" "automatic_https_rewrites" {
+  zone_id = cloudflare_zone.main.id
+  settings {
+    automatic_https_rewrites = "on"
+  }
+}
+
