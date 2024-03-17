@@ -17,6 +17,7 @@ resource "cloudflare_pages_project" "main" {
       production_branch             = var.profuction_branch
       deployments_enabled           = true
       production_deployment_enabled = true
+      preview_deployment_setting    = "none"
     }
   }
 }
