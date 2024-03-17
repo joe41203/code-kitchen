@@ -14,6 +14,6 @@ variable "profuction_branch" {
   type = string
 }
 
-variable "your_github_username" {
+variable "github_username" {
   type = string
 }

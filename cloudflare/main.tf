@@ -12,7 +12,7 @@ resource "cloudflare_pages_project" "main" {
     type = "github"
 
     config {
-      owner                         = var.your_github_username
+      owner                         = var.github_username
       repo_name                     = var.project_name
       production_branch             = var.profuction_branch
       deployments_enabled           = true
