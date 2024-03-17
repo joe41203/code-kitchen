@@ -4,13 +4,14 @@ import tailwind from "@astrojs/tailwind";
 import { defineConfig } from 'astro/config';
 import { remarkMermaid } from "./remark-mermaid.mjs";
 import robotsTxt from "astro-robots-txt";
-
 import compress from "astro-compress";
+
+import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://code-kitchen.pages.dev',
-  integrations: [mdx(), sitemap(), tailwind(), robotsTxt(), compress()],
+  integrations: [mdx(), sitemap(), tailwind(), robotsTxt(), compress(), partytown()],
   base: '/',
   trailingSlash: "ignore",
   markdown: {
