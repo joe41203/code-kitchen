@@ -2,7 +2,9 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import robotsTxt from "astro-robots-txt";
+import webmanifest from "astro-webmanifest";
 import { defineConfig } from "astro/config";
+import serviceWorker from "astrojs-service-worker";
 import { remarkMermaid } from "./remark-mermaid.mjs";
 
 import partytown from "@astrojs/partytown";
@@ -20,6 +22,18 @@ export default defineConfig({
         forward: ["dataLayer.push"],
       },
     }),
+    serviceWorker(),
+    webmanifest({
+      name: 'CodeKitchen',
+      icon: '/public/images/profile.webp',
+      short_name: 'CodeKitchen',
+      description: 'CodeKitchen',
+      start_url: 'https://code-kitchen.tech/',
+      theme_color: '#f4f4ff',
+      background_color: '#f4f4ff',
+      display: "standalone",
+    })
+
   ],
   base: "/",
   trailingSlash: "ignore",
