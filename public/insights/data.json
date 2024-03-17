@@ -42,7 +42,7 @@
   {
     "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
     "id": "performance",
-    "score": 0.98
+    "score": 1
   },
   {
     "url": "https://code-kitchen.pages.dev/articles/00003-practical-web-crawling-techniques/",
@@ -82,7 +82,7 @@
   {
     "url": "https://code-kitchen.pages.dev/articles/00005-astro-page-speed-insights-integration/",
     "id": "performance",
-    "score": 0.96
+    "score": 1
   },
   {
     "url": "https://code-kitchen.pages.dev/articles/00005-astro-page-speed-insights-integration/",
@@ -156,6 +156,86 @@
   },
   {
     "url": "https://code-kitchen.pages.dev/articles/00008-javascript-module-system/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00009-python-modules-introduction/",
+    "id": "performance",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00009-python-modules-introduction/",
+    "id": "accessibility",
+    "score": 0.95
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00009-python-modules-introduction/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00009-python-modules-introduction/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00010-scrapy-response-css-efficient-web-scraping/",
+    "id": "performance",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00010-scrapy-response-css-efficient-web-scraping/",
+    "id": "accessibility",
+    "score": 0.95
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00010-scrapy-response-css-efficient-web-scraping/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00010-scrapy-response-css-efficient-web-scraping/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00011-python-special-methods-customizing-object-behavior/",
+    "id": "performance",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00011-python-special-methods-customizing-object-behavior/",
+    "id": "accessibility",
+    "score": 0.95
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00011-python-special-methods-customizing-object-behavior/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00011-python-special-methods-customizing-object-behavior/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00012-python-async-await-basics/",
+    "id": "performance",
+    "score": 0.98
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00012-python-async-await-basics/",
+    "id": "accessibility",
+    "score": 0.96
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00012-python-async-await-basics/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.pages.dev/articles/00012-python-async-await-basics/",
     "id": "seo",
     "score": 1
   }
