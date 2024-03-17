@@ -14,20 +14,29 @@ import compress from "astro-compress";
 // https://astro.build/config
 export default defineConfig({
   site: "https://code-kitchen.tech",
-  integrations: [mdx(), sitemap(), tailwind(), robotsTxt(), partytown({
-    config: {
-      forward: ["dataLayer.push"]
-    }
-  }), serviceWorker(), webmanifest({
-    name: 'CodeKitchen',
-    short_name: 'CodeKitchen',
-    description: 'CodeKitchen',
-    start_url: 'https://code-kitchen.tech/',
-    theme_color: '#f4f4ff',
-    background_color: '#f4f4ff',
-    display: "standalone",
-    icons: iconData["icons"]
-  }), compress()],
+  integrations: [
+    mdx(),
+    sitemap(),
+    tailwind(),
+    robotsTxt(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+    serviceWorker({ workbox: { inlineWorkboxRuntime: true } }),
+    webmanifest({
+      name: "CodeKitchen",
+      short_name: "CodeKitchen",
+      description: "CodeKitchen",
+      start_url: "https://code-kitchen.tech/",
+      theme_color: "#f4f4ff",
+      background_color: "#f4f4ff",
+      display: "standalone",
+      icons: iconData["icons"],
+    }),
+    compress(),
+  ],
   base: "/",
   trailingSlash: "ignore",
   markdown: {
@@ -35,7 +44,7 @@ export default defineConfig({
     shikiConfig: {
       theme: "github-dark",
       langs: [],
-      wrap: false
-    }
-  }
+      wrap: false,
+    },
+  },
 });
