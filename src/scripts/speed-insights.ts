@@ -237,7 +237,7 @@ const main = async (): Promise<void> => {
     "accessibility",
     "best-practices",
     "seo",
-    // 'pwa',
+    'pwa',
   ];
 
   if (!apiKey) {
