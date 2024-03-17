@@ -1,8 +1,8 @@
 ---
-title: 'JavaScriptのモジュールシステム入門：CommonJS、ESM、AMDの違いと使い方'
-description: 'JavaScriptのモジュールシステム入門：CommonJS、ESM、AMDの違いと使い方'
-pubDate: '2024-03-16'
-cover: './hero.webp'
+title: "JavaScriptのモジュールシステム入門：CommonJS、ESM、AMDの違いと使い方"
+description: "JavaScriptのモジュールシステム入門：CommonJS、ESM、AMDの違いと使い方"
+pubDate: "2024-03-16"
+cover: "./hero.webp"
 tags: [JavaScript]
 index: 8
 ---
@@ -49,8 +49,8 @@ CommonJSは、サーバーサイドJavaScript環境（Node.js）で主に使用�
 
 ```javascript
 // myModule.js
-exports.myFunction = function() {
-  console.log('Hello from myModule!');
+exports.myFunction = function () {
+  console.log("Hello from myModule!");
 };
 ```
 
@@ -58,7 +58,7 @@ exports.myFunction = function() {
 
 ```javascript
 // main.js
-const myModule = require('./myModule');
+const myModule = require("./myModule");
 myModule.myFunction(); // 'Hello from myModule!'
 ```
 
@@ -67,17 +67,19 @@ myModule.myFunction(); // 'Hello from myModule!'
 Node.jsでは、標準モジュールやサードパーティモジュールを`require`関数で簡単に読み込むことができます。
 
 ```javascript
-const fs = require('fs');
-const express = require('express');
+const fs = require("fs");
+const express = require("express");
 ```
 
 ### CommonJSのメリットとデメリット
 
 メリット：
+
 - Node.jsで広く使われており、エコシステムが豊富。
 - 同期的にモジュールを読み込むため、サーバーサイドで使いやすい。
 
 デメリット：
+
 - ブラウザ環境では、同期的な読み込みが問題となる。
 - 動的なモジュールの読み込みが難しい。
 
@@ -101,7 +103,7 @@ ESM（ECMAScript Modules）は、ECMAScript 2015（ES6）で導入された公�
 ```javascript
 // myModule.js
 export function myFunction() {
-  console.log('Hello from myModule!');
+  console.log("Hello from myModule!");
 }
 ```
 
@@ -109,7 +111,7 @@ export function myFunction() {
 
 ```javascript
 // main.js
-import { myFunction } from './myModule.js';
+import { myFunction } from "./myModule.js";
 myFunction(); // 'Hello from myModule!'
 ```
 
@@ -119,7 +121,7 @@ myFunction(); // 'Hello from myModule!'
 
 ```html
 <script type="module">
-  import { myFunction } from './myModule.js';
+  import { myFunction } from "./myModule.js";
   myFunction();
 </script>
 ```
@@ -127,12 +129,14 @@ myFunction(); // 'Hello from myModule!'
 ### ESMのメリットとデメリット
 
 メリット：
+
 - 公式のモジュールシステムであり、言語レベルでサポートされている。
 - ブラウザとNode.jsの両方で使用できる。
 - 非同期的にモジュールを読み込むため、ブラウザ環境に適している。
 - 静的な依存関係解決により、効率的なコード最適化が可能。
 
 デメリット：
+
 - レガシーブラウザでは使用できない。
 - Node.jsではCommonJSとの互換性の問題がある。
 
@@ -154,9 +158,9 @@ AMD（Asynchronous Module Definition）は、ブラウザ環境でのモジュ�
 
 ```javascript
 // myModule.js
-define(['jquery'], function($) {
+define(["jquery"], function ($) {
   function myFunction() {
-    console.log('Hello from myModule!');
+    console.log("Hello from myModule!");
   }
   return { myFunction: myFunction };
 });
@@ -166,7 +170,7 @@ define(['jquery'], function($) {
 
 ```javascript
 // main.js
-require(['myModule'], function(myModule) {
+require(["myModule"], function (myModule) {
   myModule.myFunction(); // 'Hello from myModule!'
 });
 ```
@@ -184,10 +188,12 @@ RequireJSを使用すると、HTMLファイルでモジュールを読み込む�
 ### AMDのメリットとデメリット
 
 メリット：
+
 - 非同期的にモジュールを読み込むため、ブラウザ環境に適している。
 - 依存関係の管理がシンプルで分かりやすい。
 
 デメリット：
+
 - 定義と使用の構文が複雑になりがち。
 - ファイルサイズが大きくなる傾向がある。
 
@@ -209,22 +215,22 @@ UMDパターンを使ってモジュールを定義するには、以下のよ�
 
 ```javascript
 (function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
+  if (typeof define === "function" && define.amd) {
     // AMD環境
-    define(['jquery'], factory);
-  } else if (typeof exports === 'object') {
+    define(["jquery"], factory);
+  } else if (typeof exports === "object") {
     // CommonJS環境
-    module.exports = factory(require('jquery'));
+    module.exports = factory(require("jquery"));
   } else {
     // グローバル変数環境
     root.myModule = factory(root.jQuery);
   }
-}(typeof self !== 'undefined' ? self : this, function ($) {
+})(typeof self !== "undefined" ? self : this, function ($) {
   function myFunction() {
-    console.log('Hello from myModule!');
+    console.log("Hello from myModule!");
   }
   return { myFunction: myFunction };
-}));
+});
 ```
 
 このコードは、実行環境を判別し、それぞれの環境に応じてモジュールを公開します。
@@ -232,10 +238,12 @@ UMDパターンを使ってモジュールを定義するには、以下のよ�
 ### UMDのメリットとデメリット
 
 メリット：
+
 - 様々な環境で動作するライブラリを開発できる。
 - 既存のコードへの影響を最小限に抑えながら、モジュールシステムを導入できる。
 
 デメリット：
+
 - コードの読みやすさが損なわれる可能性がある。
 - 環境判別のための条件分岐が複雑になる。
 
@@ -257,13 +265,13 @@ webpackは、現在最も広く使われているモジュールバンドラー�
 
 ```javascript
 // webpack.config.js
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
@@ -271,7 +279,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
         },
       },
     ],
@@ -288,11 +296,11 @@ RollupはES Modules（ESM）をネイティブにサポートしているモジ�
 ```javascript
 // rollup.config.js
 export default {
-  input: 'src/index.js',
+  input: "src/index.js",
   output: {
-    file: 'dist/bundle.js',
-    format: 'iife',
-    name: 'MyLib',
+    file: "dist/bundle.js",
+    format: "iife",
+    name: "MyLib",
   },
   plugins: [
     // プラグインの設定

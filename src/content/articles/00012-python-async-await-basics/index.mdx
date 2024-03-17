@@ -1,8 +1,8 @@
 ---
-title: 'Pythonのasync/awaitを理解する: 非同期プログラミングの基礎'
-description: 'Pythonのasync/awaitを理解する: 非同期プログラミングの基礎'
-pubDate: '2024-03-17'
-cover: './hero.webp'
+title: "Pythonのasync/awaitを理解する: 非同期プログラミングの基礎"
+description: "Pythonのasync/awaitを理解する: 非同期プログラミングの基礎"
+pubDate: "2024-03-17"
+cover: "./hero.webp"
 tags: [Python]
 index: 12
 ---
@@ -32,9 +32,9 @@ Python のコアチームは、これらの問題を解決するために、asyn
 以下は、コールバック地獄の例です：
 
 ```javascript
-asyncOperation1(function(result1) {
-  asyncOperation2(result1, function(result2) {
-    asyncOperation3(result2, function(result3) {
+asyncOperation1(function (result1) {
+  asyncOperation2(result1, function (result2) {
+    asyncOperation3(result2, function (result3) {
       // ...
     });
   });
@@ -137,7 +137,6 @@ sequenceDiagram
 8. コルーチン2の処理が完了すると、イベントループに制御が戻ります。
 
 このようにして、イベントループは複数のコルーチンを効率的に管理し、非同期操作の完了を待ちながら、他のコルーチンを実行することができます。
-
 
 ## 4. async/awaitの基本的な使い方
 

@@ -1,8 +1,8 @@
 ---
-title: 'Astroでmermaidを使う際のパフォーマンス改善手法'
-description: 'Astroでmermaidを使う際のパフォーマンス改善手法'
-pubDate: '2024-03-15'
-cover: './hero.webp'
+title: "Astroでmermaidを使う際のパフォーマンス改善手法"
+description: "Astroでmermaidを使う際のパフォーマンス改善手法"
+pubDate: "2024-03-15"
+cover: "./hero.webp"
 tags: [Astro, Mermaid, PageSpeedInsights, SEO]
 index: 4
 ---
@@ -17,7 +17,6 @@ Astroは静的サイト生成ツールとして、高速なWebサイトを構築
 
 これらの情報を通して、読者の皆さんが、Astroでmermaidを使う際のパフォーマンス改善に役立てていただければ幸いです。
 
-
 ## 2. mermaidを直接使用した場合の問題点
 
 mermaidをそのまま使用する場合、いくつかの問題点があります。これらの問題は、Webサイトのパフォーマンスに悪影響を与え、Page Speed Insightsのスコアを下げる原因になります。
@@ -25,7 +24,11 @@ mermaidをそのまま使用する場合、いくつかの問題点がありま�
 まず、インラインスクリプトによるパフォーマンスへの影響が挙げられます。mermaidを使用するために、以下のようなインラインスクリプトを記述することがあります。
 
 ```html
-<script is:inline src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js" defer></script>
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"
+  defer
+></script>
 ```
 
 このようなインラインスクリプトは、HTMLファイルのサイズを増加させ、ページの読み込み速度を低下させる可能性があります。また、`defer`属性を使用していても、外部スクリプトの読み込みがブロッキングになる場合があります。
@@ -35,12 +38,15 @@ mermaidをそのまま使用する場合、いくつかの問題点がありま�
 さらに、mermaidを直接使用した場合、Page Speed Insightsで以下のような警告が表示されることがあります。
 
 - **Defer offscreen images**
+
   - 画面外の画像の読み込みを遅らせることを推奨する警告です。mermaidで生成されたグラフは、画面外に配置されることがあるため、この警告が表示されることがあります。
 
 - **Serve static assets with an efficient cache policy**
+
   - 静的アセットに効果的なキャッシュポリシーを設定することを推奨する警告です。mermaidで生成されたグラフは、適切なキャッシュ設定がされていない場合、この警告が表示されることがあります。
 
 - **Minimize main-thread work**
+
   - メインスレッドでの作業を最小限に抑えることを推奨する警告です。mermaidで生成されたグラフは、メインスレッドでレンダリングされるため、この警告が表示されることがあります。
 
 - **Avoid chaining critical requests**
@@ -67,7 +73,13 @@ mermaidをそのまま使用する場合、いくつかの問題点がありま�
 
 ```js
 import { execSync } from "child_process";
-import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from "fs";
+import {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  unlinkSync,
+  writeFileSync,
+} from "fs";
 import path from "path";
 import { visit } from "unist-util-visit";
 
@@ -86,14 +98,15 @@ export function remarkMermaid() {
         writeFileSync(tempInputFile, node.value);
 
         try {
-          execSync(`npx mmdc -i ${tempInputFile} -o ${tempOutputFile} -c mermaid.config.json`);
+          execSync(
+            `npx mmdc -i ${tempInputFile} -o ${tempOutputFile} -c mermaid.config.json`,
+          );
 
           const svgContent = readFileSync(tempOutputFile, "utf8");
           const styledSvgContent = `<div style="width: 100%; overflow: auto;">${svgContent}</div>`;
 
           node.type = "html";
           node.value = styledSvgContent;
-
         } catch (error) {
           console.error("Error processing Mermaid diagram:", error);
           node.value = `<pre>Error processing Mermaid diagram:\n${error.message}</pre>`;
@@ -112,7 +125,7 @@ export function remarkMermaid() {
 `remark-mermaid`プラグインを使用するために、`astro.config.mjs`ファイルに以下の設定を追加します。
 
 ```js
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 import { remarkMermaid } from "./remark-mermaid.mjs";
 
 export default defineConfig({

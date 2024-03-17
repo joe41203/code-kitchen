@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import reportData from 'public/insights/data.json';
+import BaseLayout from "@layouts/BaseLayout.astro";
+import reportData from "public/insights/data.json";
 
 interface ReportData {
   url: string;
@@ -42,16 +42,22 @@ reportData.forEach((data: ReportData) => {
                 </a>
               </td>
               <td class="py-2 px-4 border">
-                {scores.performance ? (scores.performance * 100).toFixed(0) + '%' : '-'}
+                {scores.performance
+                  ? (scores.performance * 100).toFixed(0) + "%"
+                  : "-"}
               </td>
               <td class="py-2 px-4 border">
-                {scores.accessibility ? (scores.accessibility * 100).toFixed(0) + '%' : '-'}
+                {scores.accessibility
+                  ? (scores.accessibility * 100).toFixed(0) + "%"
+                  : "-"}
               </td>
               <td class="py-2 px-4 border">
-                {scores['best-practices'] ? (scores['best-practices'] * 100).toFixed(0) + '%' : '-'}
+                {scores["best-practices"]
+                  ? (scores["best-practices"] * 100).toFixed(0) + "%"
+                  : "-"}
               </td>
               <td class="py-2 px-4 border">
-                {scores.seo ? (scores.seo * 100).toFixed(0) + '%' : '-'}
+                {scores.seo ? (scores.seo * 100).toFixed(0) + "%" : "-"}
               </td>
             </tr>
           ))

@@ -1,11 +1,11 @@
 ---
-import FormattedDate from '@components/FormattedDate.astro';
-import BaseLayout from '@layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
-import { getCollection, type CollectionEntry } from 'astro:content';
+import FormattedDate from "@components/FormattedDate.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-  const articles = await getCollection('articles');
+  const articles = await getCollection("articles");
   const tags = new Set<string>();
   articles.forEach((article) => {
     article.data.tags?.forEach((tag: string) => tags.add(tag));
@@ -24,13 +24,13 @@ export async function getStaticPaths() {
 
 interface Props {
   tag?: string;
-  article?: CollectionEntry<'articles'>;
+  article?: CollectionEntry<"articles">;
 }
 
 const { tag, article } = Astro.props;
 
-const articles = (await getCollection('articles')).filter((entry) =>
-  tag ? entry.data.tags?.includes(tag) : true
+const articles = (await getCollection("articles")).filter((entry) =>
+  tag ? entry.data.tags?.includes(tag) : true,
 );
 
 const content = article ? (await article.render()).Content : undefined;
@@ -40,33 +40,36 @@ const content = article ? (await article.render()).Content : undefined;
   {content && <div>{content}</div>}
   {
     !content && (
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      {articles.map((article) => (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {articles.map((article) => (
           <div class="max-w-sm rounded overflow-hidden shadow-lg">
-          <a href={`/articles/${article.slug}/`}>
-            <div>
-              <Image src={article.data.cover} alt={article.data.description} />
-              <div class="px-6 py-4">
-                <h4 class="font-bold text-xl mb-2">{article.data.title}</h4>
-                <p class="date">
-                  <FormattedDate date={article.data.pubDate} />
-                </p>
-              </div>
-              {article.data.tags ? (
-                <div class="px-6 pt-4 pb-2">
-                  {article.data.tags?.map((tag) => (
-                    <a href=`/tags/${tag}` >
-                      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                        {tag}
-                      </span>
-                    </a>
-                  ))}
+            <a href={`/articles/${article.slug}/`}>
+              <div>
+                <Image
+                  src={article.data.cover}
+                  alt={article.data.description}
+                />
+                <div class="px-6 py-4">
+                  <h4 class="font-bold text-xl mb-2">{article.data.title}</h4>
+                  <p class="date">
+                    <FormattedDate date={article.data.pubDate} />
+                  </p>
                 </div>
-              ) : null}
-              <div class="px-6 pt-4 pb-2" />
-            </div>
-          </a>
-        </div>
+                {article.data.tags ? (
+                  <div class="px-6 pt-4 pb-2">
+                    {article.data.tags?.map((tag) => (
+                      <a href={`/tags/${tag}`}>
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                          {tag}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+                <div class="px-6 pt-4 pb-2" />
+              </div>
+            </a>
+          </div>
         ))}
       </div>
     )

@@ -1,6 +1,6 @@
-import fs from 'fs/promises';
-import fetch from 'node-fetch';
-import path from 'path';
+import fs from "fs/promises";
+import fetch from "node-fetch";
+import path from "path";
 
 interface PageSpeedApiResponse {
   captchaResult: string;
@@ -96,9 +96,13 @@ interface AuditDetails {
   overallSavingsMs: number;
 }
 
-
-type CategoryId = 'performance' | 'accessibility' | 'best-practices' | 'seo' | 'pwa';
-type Strategy = "mobile" | "desktop"
+type CategoryId =
+  | "performance"
+  | "accessibility"
+  | "best-practices"
+  | "seo"
+  | "pwa";
+type Strategy = "mobile" | "desktop";
 
 interface Categories {
   [key: string]: Category;
@@ -155,17 +159,17 @@ interface ReportData {
   score: number;
 }
 
-const base_url: string = "https://code-kitchen.pages.dev"
+const base_url: string = "https://code-kitchen.pages.dev";
 
 const getUrlsFromAstroBuild = async (): Promise<string[]> => {
-  const distDir = path.join(process.cwd(), 'dist');
-  const articleDir = path.join(distDir, 'articles');
+  const distDir = path.join(process.cwd(), "dist");
+  const articleDir = path.join(distDir, "articles");
   const files = await fs.readdir(articleDir);
 
   const urls: string[] = [];
 
   for (const file of files) {
-    const articlePath = path.join(articleDir, file, 'index.html');
+    const articlePath = path.join(articleDir, file, "index.html");
     try {
       await fs.access(articlePath);
       const url = `${base_url}/articles/${file}/`;
@@ -185,22 +189,30 @@ const fetchPageSpeedData = async (
   strategy: Strategy = "mobile",
 ): Promise<PageSpeedApiResponse> => {
   const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(
-    url
+    url,
   )}&key=${apiKey}&category=${categoryId}&strategy=${strategy}`;
   const response = await fetch(apiUrl);
 
   if (response.status === 429) {
-    console.error('Quota exceeded. Exiting the process.');
+    console.error("Quota exceeded. Exiting the process.");
     process.exit(1);
   }
 
   return response.json() as Promise<PageSpeedApiResponse>;
 };
 
-const extractReportData = (response: PageSpeedApiResponse, categoryId: CategoryId): ReportData => {
-  console.log({response})
-  if (!response.lighthouseResult.categories || !response.lighthouseResult.categories[categoryId]) {
-    throw new Error(`Category '${categoryId}' not found in the response for URL: ${response.id}`);
+const extractReportData = (
+  response: PageSpeedApiResponse,
+  categoryId: CategoryId,
+): ReportData => {
+  console.log({ response });
+  if (
+    !response.lighthouseResult.categories ||
+    !response.lighthouseResult.categories[categoryId]
+  ) {
+    throw new Error(
+      `Category '${categoryId}' not found in the response for URL: ${response.id}`,
+    );
   }
 
   return {
@@ -211,23 +223,26 @@ const extractReportData = (response: PageSpeedApiResponse, categoryId: CategoryI
 };
 
 const saveReportData = async (reportsData: ReportData[]): Promise<void> => {
-  await fs.writeFile('public/insights/data.json', JSON.stringify(reportsData, null, 2));
+  await fs.writeFile(
+    "public/insights/data.json",
+    JSON.stringify(reportsData, null, 2),
+  );
 };
 
 const main = async (): Promise<void> => {
   const urls = await getUrlsFromAstroBuild();
   const apiKey = process.env.GOOGLE_PAGE_SPEED_INSIGHTS_API_KEY;
   const categoryIds: CategoryId[] = [
-    'performance',
-    'accessibility',
-    'best-practices',
-    'seo',
+    "performance",
+    "accessibility",
+    "best-practices",
+    "seo",
     // 'pwa',
   ];
 
   if (!apiKey) {
     console.error(
-      'GOOGLE_PAGE_SPEED_INSIGHTS_API_KEY is not defined in the environment variables.'
+      "GOOGLE_PAGE_SPEED_INSIGHTS_API_KEY is not defined in the environment variables.",
     );
     process.exit(1);
   }
@@ -246,16 +261,18 @@ const main = async (): Promise<void> => {
       }
 
       // スリープ処理を追加 (例: 1秒待機)
-      await new Promise(resolve => setTimeout(resolve, 5000));
+      await new Promise((resolve) => setTimeout(resolve, 5000));
     }
   }
 
-  const reportsData: ReportData[] = reportsDataWithNull.filter((reportData): reportData is ReportData => reportData !== null);
+  const reportsData: ReportData[] = reportsDataWithNull.filter(
+    (reportData): reportData is ReportData => reportData !== null,
+  );
 
   await saveReportData(reportsData);
 };
 
 main().catch((error) => {
-  console.error('Error:', error);
+  console.error("Error:", error);
   process.exit(1);
 });

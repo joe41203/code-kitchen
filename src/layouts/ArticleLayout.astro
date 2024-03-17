@@ -1,25 +1,25 @@
 ---
-import BaseHead from '@components/BaseHead.astro';
-import Footer from '@components/Footer.astro';
-import Header from '@components/Header.astro';
-import Prose from '@components/Prose.astro';
-import Sidebar from '@components/Sidebar.astro';
-import type { CollectionEntry } from 'astro:content';
+import BaseHead from "@components/BaseHead.astro";
+import Footer from "@components/Footer.astro";
+import Header from "@components/Header.astro";
+import Prose from "@components/Prose.astro";
+import Sidebar from "@components/Sidebar.astro";
+import type { CollectionEntry } from "astro:content";
 
-type Props = CollectionEntry<'articles'>['data'];
+type Props = CollectionEntry<"articles">["data"];
 
 const { title, description, cover } = Astro.props;
 
 // キャッシュ設定の定義
 const cacheControl = {
-  _astro: 'public, max-age=31536000, immutable',
+  _astro: "public, max-age=31536000, immutable",
 };
 
 const currentPage = Astro.url.pathname;
 
 // キャッシュヘッダーの設定
-if (currentPage.startsWith('/_astro/')) {
-  Astro.response.headers.set('Cache-Control', cacheControl._astro);
+if (currentPage.startsWith("/_astro/")) {
+  Astro.response.headers.set("Cache-Control", cacheControl._astro);
 }
 ---
 
@@ -30,11 +30,18 @@ if (currentPage.startsWith('/_astro/')) {
 
   <body class="bg-white dark:bg-black dark:text-white">
     <Header />
-    <main class="p-5 flex flex-col lg:px-52 lg:py-20 lg:flex-row lg:justify-between">
+    <main
+      class="p-5 flex flex-col lg:px-52 lg:py-20 lg:flex-row lg:justify-between"
+    >
       <article>
         <Prose>
           <h1>{title}</h1>
-          <img src={cover.src} alt={`${title} cover image`} loading="lazy" decoding="async" />
+          <img
+            src={cover.src}
+            alt={`${title} cover image`}
+            loading="lazy"
+            decoding="async"
+          />
           <slot />
         </Prose>
       </article>

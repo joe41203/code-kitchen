@@ -1,8 +1,8 @@
 ---
-title: 'Astroに Page Speed Insightsを組み込んで、Webパフォーマンスのモニタリングを自動化する'
-description: 'Astroに Page Speed Insightsを組み込んで、Webパフォーマンスのモニタリングを自動化する'
-pubDate: '2024-03-15'
-cover: './hero.webp'
+title: "Astroに Page Speed Insightsを組み込んで、Webパフォーマンスのモニタリングを自動化する"
+description: "Astroに Page Speed Insightsを組み込んで、Webパフォーマンスのモニタリングを自動化する"
+pubDate: "2024-03-15"
+cover: "./hero.webp"
 tags: [Astro, PageSpeedInsights, SEO]
 index: 5
 ---
@@ -18,7 +18,6 @@ index: 5
 Google の Page Speed Insights は、Webページの速度とパフォーマンスを分析するための無料のツールです。このツールを使用することで、ページの読み込み時間、インタラクティブ性、視覚的安定性などの重要な指標を測定し、改善のための具体的な提案を得ることができます。
 
 ただし、Page Speed Insights を手動で使用するだけでは、継続的なパフォーマンス管理は難しいでしょう。そこで、静的サイトジェネレータである Astro に Page Speed Insights を組み込み、自動化されたパフォーマンスモニタリングを実現する方法を探ります。これにより、Webサイトのパフォーマンスを定期的にチェックし、問題をいち早く発見して改善に役立てることができるでしょう。
-
 
 ## 2. Page Speed Insights とは
 
@@ -98,8 +97,8 @@ npm install node-fetch tsx
 
 ```astro
 ---
-import Layout from '../../layouts/Layout.astro';
-import reportData from '../../../public/insights/data.json';
+import Layout from "../../layouts/Layout.astro";
+import reportData from "../../../public/insights/data.json";
 
 interface ReportData {
   url: string;
@@ -131,15 +130,17 @@ reportData.forEach((data: ReportData) => {
       </tr>
     </thead>
     <tbody>
-      {Object.entries(reports).map(([url, scores]) => (
-        <tr>
-          <td>{url}</td>
-          <td>{scores.performance ?? '-'}</td>
-          <td>{scores.accessibility ?? '-'}</td>
-          <td>{scores['best-practices'] ?? '-'}</td>
-          <td>{scores.seo ?? '-'}</td>
-        </tr>
-      ))}
+      {
+        Object.entries(reports).map(([url, scores]) => (
+          <tr>
+            <td>{url}</td>
+            <td>{scores.performance ?? "-"}</td>
+            <td>{scores.accessibility ?? "-"}</td>
+            <td>{scores["best-practices"] ?? "-"}</td>
+            <td>{scores.seo ?? "-"}</td>
+          </tr>
+        ))
+      }
     </tbody>
   </table>
 </Layout>
@@ -152,9 +153,9 @@ reportData.forEach((data: ReportData) => {
 次に、`src/scripts/speed-insights.ts` ファイルを作成し、Page Speed Insights からデータを取得するスクリプトを実装します。
 
 ```typescript
-import fs from 'fs/promises';
-import fetch from 'node-fetch';
-import path from 'path';
+import fs from "fs/promises";
+import fetch from "node-fetch";
+import path from "path";
 
 interface PageSpeedApiResponse {
   captchaResult: string;
@@ -250,9 +251,13 @@ interface AuditDetails {
   overallSavingsMs: number;
 }
 
-
-type CategoryId = 'performance' | 'accessibility' | 'best-practices' | 'seo' | 'pwa';
-type Strategy = "mobile" | "desktop"
+type CategoryId =
+  | "performance"
+  | "accessibility"
+  | "best-practices"
+  | "seo"
+  | "pwa";
+type Strategy = "mobile" | "desktop";
 
 interface Categories {
   [key: string]: Category;
@@ -309,17 +314,17 @@ interface ReportData {
   score: number;
 }
 
-const base_url: string = "https://code-kitchen.pages.dev"
+const base_url: string = "https://code-kitchen.pages.dev";
 
 const getUrlsFromAstroBuild = async (): Promise<string[]> => {
-  const distDir = path.join(process.cwd(), 'dist');
-  const articleDir = path.join(distDir, 'articles');
+  const distDir = path.join(process.cwd(), "dist");
+  const articleDir = path.join(distDir, "articles");
   const files = await fs.readdir(articleDir);
 
   const urls: string[] = [];
 
   for (const file of files) {
-    const articlePath = path.join(articleDir, file, 'index.html');
+    const articlePath = path.join(articleDir, file, "index.html");
     try {
       await fs.access(articlePath);
       const url = `${base_url}/articles/${file}/`;
@@ -339,15 +344,23 @@ const fetchPageSpeedData = async (
   strategy: Strategy = "mobile",
 ): Promise<PageSpeedApiResponse> => {
   const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(
-    url
+    url,
   )}&key=${apiKey}&category=${categoryId}&strategy=${strategy}`;
   const response = await fetch(apiUrl);
   return response.json() as Promise<PageSpeedApiResponse>;
 };
 
-const extractReportData = (response: PageSpeedApiResponse, categoryId: CategoryId): ReportData => {
-  if (!response.lighthouseResult.categories || !response.lighthouseResult.categories[categoryId]) {
-    throw new Error(`Category '${categoryId}' not found in the response for URL: ${response.id}`);
+const extractReportData = (
+  response: PageSpeedApiResponse,
+  categoryId: CategoryId,
+): ReportData => {
+  if (
+    !response.lighthouseResult.categories ||
+    !response.lighthouseResult.categories[categoryId]
+  ) {
+    throw new Error(
+      `Category '${categoryId}' not found in the response for URL: ${response.id}`,
+    );
   }
 
   return {
@@ -358,23 +371,26 @@ const extractReportData = (response: PageSpeedApiResponse, categoryId: CategoryI
 };
 
 const saveReportData = async (reportsData: ReportData[]): Promise<void> => {
-  await fs.writeFile('public/insights/data.json', JSON.stringify(reportsData, null, 2));
+  await fs.writeFile(
+    "public/insights/data.json",
+    JSON.stringify(reportsData, null, 2),
+  );
 };
 
 const main = async (): Promise<void> => {
   const urls = await getUrlsFromAstroBuild();
   const apiKey = process.env.GOOGLE_PAGE_SPEED_INSIGHTS_API_KEY;
   const categoryIds: CategoryId[] = [
-    'performance',
-    'accessibility',
-    'best-practices',
-    'seo',
+    "performance",
+    "accessibility",
+    "best-practices",
+    "seo",
     // 'pwa',
   ];
 
   if (!apiKey) {
     console.error(
-      'GOOGLE_PAGE_SPEED_INSIGHTS_API_KEY is not defined in the environment variables.'
+      "GOOGLE_PAGE_SPEED_INSIGHTS_API_KEY is not defined in the environment variables.",
     );
     process.exit(1);
   }
@@ -395,13 +411,15 @@ const main = async (): Promise<void> => {
   }
 
   const reportsDataWithNull = await Promise.all(fetchTasks);
-  const reportsData: ReportData[] = reportsDataWithNull.filter((reportData): reportData is ReportData => reportData !== null);
+  const reportsData: ReportData[] = reportsDataWithNull.filter(
+    (reportData): reportData is ReportData => reportData !== null,
+  );
 
   await saveReportData(reportsData);
 };
 
 main().catch((error) => {
-  console.error('Error:', error);
+  console.error("Error:", error);
   process.exit(1);
 });
 ```
@@ -444,33 +462,39 @@ E --> F[レポートページの表示]
 ```
 
 1. **Astro のビルド**
-  - Astro の `npm run build` コマンドを実行すると、プロジェクトのビルドが開始されます。
-  - ビルドプロセスでは、ページのコンパイル、静的ファイルの生成、最適化などが行われます。
+
+- Astro の `npm run build` コマンドを実行すると、プロジェクトのビルドが開始されます。
+- ビルドプロセスでは、ページのコンパイル、静的ファイルの生成、最適化などが行われます。
 
 2. **URL の収集**
-  - ビルドが完了すると、`getUrlsFromAstroBuild` 関数が実行されます。
-  - この関数は、Astro のビルド出力ディレクトリ（通常は `dist` ディレクトリ）からページの URL を収集します。
-  - 収集された URL は、Page Speed Insights API にリクエストを送信するために使用されます。
+
+- ビルドが完了すると、`getUrlsFromAstroBuild` 関数が実行されます。
+- この関数は、Astro のビルド出力ディレクトリ（通常は `dist` ディレクトリ）からページの URL を収集します。
+- 収集された URL は、Page Speed Insights API にリクエストを送信するために使用されます。
 
 3. **Page Speed Insights API へのリクエスト**
-  - 収集された各 URL に対して、`fetchPageSpeedData` 関数が実行されます。
-  - この関数は、Google Page Speed Insights API にリクエストを送信し、指定された URL のパフォーマンスデータを取得します。
-  - リクエストには、API キーとカテゴリ ID（パフォーマンス、アクセシビリティ、ベストプラクティス、SEO）が含まれます。
+
+- 収集された各 URL に対して、`fetchPageSpeedData` 関数が実行されます。
+- この関数は、Google Page Speed Insights API にリクエストを送信し、指定された URL のパフォーマンスデータを取得します。
+- リクエストには、API キーとカテゴリ ID（パフォーマンス、アクセシビリティ、ベストプラクティス、SEO）が含まれます。
 
 4. **レポートデータの抽出**
-  - Page Speed Insights API からのレスポンスを受け取ると、`extractReportData` 関数が実行されます。
-  - この関数は、API レスポンスからレポートデータを抽出し、必要な情報（URL、カテゴリ ID、スコア）を取得します。
-  - 抽出されたデータは、`ReportData` インターフェースに従って構造化されます。
+
+- Page Speed Insights API からのレスポンスを受け取ると、`extractReportData` 関数が実行されます。
+- この関数は、API レスポンスからレポートデータを抽出し、必要な情報（URL、カテゴリ ID、スコア）を取得します。
+- 抽出されたデータは、`ReportData` インターフェースに従って構造化されます。
 
 5. **レポートデータの保存**
-  - 抽出されたレポートデータは、`saveReportData` 関数を使用して保存されます。
-  - レポートデータは、`public/insights/data.json` ファイルに JSON 形式で書き込まれます。
-  - このファイルは、レポートページからデータを読み込むために使用されます。
+
+- 抽出されたレポートデータは、`saveReportData` 関数を使用して保存されます。
+- レポートデータは、`public/insights/data.json` ファイルに JSON 形式で書き込まれます。
+- このファイルは、レポートページからデータを読み込むために使用されます。
 
 6. **レポートページの表示**
-  - Astro プロジェクトの `src/pages/speed-insights/index.astro` ファイルは、レポートページのテンプレートを定義します。
-  - このファイルは、`public/insights/data.json` からレポートデータを読み込み、表形式でパフォーマンススコアを表示します。
-  - レポートページは、Astro のビルド出力に含まれ、ウェブサーバーによって提供されます。
+
+- Astro プロジェクトの `src/pages/speed-insights/index.astro` ファイルは、レポートページのテンプレートを定義します。
+- このファイルは、`public/insights/data.json` からレポートデータを読み込み、表形式でパフォーマンススコアを表示します。
+- レポートページは、Astro のビルド出力に含まれ、ウェブサーバーによって提供されます。
 
 この一連の流れにより、Astro のビルドプロセスにレポートページの生成が統合され、Web サイトのパフォーマンスを自動的にモニタリングできるようになります。
 
@@ -586,4 +610,3 @@ Page Speed Insightsのレポートページを起点として、今後のパフ�
 - 他のツールとの連携: Page Speed Insights以外にも、Lighthouse、WebPageTest、New Relicなど、パフォーマンス分析に役立つツールがあります。これらのツールと連携することで、より多角的なパフォーマンス分析が可能になります。
 
 Astroを使ったPage Speed Insightsのレポートページの実装は、Webサイトのパフォーマンス管理における第一歩です。レポートページを起点として、継続的なパフォーマンス改善に取り組むことが、ユーザーエクスペリエンスの向上とビジネスの成功につながります。
-

@@ -1,13 +1,12 @@
 ---
-import FormattedDate from '@components/FormattedDate.astro';
-import BaseLayout from '@layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
+import FormattedDate from "@components/FormattedDate.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 
-const articles = (await getCollection('articles')).sort(
-  (a, b) => b.data.index - a.data.index
+const articles = (await getCollection("articles")).sort(
+  (a, b) => b.data.index - a.data.index,
 );
-
 ---
 
 <BaseLayout>
@@ -28,7 +27,7 @@ const articles = (await getCollection('articles')).sort(
             {article.data.tags ? (
               <div class="px-6 pt-4 pb-2">
                 {article.data.tags?.map((tag) => (
-                  <a href=`/tags/${tag}`>
+                  <a href={`/tags/${tag}`}>
                     <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
                       {tag}
                     </span>
