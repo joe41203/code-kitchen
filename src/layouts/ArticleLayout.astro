@@ -34,6 +34,7 @@ if (currentPage.startsWith('/_astro/')) {
       <article>
         <Prose>
           <h1>{title}</h1>
+          <img src={cover.src} alt={`${title} cover image`} loading="lazy" decoding="async" />
           <slot />
         </Prose>
       </article>
