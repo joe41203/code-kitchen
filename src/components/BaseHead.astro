@@ -54,3 +54,14 @@ const { title, description, cover = `/images/profile.webp` } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(cover, Astro.url)} />
+
+<style is:global>
+  body {
+    background-color: #fff;
+    color: #000;
+  }
+  .dark body {
+    background-color: #000;
+    color: #fff;
+  }
+</style>
