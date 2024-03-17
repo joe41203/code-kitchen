@@ -85,7 +85,7 @@ graph LR
 以下は、カウンターコンポーネントの例です。
 
 ```jsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function Counter() {
   const [count, setCount] = useState(0);
@@ -93,9 +93,7 @@ function Counter() {
   return (
     <div>
       <p>現在のカウント: {count}</p>
-      <button onClick={() => setCount(count + 1)}>
-        カウントを増やす
-      </button>
+      <button onClick={() => setCount(count + 1)}>カウントを増やす</button>
     </div>
   );
 }
@@ -136,20 +134,20 @@ graph TB
 以下は、データをフェッチするコンポーネントの例です。
 
 ```jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function DataFetcher() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('https://api.example.com/data')
-      .then(response => response.json())
-      .then(data => setData(data));
+    fetch("https://api.example.com/data")
+      .then((response) => response.json())
+      .then((data) => setData(data));
   }, []);
 
   return (
     <ul>
-      {data.map(item => (
+      {data.map((item) => (
         <li key={item.id}>{item.name}</li>
       ))}
     </ul>
