@@ -3,6 +3,19 @@ import BaseHead from "@components/BaseHead.astro";
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+// キャッシュ設定の定義
+const cacheControl = {
+  _astro: "public, max-age=31536000, immutable",
+};
+
+const currentPage = Astro.url.pathname;
+
+// キャッシュヘッダーの設定
+if (currentPage.startsWith("/_astro/")) {
+  Astro.response.headers.set("Cache-Control", cacheControl._astro);
+}
+
 ---
 
 <!doctype html>
