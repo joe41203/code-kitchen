@@ -15,7 +15,6 @@ const currentPage = Astro.url.pathname;
 if (currentPage.startsWith("/_astro/")) {
   Astro.response.headers.set("Cache-Control", cacheControl._astro);
 }
-
 ---
 
 <!doctype html>

@@ -40,9 +40,9 @@ const content = article ? (await article.render()).Content : undefined;
   {content && <div>{content}</div>}
   {
     !content && (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         {articles.map((article) => (
-          <div class="max-w-sm rounded overflow-hidden shadow-lg">
+          <div class="max-w-sm overflow-hidden rounded shadow-lg">
             <a href={`/articles/${article.slug}/`}>
               <div>
                 <Image
@@ -50,23 +50,23 @@ const content = article ? (await article.render()).Content : undefined;
                   alt={article.data.description}
                 />
                 <div class="px-6 py-4">
-                  <h4 class="font-bold text-xl mb-2">{article.data.title}</h4>
+                  <h4 class="mb-2 text-xl font-bold">{article.data.title}</h4>
                   <p class="date">
                     <FormattedDate date={article.data.pubDate} />
                   </p>
                 </div>
                 {article.data.tags ? (
-                  <div class="px-6 pt-4 pb-2">
+                  <div class="px-6 pb-2 pt-4">
                     {article.data.tags?.map((tag) => (
                       <a href={`/tags/${tag}`}>
-                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                        <span class="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700">
                           {tag}
                         </span>
                       </a>
                     ))}
                   </div>
                 ) : null}
-                <div class="px-6 pt-4 pb-2" />
+                <div class="px-6 pb-2 pt-4" />
               </div>
             </a>
           </div>

@@ -20,43 +20,43 @@ reportData.forEach((data: ReportData) => {
 ---
 
 <BaseLayout>
-  <h1 class="text-3xl font-bold mb-6">PageSpeed Inights Report</h1>
+  <h1 class="mb-6 text-3xl font-bold">PageSpeed Inights Report</h1>
   <div class="overflow-x-auto">
-    <table class="w-full text-left border-collapse">
+    <table class="w-full border-collapse text-left">
       <thead>
         <tr class="">
-          <th class="py-2 px-4 border">URL</th>
-          <th class="py-2 px-4 border">Performance</th>
-          <th class="py-2 px-4 border">Accessibility</th>
-          <th class="py-2 px-4 border">Best Practices</th>
-          <th class="py-2 px-4 border">SEO</th>
+          <th class="border px-4 py-2">URL</th>
+          <th class="border px-4 py-2">Performance</th>
+          <th class="border px-4 py-2">Accessibility</th>
+          <th class="border px-4 py-2">Best Practices</th>
+          <th class="border px-4 py-2">SEO</th>
         </tr>
       </thead>
       <tbody>
         {
           Object.entries(reports).map(([url, scores]) => (
             <tr class="hover:bg-gray-200 dark:hover:bg-gray-700">
-              <td class="py-2 px-4 border">
+              <td class="border px-4 py-2">
                 <a href={url} target="_blank" rel="noopener noreferrer">
                   {url}
                 </a>
               </td>
-              <td class="py-2 px-4 border">
+              <td class="border px-4 py-2">
                 {scores.performance
                   ? (scores.performance * 100).toFixed(0) + "%"
                   : "-"}
               </td>
-              <td class="py-2 px-4 border">
+              <td class="border px-4 py-2">
                 {scores.accessibility
                   ? (scores.accessibility * 100).toFixed(0) + "%"
                   : "-"}
               </td>
-              <td class="py-2 px-4 border">
+              <td class="border px-4 py-2">
                 {scores["best-practices"]
                   ? (scores["best-practices"] * 100).toFixed(0) + "%"
                   : "-"}
               </td>
-              <td class="py-2 px-4 border">
+              <td class="border px-4 py-2">
                 {scores.seo ? (scores.seo * 100).toFixed(0) + "%" : "-"}
               </td>
             </tr>
