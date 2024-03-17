@@ -1,6 +1,7 @@
 ---
 import BaseHead from "@components/BaseHead.astro";
 import Footer from "@components/Footer.astro";
+import GTM from "@components/GTM.astro";
 import Header from "@components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
@@ -23,6 +24,7 @@ if (currentPage.startsWith("/_astro/")) {
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body class="bg-white dark:bg-black dark:text-white">
+    <GTM />
     <Header />
     <main class="p-5">
       <section>
