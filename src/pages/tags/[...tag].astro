@@ -40,7 +40,7 @@ const content = article ? (await article.render()).Content : undefined;
   {content && <div>{content}</div>}
   {
     !content && (
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
         {articles.map((article) => (
           <div class="max-w-sm overflow-hidden rounded shadow-lg">
             <a href={`/articles/${article.slug}/`}>
