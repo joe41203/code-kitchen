@@ -5,8 +5,9 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 
 const articles = (await getCollection('articles')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) => b.data.index - a.data.index
 );
+
 ---
 
 <BaseLayout>
