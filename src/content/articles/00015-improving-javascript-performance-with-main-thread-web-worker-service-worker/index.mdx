@@ -22,13 +22,16 @@ JavaScriptにおけるスレッドには、主に3つの種類があります。
 スレッドの理解が重要な理由は以下の通りです。
 
 1. パフォーマンスの向上
-  - 重い処理をバックグラウンドで実行することで、メインスレッドのブロッキングを防ぎ、アプリケーションのレスポンスを向上させることができます。
+
+- 重い処理をバックグラウンドで実行することで、メインスレッドのブロッキングを防ぎ、アプリケーションのレスポンスを向上させることができます。
 
 2. ユーザーエクスペリエンスの改善
-  - スムーズなUIの更新や、オフライン機能の提供など、ユーザーエクスペリエンスを向上させるために、スレッドの活用が欠かせません。
+
+- スムーズなUIの更新や、オフライン機能の提供など、ユーザーエクスペリエンスを向上させるために、スレッドの活用が欠かせません。
 
 3. 効率的なリソース管理
-  - スレッドを適切に使い分けることで、CPUやメモリなどのリソースを効率的に管理し、アプリケーションの安定性を高めることができます。
+
+- スレッドを適切に使い分けることで、CPUやメモリなどのリソースを効率的に管理し、アプリケーションの安定性を高めることができます。
 
 本記事では、Main thread、Web Worker、Service Workerについて詳しく説明していきます。それぞれの特徴や使い方を理解することで、JavaScriptのスレッドを効果的に活用し、より良いWebアプリケーションを開発することができるでしょう。
 
@@ -111,7 +114,7 @@ Web Workerを作成するには、以下の手順に従います。
 
 ```javascript
 // メインスレッドのJavaScriptファイル
-const worker = new Worker('worker.js');
+const worker = new Worker("worker.js");
 ```
 
 3. Web Worker内で処理を実行します。
@@ -133,20 +136,20 @@ heavyTask();
 
 ```javascript
 // メインスレッドのJavaScriptファイル
-const worker = new Worker('worker.js');
+const worker = new Worker("worker.js");
 
-worker.postMessage({ data: 'メインスレッドからのデータ' });
+worker.postMessage({ data: "メインスレッドからのデータ" });
 
-worker.onmessage = function(event) {
-  console.log('Web Workerからの返信:', event.data);
+worker.onmessage = function (event) {
+  console.log("Web Workerからの返信:", event.data);
 };
 ```
 
 ```javascript
 // worker.js
-self.onmessage = function(event) {
-  console.log('メインスレッドからのデータ:', event.data);
-  self.postMessage('Web Workerからの返信');
+self.onmessage = function (event) {
+  console.log("メインスレッドからのデータ:", event.data);
+  self.postMessage("Web Workerからの返信");
 };
 ```
 
@@ -215,14 +218,15 @@ stateDiagram-v2
 Service Workerを使用するには、まず登録する必要があります。以下は、Service Workerの登録例です。
 
 ```javascript
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(function(registration) {
-        console.log('Service Worker登録成功:', registration);
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then(function (registration) {
+        console.log("Service Worker登録成功:", registration);
       })
-      .catch(function(error) {
-        console.log('Service Worker登録失敗:', error);
+      .catch(function (error) {
+        console.log("Service Worker登録失敗:", error);
       });
   });
 }
@@ -235,15 +239,14 @@ if ('serviceWorker' in navigator) {
 Service Workerは、`fetch`イベントを使用して、ネットワークリクエストをインターセプトし、処理することができます。以下は、Service Worker内でリクエストをインターセプトし、キャッシュから応答を返す例です。
 
 ```javascript
-self.addEventListener('fetch', function(event) {
+self.addEventListener("fetch", function (event) {
   event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      })
+    caches.match(event.request).then(function (response) {
+      if (response) {
+        return response;
+      }
+      return fetch(event.request);
+    }),
   );
 });
 ```
@@ -258,32 +261,35 @@ self.addEventListener('fetch', function(event) {
 
 Main thread、Web Worker、Service Workerは、それぞれ異なる特徴と役割を持っています。以下は、それぞれの特徴と違いをまとめた表です。
 
-| 特徴 | Main thread | Web Worker | Service Worker |
-|---|---|---|---|
-| 実行環境 | ブラウザのメインスレッド | バックグラウンドスレッド | バックグラウンドスレッド |
-| 実行タイミング | ページの読み込み時 | メインスレッドからの呼び出し時 | イベント駆動型 |
-| DOMアクセス | 可能 | 不可能 | 制限付きで可能 |
-| 通信方法 | - | メッセージング | メッセージング |
-| ライフサイクル | ページの読み込みから終了まで | メインスレッドからの呼び出しから終了まで | インストール、アクティベーション、アイドル、終了 |
-| 用途 | UIの更新、イベント処理、一般的なJavaScript処理 | 重い処理の実行、バックグラウンドタスク | オフラインサポート、プッシュ通知、バックグラウンド同期 |
+| 特徴           | Main thread                                    | Web Worker                               | Service Worker                                         |
+| -------------- | ---------------------------------------------- | ---------------------------------------- | ------------------------------------------------------ |
+| 実行環境       | ブラウザのメインスレッド                       | バックグラウンドスレッド                 | バックグラウンドスレッド                               |
+| 実行タイミング | ページの読み込み時                             | メインスレッドからの呼び出し時           | イベント駆動型                                         |
+| DOMアクセス    | 可能                                           | 不可能                                   | 制限付きで可能                                         |
+| 通信方法       | -                                              | メッセージング                           | メッセージング                                         |
+| ライフサイクル | ページの読み込みから終了まで                   | メインスレッドからの呼び出しから終了まで | インストール、アクティベーション、アイドル、終了       |
+| 用途           | UIの更新、イベント処理、一般的なJavaScript処理 | 重い処理の実行、バックグラウンドタスク   | オフラインサポート、プッシュ通知、バックグラウンド同期 |
 
 ### 適切な使用ケース
 
 1. Main thread
-  - ユーザーインターフェースの更新
-  - イベント処理（クリック、キー入力など）
-  - 一般的なJavaScriptの処理
+
+- ユーザーインターフェースの更新
+- イベント処理（クリック、キー入力など）
+- 一般的なJavaScriptの処理
 
 2. Web Worker
-  - 重い計算処理
-  - 大量のデータ処理
-  - 長時間かかる非同期タスク
+
+- 重い計算処理
+- 大量のデータ処理
+- 長時間かかる非同期タスク
 
 3. Service Worker
-  - オフラインサポート
-  - プッシュ通知
-  - バックグラウンド同期
-  - ネットワークリクエストのインターセプトと処理
+
+- オフラインサポート
+- プッシュ通知
+- バックグラウンド同期
+- ネットワークリクエストのインターセプトと処理
 
 以下は、Main thread、Web Worker、Service Workerの適切な使用ケースを表すMermaidのダイアグラムです。
 
@@ -319,28 +325,28 @@ Main thread、Web Worker、Service Workerを適切に使い分けることで、
 
 ```html
 <!-- index.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>Web Worker Example</title>
-</head>
-<body>
-  <button id="startButton">重い処理を開始</button>
-  <script src="main.js"></script>
-</body>
+  <head>
+    <title>Web Worker Example</title>
+  </head>
+  <body>
+    <button id="startButton">重い処理を開始</button>
+    <script src="main.js"></script>
+  </body>
 </html>
 ```
 
 ```javascript
 // main.js
-const startButton = document.getElementById('startButton');
+const startButton = document.getElementById("startButton");
 
-startButton.addEventListener('click', function() {
-  const worker = new Worker('worker.js');
+startButton.addEventListener("click", function () {
+  const worker = new Worker("worker.js");
 
-  worker.postMessage('重い処理を開始');
+  worker.postMessage("重い処理を開始");
 
-  worker.onmessage = function(event) {
+  worker.onmessage = function (event) {
     console.log(event.data);
   };
 });
@@ -348,7 +354,7 @@ startButton.addEventListener('click', function() {
 
 ```javascript
 // worker.js
-self.onmessage = function(event) {
+self.onmessage = function (event) {
   console.log(event.data);
 
   // 重い処理の例
@@ -357,7 +363,7 @@ self.onmessage = function(event) {
     result += i;
   }
 
-  self.postMessage('重い処理が完了しました。結果: ' + result);
+  self.postMessage("重い処理が完了しました。結果: " + result);
 };
 ```
 
@@ -367,28 +373,29 @@ self.onmessage = function(event) {
 
 ```html
 <!-- index.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>Service Worker Example</title>
-</head>
-<body>
-  <h1>Service Worker Example</h1>
-  <script src="main.js"></script>
-</body>
+  <head>
+    <title>Service Worker Example</title>
+  </head>
+  <body>
+    <h1>Service Worker Example</h1>
+    <script src="main.js"></script>
+  </body>
 </html>
 ```
 
 ```javascript
 // main.js
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(function(registration) {
-        console.log('Service Worker登録成功:', registration);
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then(function (registration) {
+        console.log("Service Worker登録成功:", registration);
       })
-      .catch(function(error) {
-        console.log('Service Worker登録失敗:', error);
+      .catch(function (error) {
+        console.log("Service Worker登録失敗:", error);
       });
   });
 }
@@ -396,34 +403,32 @@ if ('serviceWorker' in navigator) {
 
 ```javascript
 // service-worker.js
-const CACHE_NAME = 'my-site-cache-v1';
+const CACHE_NAME = "my-site-cache-v1";
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/main.js',
-  '/styles.css',
-  '/image.jpg'
+  "/",
+  "/index.html",
+  "/main.js",
+  "/styles.css",
+  "/image.jpg",
 ];
 
-self.addEventListener('install', function(event) {
+self.addEventListener("install", function (event) {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function(cache) {
-        console.log('キャッシュにアセットを追加します');
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then(function (cache) {
+      console.log("キャッシュにアセットを追加します");
+      return cache.addAll(urlsToCache);
+    }),
   );
 });
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener("fetch", function (event) {
   event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      })
+    caches.match(event.request).then(function (response) {
+      if (response) {
+        return response;
+      }
+      return fetch(event.request);
+    }),
   );
 });
 ```
@@ -449,21 +454,25 @@ Main thread、Web Worker、Service Workerは、それぞれがWebアプリケー
 ### パフォーマンスと機能向上のためのスレッドの活用方法
 
 1. Main threadの最適化
-  - 重い処理はWeb Workerに移行し、メインスレッドのブロッキングを最小限に抑えます。
-  - 効率的なDOMの操作やイベント処理を行い、レンダリングのパフォーマンスを向上させます。
+
+- 重い処理はWeb Workerに移行し、メインスレッドのブロッキングを最小限に抑えます。
+- 効率的なDOMの操作やイベント処理を行い、レンダリングのパフォーマンスを向上させます。
 
 2. Web Workerの活用
-  - 複雑な計算や大量のデータ処理など、時間のかかるタスクをWeb Workerで実行します。
-  - メインスレッドとWeb Worker間でのデータ通信を最適化し、オーバーヘッドを最小限に抑えます。
+
+- 複雑な計算や大量のデータ処理など、時間のかかるタスクをWeb Workerで実行します。
+- メインスレッドとWeb Worker間でのデータ通信を最適化し、オーバーヘッドを最小限に抑えます。
 
 3. Service Workerの導入
-  - オフラインサポートを提供し、ネットワーク接続が不安定な環境でもアプリケーションを利用可能にします。
-  - プッシュ通知を活用し、ユーザーにタイムリーな情報を提供します。
-  - バックグラウンド同期を使用して、オフライン時のデータ変更をスムーズに同期します。
+
+- オフラインサポートを提供し、ネットワーク接続が不安定な環境でもアプリケーションを利用可能にします。
+- プッシュ通知を活用し、ユーザーにタイムリーな情報を提供します。
+- バックグラウンド同期を使用して、オフライン時のデータ変更をスムーズに同期します。
 
 4. 適切なスレッドの選択
-  - 各スレッドの特徴と制限を理解し、タスクに応じて適切なスレッドを選択します。
-  - メインスレッド、Web Worker、Service Workerを組み合わせ、アプリケーション全体のパフォーマンスを最適化します。
+
+- 各スレッドの特徴と制限を理解し、タスクに応じて適切なスレッドを選択します。
+- メインスレッド、Web Worker、Service Workerを組み合わせ、アプリケーション全体のパフォーマンスを最適化します。
 
 以下は、スレッドの活用によるWebアプリケーションの改善点をまとめた図です。
 
@@ -493,6 +502,7 @@ Main thread、Web Worker、Service Workerを適切に活用することで、Web
 今後も、これらの技術の進化に注目し、新しい可能性を探ることで、より高度なWebアプリケーションの開発が可能になるでしょう。
 
 ## 8. 参考資料
-  - [Main thread](https://developer.mozilla.org/ja/docs/Glossary/Main_thread)
-  - [Web Workers](https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API)
-  - [Service Worker](https://developer.mozilla.org/ja/docs/Web/API/Service_Worker_API)
+
+- [Main thread](https://developer.mozilla.org/ja/docs/Glossary/Main_thread)
+- [Web Workers](https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API)
+- [Service Worker](https://developer.mozilla.org/ja/docs/Web/API/Service_Worker_API)
