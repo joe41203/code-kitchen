@@ -16,7 +16,7 @@ const articles = (await getCollection("articles")).sort(
         <div class="max-w-sm overflow-hidden rounded shadow-lg">
           <div>
             <a href={`/articles/${article.slug}/`}>
-              <Image src={article.data.cover} alt={article.data.description} />
+              <Image src={article.data.cover} alt={article.data.description} loading={"lazy"}/>
               <div class="px-6 py-4">
                 <h4 class="mb-2 text-xl font-bold">{article.data.title}</h4>
                 <p class="date">
