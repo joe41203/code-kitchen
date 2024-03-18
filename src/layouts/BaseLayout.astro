@@ -3,6 +3,7 @@ import BaseHead from "@components/BaseHead.astro";
 import Footer from "@components/Footer.astro";
 import GTM from "@components/GTM.astro";
 import Header from "@components/Header.astro";
+import NoFlash from "@components/NoFlash.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
 // キャッシュ設定の定義
@@ -24,6 +25,7 @@ if (currentPage.startsWith("/_astro/")) {
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body class="dark:bg-black dark:text-white">
+    <NoFlash/>
     <GTM />
     <Header />
     <main class="p-5">

@@ -60,7 +60,7 @@ resource "cloudflare_page_rule" "cache" {
 resource "cloudflare_zone_settings_override" "brotli" {
   zone_id = cloudflare_zone.main.id
   settings {
-    brotli = "on"
+    brotli = "off"
   }
 }
 
@@ -75,7 +75,7 @@ resource "cloudflare_zone_settings_override" "http3" {
 resource "cloudflare_zone_settings_override" "rocket_loader" {
   zone_id = cloudflare_zone.main.id
   settings {
-    rocket_loader = "on"
+    rocket_loader = "off"
   }
 }
 
