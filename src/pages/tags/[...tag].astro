@@ -29,9 +29,9 @@ interface Props {
 
 const { tag, article } = Astro.props;
 
-const articles = (await getCollection("articles")).filter((entry) =>
-  tag ? entry.data.tags?.includes(tag) : true,
-);
+const articles = (await getCollection("articles"))
+  .filter((entry) => (tag ? entry.data.tags?.includes(tag) : true))
+  .sort((a, b) => b.data.index - a.data.index);
 
 const content = article ? (await article.render()).Content : undefined;
 ---
