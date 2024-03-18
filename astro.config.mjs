@@ -2,6 +2,7 @@ import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import compress from "astro-compress";
 import robotsTxt from "astro-robots-txt";
 import webmanifest from "astro-webmanifest";
 import { defineConfig } from "astro/config";
@@ -9,7 +10,6 @@ import serviceWorker from "astrojs-service-worker";
 import iconData from "./public/icons/icons.json";
 import { remarkMermaid } from "./remark-mermaid.mjs";
 
-import compress from "astro-compress";
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,13 +27,7 @@ export default defineConfig({
     serviceWorker({
       workbox: {
         inlineWorkboxRuntime: true,
-        globPatterns: ['**/*.{js,css,html,svg}'],
-        cacheableResponseOptions: {
-          statuses: [0, 200],
-          headers: {
-            "Cache-Control": "max-age=1800",
-          },
-        },
+        globPatterns: ['**/*.{js,css,html,png,jpg,jpeg,gif,svg}'],
         skipWaiting: true,
         clientsClaim: true,
       },
@@ -48,7 +42,13 @@ export default defineConfig({
       display: "standalone",
       icons: iconData["icons"],
     }),
-    compress(),
+    compress({
+      CSS: true,
+			HTML: true,
+			Image: true,
+			JavaScript: false,
+			SVG: false,
+    })
   ],
   base: "/",
   trailingSlash: "ignore",
