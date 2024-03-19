@@ -13,6 +13,10 @@ import { remarkMermaid } from "./remark-mermaid.mjs";
 // https://astro.build/config
 export default defineConfig({
   site: "https://code-kitchen.tech",
+  prefetch: {
+    defaultStrategy: 'hover',
+    prefetchAll: true
+  },
   integrations: [
     mdx(),
     sitemap(),
