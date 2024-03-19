@@ -10,14 +10,24 @@ const articles = (await getCollection("articles")).sort(
 );
 ---
 
-<BaseLayout title={`記事一覧 | ${SITE_TITLE}`} description={`技術に関する記事を幅広く発信しています。気になるトピックを見つけて、ぜひ記事をチェックしてください | ${SITE_TITLE}`}>
+<BaseLayout
+  title={`記事一覧 | ${SITE_TITLE}`}
+  description={`技術に関する記事を幅広く発信しています。気になるトピックを見つけて、ぜひ記事をチェックしてください | ${SITE_TITLE}`}
+>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
     {
       articles.map((article) => (
         <div class="max-w-sm overflow-hidden rounded shadow-lg">
           <div>
             <a href={`/articles/${article.slug}/`}>
-              <Image src={article.data.cover} alt={article.data.description} loading={"lazy"}/>
+              <div class="aspect-w-16 aspect-h-9">
+                <Image
+                  src={article.data.cover}
+                  alt={article.data.description}
+                  loading={"lazy"}
+                  class="object-cover transition duration-500 ease-in-out group-hover:opacity-75"
+                />
+              </div>
               <div class="px-6 py-4">
                 <h4 class="mb-2 text-xl font-bold">{article.data.title}</h4>
                 <p class="date">
