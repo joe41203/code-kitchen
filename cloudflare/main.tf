@@ -52,8 +52,9 @@ resource "cloudflare_page_rule" "cache" {
   zone_id = cloudflare_zone.main.id
   target  = "${var.zone}/*"
   actions {
-    cache_level    = "cache_everything"
-    edge_cache_ttl = 2419200
+    cache_level       = "cache_everything"
+    edge_cache_ttl    = 2419200
+    browser_cache_ttl = 2419200
   }
 }
 

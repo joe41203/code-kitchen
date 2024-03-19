@@ -14,18 +14,6 @@ type Props = CollectionEntry<"articles">["data"];
 
 const { title, description, cover, tags } = Astro.props;
 
-// キャッシュ設定の定義
-const cacheControl = {
-  _astro: "public, max-age=31536000, immutable",
-};
-
-const currentPage = Astro.url.pathname;
-
-// キャッシュヘッダーの設定
-if (currentPage.startsWith("/_astro/")) {
-  Astro.response.headers.set("Cache-Control", cacheControl._astro);
-}
-
 const allArticles = await getCollection("articles");
 
 const latestArticlesWithCommonTags = allArticles
