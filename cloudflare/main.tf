@@ -54,7 +54,7 @@ resource "cloudflare_page_rule" "cache" {
   actions {
     cache_level       = "cache_everything"
     edge_cache_ttl    = 2419200
-    browser_cache_ttl = 2419200
+    browser_cache_ttl = 3600
   }
 }
 
