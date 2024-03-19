@@ -1,4 +1,5 @@
 ---
+import { SITE_TITLE } from "@consts";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import reportData from "public/insights/data.json";
 
@@ -19,7 +20,7 @@ reportData.forEach((data: ReportData) => {
 });
 ---
 
-<BaseLayout>
+<BaseLayout title={`SpeedInsightsの結果ページ | ${SITE_TITLE}`} description={`SpeedInsightsの結果ページです。 | ${SITE_TITLE}`}>
   <h1 class="mb-6 text-3xl font-bold">PageSpeed Inights Report</h1>
   <div class="overflow-x-auto">
     <table class="w-full border-collapse text-left">

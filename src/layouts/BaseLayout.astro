@@ -4,14 +4,15 @@ import Footer from "@components/Footer.astro";
 import GTM from "@components/GTM.astro";
 import Header from "@components/Header.astro";
 import NoFlash from "@components/NoFlash.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "@consts";
+
+const { title, description } = Astro.props;
 
 ---
 
 <!doctype html>
 <html lang="ja">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title={title} description={description} />
   </head>
   <body class="dark:bg-black dark:text-white">
     <NoFlash/>

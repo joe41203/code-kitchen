@@ -1,5 +1,6 @@
 ---
 import FormattedDate from "@components/FormattedDate.astro";
+import { SITE_TITLE } from "@consts";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import { getCollection, type CollectionEntry } from "astro:content";
@@ -36,7 +37,7 @@ const articles = (await getCollection("articles"))
 const content = article ? (await article.render()).Content : undefined;
 ---
 
-<BaseLayout>
+<BaseLayout title={`${tag} の記事一覧 | ${SITE_TITLE}`} description={`${tag}に関連する記事の一覧ページです。${tag}に関する幅広い情報を網羅しています。気になるトピックを見つけて、ぜひ記事をチェックしてください | ${SITE_TITLE}`}>
   {content && <div>{content}</div>}
   {
     !content && (

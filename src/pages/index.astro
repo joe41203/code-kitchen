@@ -1,5 +1,6 @@
 ---
 import FormattedDate from "@components/FormattedDate.astro";
+import { SITE_TITLE } from "@consts";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
@@ -9,7 +10,7 @@ const articles = (await getCollection("articles")).sort(
 );
 ---
 
-<BaseLayout>
+<BaseLayout title={`記事一覧 | ${SITE_TITLE}`} description={`技術に関する記事を幅広く発信しています。気になるトピックを見つけて、ぜひ記事をチェックしてください | ${SITE_TITLE}`}>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
     {
       articles.map((article) => (
