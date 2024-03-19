@@ -4,9 +4,6 @@ DIRECTORY := .
 # 圧縮品質を指定 (0-100)
 QUALITY := 50
 
-# 圧縮対象の拡張子を指定
-EXTENSIONS := .png .webp .jpg .jpeg
-
 # 圧縮コマンド
 COMPRESS_CMD_PNG := optipng -o7 -strip all -out {}
 COMPRESS_CMD_WEBP := cwebp -q $(QUALITY) {} -o {}

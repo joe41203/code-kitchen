@@ -2,7 +2,6 @@ import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import compress from "astro-compress";
 import robotsTxt from "astro-robots-txt";
 import webmanifest from "astro-webmanifest";
 import { defineConfig } from "astro/config";
@@ -42,13 +41,6 @@ export default defineConfig({
       display: "standalone",
       icons: iconData["icons"],
     }),
-    compress({
-      CSS: true,
-			HTML: true,
-			Image: true,
-			JavaScript: false,
-			SVG: false,
-    })
   ],
   base: "/",
   trailingSlash: "ignore",
