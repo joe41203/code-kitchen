@@ -2,7 +2,7 @@
 const { url, title } = Astro.props;
 ---
 
-<div class="flex justify-center gap-10 py-5">
+<div class="flex justify-center gap-20 py-10">
   <a
     href={`https://twitter.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`}
     target="_blank"
