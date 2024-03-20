@@ -95,16 +95,25 @@ const { url, title } = Astro.props;
 </style>
 
 <script>
-  const copyLinkButton = document.querySelector(".copy-link-button");
-  const tooltip = copyLinkButton.querySelector(".tooltip");
+  const copyLinkButton = document.querySelector(
+    ".copy-link-button",
+  ) as HTMLElement;
 
-  copyLinkButton.addEventListener("click", () => {
-    const url = copyLinkButton.dataset.url;
-    navigator.clipboard.writeText(url).then(() => {
-      tooltip.textContent = "Copied!";
-      setTimeout(() => {
-        tooltip.textContent = "Copy";
-      }, 2000);
+  if (copyLinkButton) {
+    const tooltip = copyLinkButton.querySelector(".tooltip");
+
+    copyLinkButton.addEventListener("click", () => {
+      const url = copyLinkButton.dataset.url;
+      if (url) {
+        navigator.clipboard.writeText(url).then(() => {
+          if (tooltip) {
+            tooltip.textContent = "Copied!";
+            setTimeout(() => {
+              tooltip.textContent = "Copy";
+            }, 2000);
+          }
+        });
+      }
     });
-  });
+  }
 </script>
