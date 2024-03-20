@@ -12,6 +12,8 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, cover = `/images/profile.webp` } = Astro.props;
+
+import { SEO } from "astro-seo";
 ---
 
 <!-- Google Tag Manager -->
@@ -32,6 +34,32 @@ const { title, description, cover = `/images/profile.webp` } = Astro.props;
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href=`/favicon.ico` />
 <meta name="generator" content={Astro.generator} />
+
+<SEO
+  title={title}
+  description={description}
+  openGraph={{
+    basic: {
+      title: title,
+      type: "A type.",
+      image: cover,
+    },
+  }}
+  twitter={{
+    creator: "@leo40510",
+  }}
+  extend={{
+    link: [{ rel: "icon", href: "/favicon.ico" }],
+    meta: [
+      {
+        name: "twitter:image",
+        content: cover,
+      },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+    ],
+  }}
+/>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
