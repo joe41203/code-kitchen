@@ -7,7 +7,6 @@ tags: [PWA]
 index: 23
 ---
 
-
 ## 1. はじめに
 
 近年、Webアプリケーションはますます複雑になり、ユーザーはネイティブアプリに匹敵する体験を求めるようになってきました。そこで注目されているのが、Service Workerです。Service Workerを使うことで、オフライン環境でもWebアプリを利用可能にしたり、パフォーマンスを向上させたりすることができます。
@@ -39,14 +38,15 @@ D --> E[終了]
 Service Workerを使うには、まず以下のようにService Workerを登録する必要があります。
 
 ```javascript
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(registration => {
-        console.log('Service Worker registered:', registration);
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then((registration) => {
+        console.log("Service Worker registered:", registration);
       })
-      .catch(error => {
-        console.error('Service Worker registration failed:', error);
+      .catch((error) => {
+        console.error("Service Worker registration failed:", error);
       });
   });
 }
@@ -55,15 +55,14 @@ if ('serviceWorker' in navigator) {
 登録されたService Workerは、`fetch`イベントを使ってネットワークリクエストを傍受し、キャッシュされたリソースを返すことができます。
 
 ```javascript
-self.addEventListener('fetch', event => {
+self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      })
+    caches.match(event.request).then((response) => {
+      if (response) {
+        return response;
+      }
+      return fetch(event.request);
+    }),
   );
 });
 ```
@@ -88,16 +87,11 @@ Service Workerは、以下のような主なタスクを実行できます。
 Service Workerをインストールするには、以下のようなコードを使います。
 
 ```javascript
-self.addEventListener('install', event => {
+self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open('my-cache').then(cache => {
-      return cache.addAll([
-        '/',
-        '/styles.css',
-        '/script.js',
-        '/image.png'
-      ]);
-    })
+    caches.open("my-cache").then((cache) => {
+      return cache.addAll(["/", "/styles.css", "/script.js", "/image.png"]);
+    }),
   );
 });
 ```
@@ -107,17 +101,19 @@ self.addEventListener('install', event => {
 Service Workerを有効化するには、以下のようなコードを使います。
 
 ```javascript
-self.addEventListener('activate', event => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
+    caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.filter(cacheName => {
-          return cacheName !== 'my-cache';
-        }).map(cacheName => {
-          return caches.delete(cacheName);
-        })
+        cacheNames
+          .filter((cacheName) => {
+            return cacheName !== "my-cache";
+          })
+          .map((cacheName) => {
+            return caches.delete(cacheName);
+          }),
       );
-    })
+    }),
   );
 });
 ```
@@ -129,11 +125,11 @@ self.addEventListener('activate', event => {
 Service Workerでは、`cache`APIを使ってキャッシュを管理します。静的リソースをキャッシュするには、以下のようなコードを使います。
 
 ```javascript
-self.addEventListener('fetch', event => {
+self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then(response => {
+    caches.match(event.request).then((response) => {
       return response || fetch(event.request);
-    })
+    }),
   );
 });
 ```
@@ -143,14 +139,14 @@ self.addEventListener('fetch', event => {
 動的リソースをキャッシュするには、以下のようなコードを使います。
 
 ```javascript
-self.addEventListener('fetch', event => {
+self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.open('my-cache').then(cache => {
-      return fetch(event.request).then(response => {
+    caches.open("my-cache").then((cache) => {
+      return fetch(event.request).then((response) => {
         cache.put(event.request, response.clone());
         return response;
       });
-    })
+    }),
   );
 });
 ```
@@ -162,18 +158,23 @@ self.addEventListener('fetch', event => {
 Service Workerを使って、オフライン対応を実装するには、以下のようなコードを使います。
 
 ```javascript
-self.addEventListener('fetch', event => {
+self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request).then(response => {
-        return caches.open('my-cache').then(cache => {
-          cache.put(event.request, response.clone());
-          return response;
-        });
-      }).catch(() => {
-        return caches.match('/offline.html');
-      });
-    })
+    caches.match(event.request).then((response) => {
+      return (
+        response ||
+        fetch(event.request)
+          .then((response) => {
+            return caches.open("my-cache").then((cache) => {
+              cache.put(event.request, response.clone());
+              return response;
+            });
+          })
+          .catch(() => {
+            return caches.match("/offline.html");
+          })
+      );
+    }),
   );
 });
 ```
@@ -185,11 +186,12 @@ self.addEventListener('fetch', event => {
 Service Workerを使って、バックグラウンド同期を実装するには、以下のようなコードを使います。
 
 ```javascript
-self.addEventListener('sync', event => {
-  if (event.tag === 'my-sync') {
-    event.waitUntil(
+self.addEventListener("sync", (event) => {
+  if (event.tag === "my-sync") {
+    event
+      .waitUntil
       // バックグラウンド同期の処理
-    );
+      ();
   }
 });
 ```
@@ -197,7 +199,6 @@ self.addEventListener('sync', event => {
 ここでは、`sync`イベントを使ってバックグラウンド同期を実装しています。オフライン時に行われた変更は、オンラインに戻った際に同期されます。
 
 以上が、Service Workerの基本的な使い方です。次の章では、Service Workerを使う上での注意点について説明します。
-
 
 ## 4. Service Workerの注意点
 
@@ -208,30 +209,27 @@ Service Workerを使う上では、いくつかの注意点があります。こ
 Service Workerは、一度インストールされると、ページを再読み込みしても自動的に更新されません。Service Workerを更新するには、以下のようなコードを使います。
 
 ```javascript
-self.addEventListener('install', event => {
+self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open('my-cache-v2').then(cache => {
-      return cache.addAll([
-        '/',
-        '/styles.css',
-        '/script.js',
-        '/image.png'
-      ]);
-    })
+    caches.open("my-cache-v2").then((cache) => {
+      return cache.addAll(["/", "/styles.css", "/script.js", "/image.png"]);
+    }),
   );
 });
 
-self.addEventListener('activate', event => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
+    caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.filter(cacheName => {
-          return cacheName !== 'my-cache-v2';
-        }).map(cacheName => {
-          return caches.delete(cacheName);
-        })
+        cacheNames
+          .filter((cacheName) => {
+            return cacheName !== "my-cache-v2";
+          })
+          .map((cacheName) => {
+            return caches.delete(cacheName);
+          }),
       );
-    })
+    }),
   );
 });
 ```
@@ -286,10 +284,10 @@ PWAは、Service Workerを活用することで、Webアプリの可能性を大
 Service Workerを使って、プッシュ通知を実装するには、以下のようなコードを使います。
 
 ```javascript
-self.addEventListener('push', event => {
-  const title = 'プッシュ通知';
+self.addEventListener("push", (event) => {
+  const title = "プッシュ通知";
   const options = {
-    body: event.data.text()
+    body: event.data.text(),
   };
   event.waitUntil(self.registration.showNotification(title, options));
 });
@@ -302,14 +300,16 @@ self.addEventListener('push', event => {
 Service Workerを使って、バックグラウンドデータ同期を実装するには、以下のようなコードを使います。
 
 ```javascript
-self.addEventListener('sync', event => {
-  if (event.tag === 'data-sync') {
+self.addEventListener("sync", (event) => {
+  if (event.tag === "data-sync") {
     event.waitUntil(
-      fetch('/api/sync-data').then(response => {
-        return response.json();
-      }).then(data => {
-        // データの処理
-      })
+      fetch("/api/sync-data")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          // データの処理
+        }),
     );
   }
 });

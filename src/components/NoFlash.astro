@@ -4,17 +4,17 @@
 
 <script is:inline>
   // localStorageにデータがあるときはそちらを適用
-  if (typeof window.localStorage.getItem('theme') === 'string') {
-    const currentTheme = window.localStorage.getItem('theme');
-    if (currentTheme === 'dark') {
-      document.documentElement.classList.add('dark');
+  if (typeof window.localStorage.getItem("theme") === "string") {
+    const currentTheme = window.localStorage.getItem("theme");
+    if (currentTheme === "dark") {
+      document.documentElement.classList.add("dark");
     }
   }
   // localStorageになにもない時はmatchMediaで判定
   if (
-    typeof window.localStorage.getItem('theme') !== 'string' &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches
+    typeof window.localStorage.getItem("theme") !== "string" &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
   ) {
-    document.documentElement.classList.add('dark');
+    document.documentElement.classList.add("dark");
   }
 </script>

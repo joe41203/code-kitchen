@@ -6,7 +6,6 @@ import Header from "@components/Header.astro";
 import NoFlash from "@components/NoFlash.astro";
 
 const { title, description } = Astro.props;
-
 ---
 
 <!doctype html>
@@ -15,7 +14,7 @@ const { title, description } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
   <body class="dark:bg-black dark:text-white">
-    <NoFlash/>
+    <NoFlash />
     <GTM />
     <Header />
     <main class="p-5">
