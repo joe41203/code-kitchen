@@ -17,13 +17,18 @@ const { title, description, cover, tags } = Astro.props;
 
 const allArticles = await getCollection("articles");
 
-const latestArticlesWithCommonTags = allArticles
-  .filter((article) => {
-    if (!article.data.tags || !tags) return false;
-    return article.data.tags.some((tag: string) => tags.includes(tag));
-  })
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, 2);
+const articlesWithCommonTags = allArticles.filter((article) => {
+  if (!article.data.tags || !tags) return false;
+  return article.data.tags.some((tag: string) => tags.includes(tag));
+});
+
+const randomArticlesWithCommonTags = [];
+for (let i = 0; i < 2; i++) {
+  if (articlesWithCommonTags.length === 0) break;
+  const randomIndex = Math.floor(Math.random() * articlesWithCommonTags.length);
+  randomArticlesWithCommonTags.push(articlesWithCommonTags[randomIndex]);
+  articlesWithCommonTags.splice(randomIndex, 1);
+}
 
 const currentURL = Astro.request.url;
 ---
@@ -48,7 +53,7 @@ const currentURL = Astro.request.url;
         <ShareButtons url={currentURL} title={title} />
         <div class="flex flex-col gap-5 py-5 md:flex-row md:justify-between">
           {
-            latestArticlesWithCommonTags.map((article) => (
+            randomArticlesWithCommonTags.map((article) => (
               <div class="max-w-sm overflow-hidden rounded shadow-lg">
                 <a href={`/articles/${article.slug}/`}>
                   <div>
