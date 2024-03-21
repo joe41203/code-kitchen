@@ -85,12 +85,11 @@ Trafilaturaは、ウェブデータの収集と処理に関わる様々なシナ
 
 2. 自然言語処理
   - 抽出されたテキストデータを用いた要約、キーワード抽出、感情分析などのNLPタスク
-  - ニュース記事の分類や clustering
+  - ニュース記事の分類
   - トピックモデリングやトレンド分析
 
 3. データ前処理
   - 機械学習やデータマイニングのためのクリーンなテキストデータの準備
-  - 大規模なウェブコーパスの構築
   - テキストデータのクリーニングと正規化
 
 4. アーカイブ
@@ -112,8 +111,6 @@ Trafilaturaを使用するには、まず以下のようにpipを使ってライ
 pip install trafilatura
 ```
 
-インストールが完了したら、Pythonスクリプトの中でTrafilaturaをインポートして使用できます。
-
 ### 基本的な使い方
 
 Trafilaturaの基本的な使用法は、`fetch_url`関数と`extract`関数の2つのステップからなります。`fetch_url`関数でウェブページのHTMLをダウンロードし、`extract`関数でメインコンテンツを抽出します。
@@ -131,8 +128,6 @@ result = extract(downloaded)
 
 print(result)
 ```
-
-この例では、`url`変数に抽出対象のURLを指定しています。`fetch_url`関数でHTMLをダウンロードし、その結果を`downloaded`変数に格納します。次に、`extract`関数を使って`downloaded`からメインコンテンツを抽出し、`result`変数に格納します。最後に、`print`関数で抽出結果を表示しています。
 
 #### 複数のURLからの抽出
 
@@ -153,8 +148,6 @@ for url in urls:
     print(result)
     print('---')
 ```
-
-この例では、`urls`リストに抽出対象のURLを複数指定しています。`for`ループを使って各URLに対して`fetch_url`と`extract`を呼び出し、結果を表示しています。各結果の間には`---`を表示して区切りを入れています。
 
 ### 出力フォーマットの指定
 
@@ -197,96 +190,9 @@ print(result)
 
 `extract`関数の`extraction_rules`パラメータに`custom_rules`を渡すことで、カスタムルールを適用します。抽出結果には、指定した属性が含まれるようになります。
 
-以上が、Trafilaturaの実装に関する基本的な説明です。次のセクションでは、Trafilaturaを他のライブラリと組み合わせて使う方法について見ていきます。
-
 ## Trafilaturaの応用
 
 Trafilaturaは、他のPythonライブラリと連携することで、さらに強力なウェブスクレイピングと自然言語処理のワークフローを実現できます。ここでは、Trafilaturaと一緒に使われることの多いライブラリをいくつか紹介します。
-
-### BeautifulSoupとの連携
-
-BeautifulSoupは、Pythonで広く使われているHTMLパーサーです。TrafilaturaとBeautifulSoupを組み合わせることで、より細かいHTML解析が可能になります。
-
-```python
-from bs4 import BeautifulSoup
-from trafilatura import extract
-
-html = '''
-<html>
-<body>
-<article>
-<h1>記事のタイトル</h1>
-<p>記事の本文です。</p>
-</article>
-<footer>Copyright 2021</footer>
-</body>
-</html>
-'''
-
-soup = BeautifulSoup(html, 'lxml')
-article = soup.find('article')
-extracted = ## まとめ
-
-本記事では、PythonのウェブスクレイピングライブラリであるTrafilaturaについて詳しく解説しました。Trafilaturaは、ウェブページからメインコンテンツを抽出するためのシンプルかつ強力なツールです。
-
-Trafilaturaの主な利点は以下の通りです:
-
-1. 言語に依存しない汎用的な本文抽出が可能
-2. ボイラープレートの除去により、ノイズの少ないクリーンなテキストが得られる
-3. スタンドアロンで動作し、外部依存が少ない
-4. カスタムルールを定義することで、抽出ロジックを柔軟に調整できる
-5. 様々な出力フォーマットに対応
-
-一方で、Trafilaturaにはいくつかの limitation もあります:
-
-1. 画像や動画などの非テキストコンテンツの抽出には対応していない
-2. 一部のウェブサイトでは、独自のレイアウトや構造のために本文抽出の精度が低下する可能性がある
-3. JavaScriptで動的に生成されるコンテンツの抽出が困難な場合がある
-
-しかし、これらの limitation を考慮しても、Trafilaturaはウェブスクレイピングと自然言語処理のタスクにおいて非常に有用なツールです。本文抽出の自動化により、データ収集と前処理の効率が大幅に向上します。
-
-また、Trafilaturaは他のPythonライブラリと連携することで、より高度なデータ処理ワークフローを実現できます。BeautifulSoupやspaCy、Pandasなどのライブラリと組み合わせることで、ウェブデータの収集から分析までを一貫して行えます。
-
-今後、ウェブ上のデータ量はさらに増大し、そのデータを活用する需要も高まっていくでしょう。Trafilaturaは、ウェブデータ処理の重要な一部として、データサイエンティストやエンジニアの手助けになるはずです。
-
-Trafilaturaの開発チームは、継続的な改善とアップデートに取り組んでいます。新しいウェブ技術への対応や、抽出精度の向上、パフォーマンスの最適化などが行われており、今後もTrafilaturaの機能拡張が期待されます。
-
-ウェブスクレイピングと自然言語処理の分野で働く人々にとって、Trafilaturaは必須のツールの一つになるでしょう。本記事が、Trafilaturaの理解と活用の一助となれば幸いです。
-
-## 参考資料
-
-- Trafilatura公式ドキュメント: [https://trafilatura.readthedocs.io/](https://trafilatura.readthedocs.io/)
-- Trafilatura GitHub リポジトリ: [https://github.com/adbar/trafilatura](https://github.com/adbar/trafilatura)
-- "Trafilatura: A Python library for extracting the main text of web pages" by Leandro von Werra: [https://medium.com/quantyca/trafilatura-a-python-library-for-extracting-the-main-text-of-web-pages-f0c21d672b6f](https://medium.com/quantyca/trafilatura-a-python-library-for-extracting-the-main-text-of-web-pages-f0c21d672b6f)
-- "Web Scraping with Python: Collecting More Data from the Modern Web" by Ryan Mitchell (第2版): [https://www.amazon.com/Web-Scraping-Python-Collecting-Modern/dp/1491985577](https://www.amazon.com/Web-Scraping-Python-Collecting-Modern/dp/1491985577)
-
-以上で、Trafilaturaに関する記事は終了です。ウェブスクレイピングと自然言語処理のプロジェクトにTrafilaturaを活用していただければと思います。
-
-# print(extracted)
-# ```
-
-# この例では、BeautifulSoupを使ってHTMLから`<article>`要素を抽出し、その内容をTrafilaturaに渡して本文を抽出しています。このように、BeautifulSoupでHTMLの特定の部分を選択し、Trafilaturaで本文抽出を行うことができます。
-
-# ### spaCyとの連携
-
-# spaCyは、自然言語処理のためのPythonライブラリです。TrafilaturaとspaCyを組み合わせることで、抽出したテキストに対して高度な言語処理を行えます。
-
-# ```python
-import spacy
-from trafilatura import fetch_url, extract
-
-url = 'https://example.com/article'
-downloaded = fetch_url(url)
-text = extract(downloaded)
-
-nlp = spacy.load('en_core_web_sm')
-doc = nlp(text)
-
-for ent in doc.ents:
-    print(ent.text, ent.label_)
-```
-
-この例では、Trafilaturaで抽出したテキストをspaCyに渡し、固有表現（Named Entity）を認識しています。`doc.ents`には、テキスト中の固有表現が含まれ、それぞれの表現とラベル（人名、地名、組織名など）が表示されます。
 
 ### Pandasとの連携
 
@@ -317,5 +223,33 @@ print(df)
 
 以上のように、Trafilaturaは他のライブラリと連携することで、ウェブスクレイピングと自然言語処理のワークフローをシームレスに統合できます。
 
+## まとめ
 
+本記事では、PythonのウェブスクレイピングライブラリであるTrafilaturaについて詳しく解説しました。Trafilaturaは、ウェブページからメインコンテンツを抽出するためのシンプルかつ強力なツールです。
 
+Trafilaturaの主な利点は以下の通りです:
+
+1. 言語に依存しない汎用的な本文抽出が可能
+2. ボイラープレートの除去により、ノイズの少ないクリーンなテキストが得られる
+3. スタンドアロンで動作し、外部依存が少ない
+4. カスタムルールを定義することで、抽出ロジックを柔軟に調整できる
+5. 様々な出力フォーマットに対応
+
+一方で、Trafilaturaにはいくつかの 制限 もあります:
+
+1. 画像や動画などの非テキストコンテンツの抽出には対応していない
+2. 一部のウェブサイトでは、独自のレイアウトや構造のために本文抽出の精度が低下する可能性がある
+3. JavaScriptで動的に生成されるコンテンツの抽出が困難な場合がある
+
+しかし、これらの 制限 を考慮しても、Trafilaturaはウェブスクレイピングと自然言語処理のタスクにおいて非常に有用なツールです。本文抽出の自動化により、データ収集と前処理の効率が大幅に向上します。
+
+今後、ウェブ上のデータ量はさらに増大し、そのデータを活用する需要も高まっていくでしょう。Trafilaturaは、ウェブデータ処理の重要な一部として、データサイエンティストやエンジニアの手助けになるはずです。
+
+ウェブスクレイピングと自然言語処理の分野で働く人々にとって、Trafilaturaは必須のツールの一つになるでしょう。本記事が、Trafilaturaの理解と活用の一助となれば幸いです。
+
+## 参考資料
+
+- Trafilatura公式ドキュメント: [https://trafilatura.readthedocs.io/](https://trafilatura.readthedocs.io/)
+- Trafilatura GitHub リポジトリ: [https://github.com/adbar/trafilatura](https://github.com/adbar/trafilatura)
+
+以上で、Trafilaturaに関する記事は終了です。ウェブスクレイピングと自然言語処理のプロジェクトにTrafilaturaを活用していただければと思います。
