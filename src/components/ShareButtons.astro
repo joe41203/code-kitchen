@@ -7,6 +7,7 @@ const { url, title } = Astro.props;
     href={`https://twitter.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`}
     target="_blank"
     rel="noopener noreferrer"
+    aria-label="Twitterでシェア"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -24,6 +25,7 @@ const { url, title } = Astro.props;
     href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`}
     target="_blank"
     rel="noopener noreferrer"
+    aria-label="Facebookでシェア"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -41,6 +43,7 @@ const { url, title } = Astro.props;
     href={`https://b.hatena.ne.jp/entry/${encodeURIComponent(url)}`}
     target="_blank"
     rel="noopener noreferrer"
+    aria-label="はてなブックマークでエントリー"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +57,7 @@ const { url, title } = Astro.props;
       ></path>
     </svg>
   </a>
-  <button class="copy-link-button" data-url={url}>
+  <button class="copy-link-button" data-url={url} aria-label="リンクをコピー">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
