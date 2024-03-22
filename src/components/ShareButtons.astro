@@ -7,7 +7,7 @@ const { url, title } = Astro.props;
     href={`https://twitter.com/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`}
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Twitterでシェア"
+    aria-label="Twitterでシェアする"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ const { url, title } = Astro.props;
     href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`}
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Facebookでシェア"
+    aria-label="Facebookでシェアする"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ const { url, title } = Astro.props;
     href={`https://b.hatena.ne.jp/entry/${encodeURIComponent(url)}`}
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="はてなブックマークでエントリー"
+    aria-label="はてなブックマークに登録する"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,11 @@ const { url, title } = Astro.props;
       ></path>
     </svg>
   </a>
-  <button class="copy-link-button" data-url={url} aria-label="リンクをコピー">
+  <button
+    class="copy-link-button"
+    data-url={url}
+    aria-label="リンクをコピーする"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -69,7 +73,7 @@ const { url, title } = Astro.props;
         d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
       ></path>
     </svg>
-    <span class="tooltip">Copy</span>
+    <span class="tooltip">コピー</span>
   </button>
 </div>
 
@@ -110,9 +114,9 @@ const { url, title } = Astro.props;
       if (url) {
         navigator.clipboard.writeText(url).then(() => {
           if (tooltip) {
-            tooltip.textContent = "Copied!";
+            tooltip.textContent = "コピーしました！";
             setTimeout(() => {
-              tooltip.textContent = "Copy";
+              tooltip.textContent = "コピー";
             }, 2000);
           }
         });
