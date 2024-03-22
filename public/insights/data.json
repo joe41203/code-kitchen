@@ -2,462 +2,437 @@
   {
     "url": "https://code-kitchen.tech/articles/00001-squoosh-image-compression-tool/",
     "id": "performance",
-    "score": 0.97
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00001-squoosh-image-compression-tool/",
-    "id": "accessibility",
-    "score": 0.93
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00001-squoosh-image-compression-tool/",
-    "id": "best-practices",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00001-squoosh-image-compression-tool/",
-    "id": "seo",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00001-squoosh-image-compression-tool/",
-    "id": "pwa",
-    "score": 0.88
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00002-image-resizing-methods-comparison/",
-    "id": "performance",
     "score": 0.95
   },
   {
-    "url": "https://code-kitchen.tech/articles/00002-image-resizing-methods-comparison/",
+    "url": "https://code-kitchen.tech/articles/00001-squoosh-image-compression-tool/",
     "id": "accessibility",
-    "score": 0.93
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00002-image-resizing-methods-comparison/",
-    "id": "best-practices",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00002-image-resizing-methods-comparison/",
-    "id": "seo",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00002-image-resizing-methods-comparison/",
-    "id": "pwa",
-    "score": 0.88
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00003-practical-web-crawling-techniques/",
-    "id": "performance",
-    "score": 0.94
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00003-practical-web-crawling-techniques/",
-    "id": "accessibility",
-    "score": 0.92
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00003-practical-web-crawling-techniques/",
-    "id": "best-practices",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00003-practical-web-crawling-techniques/",
-    "id": "seo",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00003-practical-web-crawling-techniques/",
-    "id": "pwa",
-    "score": 0.88
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00004-improve-performance-when-using-mermaid-with-astro/",
-    "id": "performance",
-    "score": 0.95
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00004-improve-performance-when-using-mermaid-with-astro/",
-    "id": "accessibility",
-    "score": 0.94
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00004-improve-performance-when-using-mermaid-with-astro/",
-    "id": "best-practices",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00004-improve-performance-when-using-mermaid-with-astro/",
-    "id": "seo",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00004-improve-performance-when-using-mermaid-with-astro/",
-    "id": "pwa",
-    "score": 0.88
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00005-astro-page-speed-insights-integration/",
-    "id": "performance",
     "score": 0.87
   },
   {
-    "url": "https://code-kitchen.tech/articles/00005-astro-page-speed-insights-integration/",
-    "id": "accessibility",
-    "score": 0.91
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00005-astro-page-speed-insights-integration/",
+    "url": "https://code-kitchen.tech/articles/00001-squoosh-image-compression-tool/",
     "id": "best-practices",
     "score": 1
   },
   {
-    "url": "https://code-kitchen.tech/articles/00005-astro-page-speed-insights-integration/",
+    "url": "https://code-kitchen.tech/articles/00001-squoosh-image-compression-tool/",
     "id": "seo",
     "score": 1
   },
   {
-    "url": "https://code-kitchen.tech/articles/00005-astro-page-speed-insights-integration/",
+    "url": "https://code-kitchen.tech/articles/00001-squoosh-image-compression-tool/",
     "id": "pwa",
     "score": 0.88
   },
   {
-    "url": "https://code-kitchen.tech/articles/00006-scrapy-web-fake-user-agent-management/",
+    "url": "https://code-kitchen.tech/articles/00002-image-resizing-methods-comparison/",
     "id": "performance",
-    "score": 0.91
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00006-scrapy-web-fake-user-agent-management/",
-    "id": "accessibility",
-    "score": 0.9
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00006-scrapy-web-fake-user-agent-management/",
-    "id": "best-practices",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00006-scrapy-web-fake-user-agent-management/",
-    "id": "seo",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00006-scrapy-web-fake-user-agent-management/",
-    "id": "pwa",
-    "score": 0.88
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00007-typescript-loop-statements/",
-    "id": "performance",
-    "score": 0.96
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00007-typescript-loop-statements/",
-    "id": "accessibility",
     "score": 0.92
   },
   {
-    "url": "https://code-kitchen.tech/articles/00007-typescript-loop-statements/",
+    "url": "https://code-kitchen.tech/articles/00002-image-resizing-methods-comparison/",
+    "id": "accessibility",
+    "score": 0.85
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00002-image-resizing-methods-comparison/",
     "id": "best-practices",
     "score": 1
   },
   {
-    "url": "https://code-kitchen.tech/articles/00007-typescript-loop-statements/",
+    "url": "https://code-kitchen.tech/articles/00002-image-resizing-methods-comparison/",
     "id": "seo",
     "score": 1
   },
   {
-    "url": "https://code-kitchen.tech/articles/00007-typescript-loop-statements/",
+    "url": "https://code-kitchen.tech/articles/00002-image-resizing-methods-comparison/",
     "id": "pwa",
     "score": 0.88
   },
   {
-    "url": "https://code-kitchen.tech/articles/00008-javascript-module-system/",
+    "url": "https://code-kitchen.tech/articles/00003-practical-web-crawling-techniques/",
     "id": "performance",
-    "score": 0.75
+    "score": 0.4
   },
   {
-    "url": "https://code-kitchen.tech/articles/00008-javascript-module-system/",
+    "url": "https://code-kitchen.tech/articles/00003-practical-web-crawling-techniques/",
     "id": "accessibility",
-    "score": 0.9
+    "score": 0.86
   },
   {
-    "url": "https://code-kitchen.tech/articles/00008-javascript-module-system/",
+    "url": "https://code-kitchen.tech/articles/00003-practical-web-crawling-techniques/",
     "id": "best-practices",
     "score": 1
   },
   {
-    "url": "https://code-kitchen.tech/articles/00008-javascript-module-system/",
+    "url": "https://code-kitchen.tech/articles/00003-practical-web-crawling-techniques/",
     "id": "seo",
     "score": 1
   },
   {
-    "url": "https://code-kitchen.tech/articles/00008-javascript-module-system/",
+    "url": "https://code-kitchen.tech/articles/00003-practical-web-crawling-techniques/",
     "id": "pwa",
     "score": 0.88
   },
   {
-    "url": "https://code-kitchen.tech/articles/00009-python-modules-introduction/",
+    "url": "https://code-kitchen.tech/articles/00004-improve-performance-when-using-mermaid-with-astro/",
     "id": "performance",
-    "score": 0.97
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00009-python-modules-introduction/",
-    "id": "accessibility",
-    "score": 0.88
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00009-python-modules-introduction/",
-    "id": "best-practices",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00009-python-modules-introduction/",
-    "id": "seo",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00009-python-modules-introduction/",
-    "id": "pwa",
-    "score": 0.88
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00010-scrapy-response-css-efficient-web-scraping/",
-    "id": "performance",
-    "score": 0.91
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00010-scrapy-response-css-efficient-web-scraping/",
-    "id": "accessibility",
-    "score": 0.9
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00010-scrapy-response-css-efficient-web-scraping/",
-    "id": "best-practices",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00010-scrapy-response-css-efficient-web-scraping/",
-    "id": "seo",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00010-scrapy-response-css-efficient-web-scraping/",
-    "id": "pwa",
-    "score": 0.88
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00011-python-special-methods-customizing-object-behavior/",
-    "id": "performance",
-    "score": 0.96
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00011-python-special-methods-customizing-object-behavior/",
-    "id": "accessibility",
-    "score": 0.88
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00011-python-special-methods-customizing-object-behavior/",
-    "id": "best-practices",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00011-python-special-methods-customizing-object-behavior/",
-    "id": "seo",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00011-python-special-methods-customizing-object-behavior/",
-    "id": "pwa",
-    "score": 0.88
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00012-python-async-await-basics/",
-    "id": "performance",
-    "score": 0.96
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00012-python-async-await-basics/",
-    "id": "accessibility",
-    "score": 0.9
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00012-python-async-await-basics/",
-    "id": "best-practices",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00012-python-async-await-basics/",
-    "id": "seo",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00012-python-async-await-basics/",
-    "id": "pwa",
-    "score": 0.88
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00013-beginner-guide-progressive-web-apps-pwa/",
-    "id": "performance",
-    "score": 0.9
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00013-beginner-guide-progressive-web-apps-pwa/",
-    "id": "accessibility",
-    "score": 0.96
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00013-beginner-guide-progressive-web-apps-pwa/",
-    "id": "best-practices",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00013-beginner-guide-progressive-web-apps-pwa/",
-    "id": "seo",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00013-beginner-guide-progressive-web-apps-pwa/",
-    "id": "pwa",
-    "score": 0.88
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00014-improve-website-performance-with-partytown/",
-    "id": "performance",
-    "score": 0.9
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00014-improve-website-performance-with-partytown/",
-    "id": "accessibility",
     "score": 0.95
   },
   {
-    "url": "https://code-kitchen.tech/articles/00014-improve-website-performance-with-partytown/",
+    "url": "https://code-kitchen.tech/articles/00004-improve-performance-when-using-mermaid-with-astro/",
+    "id": "accessibility",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00004-improve-performance-when-using-mermaid-with-astro/",
     "id": "best-practices",
     "score": 1
   },
   {
-    "url": "https://code-kitchen.tech/articles/00014-improve-website-performance-with-partytown/",
+    "url": "https://code-kitchen.tech/articles/00004-improve-performance-when-using-mermaid-with-astro/",
     "id": "seo",
     "score": 1
   },
   {
-    "url": "https://code-kitchen.tech/articles/00014-improve-website-performance-with-partytown/",
+    "url": "https://code-kitchen.tech/articles/00004-improve-performance-when-using-mermaid-with-astro/",
     "id": "pwa",
     "score": 0.88
   },
   {
-    "url": "https://code-kitchen.tech/articles/00015-improving-javascript-performance-with-main-thread-web-worker-service-worker/",
+    "url": "https://code-kitchen.tech/articles/00005-astro-page-speed-insights-integration/",
     "id": "performance",
     "score": 0.93
   },
   {
-    "url": "https://code-kitchen.tech/articles/00015-improving-javascript-performance-with-main-thread-web-worker-service-worker/",
+    "url": "https://code-kitchen.tech/articles/00005-astro-page-speed-insights-integration/",
     "id": "accessibility",
-    "score": 0.9
+    "score": 0.85
   },
   {
-    "url": "https://code-kitchen.tech/articles/00015-improving-javascript-performance-with-main-thread-web-worker-service-worker/",
+    "url": "https://code-kitchen.tech/articles/00005-astro-page-speed-insights-integration/",
     "id": "best-practices",
     "score": 1
   },
   {
-    "url": "https://code-kitchen.tech/articles/00015-improving-javascript-performance-with-main-thread-web-worker-service-worker/",
-    "id": "seo",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00015-improving-javascript-performance-with-main-thread-web-worker-service-worker/",
+    "url": "https://code-kitchen.tech/articles/00005-astro-page-speed-insights-integration/",
     "id": "pwa",
     "score": 0.88
   },
   {
-    "url": "https://code-kitchen.tech/articles/00016-react-hooks-basics-for-beginners/",
+    "url": "https://code-kitchen.tech/articles/00006-scrapy-web-fake-user-agent-management/",
     "id": "performance",
-    "score": 0.99
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00016-react-hooks-basics-for-beginners/",
-    "id": "accessibility",
-    "score": 0.96
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00016-react-hooks-basics-for-beginners/",
-    "id": "best-practices",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00016-react-hooks-basics-for-beginners/",
-    "id": "seo",
-    "score": 1
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00016-react-hooks-basics-for-beginners/",
-    "id": "pwa",
-    "score": 0.88
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00017-nextjs-14-metadata-for-seo-and-ux/",
-    "id": "performance",
-    "score": 0.86
-  },
-  {
-    "url": "https://code-kitchen.tech/articles/00017-nextjs-14-metadata-for-seo-and-ux/",
-    "id": "accessibility",
     "score": 0.94
   },
   {
-    "url": "https://code-kitchen.tech/articles/00017-nextjs-14-metadata-for-seo-and-ux/",
+    "url": "https://code-kitchen.tech/articles/00006-scrapy-web-fake-user-agent-management/",
+    "id": "accessibility",
+    "score": 0.83
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00006-scrapy-web-fake-user-agent-management/",
     "id": "best-practices",
     "score": 1
   },
   {
-    "url": "https://code-kitchen.tech/articles/00017-nextjs-14-metadata-for-seo-and-ux/",
+    "url": "https://code-kitchen.tech/articles/00006-scrapy-web-fake-user-agent-management/",
     "id": "seo",
     "score": 1
   },
   {
-    "url": "https://code-kitchen.tech/articles/00017-nextjs-14-metadata-for-seo-and-ux/",
+    "url": "https://code-kitchen.tech/articles/00006-scrapy-web-fake-user-agent-management/",
     "id": "pwa",
     "score": 0.88
   },
   {
-    "url": "https://code-kitchen.tech/articles/00018-scrapy-rotating-proxies-tutorial-effective-proxy-rotation-for-stable-web-scraping/",
+    "url": "https://code-kitchen.tech/articles/00007-typescript-loop-statements/",
     "id": "performance",
-    "score": 0.95
+    "score": 0.93
   },
   {
-    "url": "https://code-kitchen.tech/articles/00018-scrapy-rotating-proxies-tutorial-effective-proxy-rotation-for-stable-web-scraping/",
+    "url": "https://code-kitchen.tech/articles/00007-typescript-loop-statements/",
     "id": "accessibility",
-    "score": 0.9
+    "score": 0.85
   },
   {
-    "url": "https://code-kitchen.tech/articles/00018-scrapy-rotating-proxies-tutorial-effective-proxy-rotation-for-stable-web-scraping/",
+    "url": "https://code-kitchen.tech/articles/00007-typescript-loop-statements/",
     "id": "best-practices",
     "score": 1
   },
   {
-    "url": "https://code-kitchen.tech/articles/00018-scrapy-rotating-proxies-tutorial-effective-proxy-rotation-for-stable-web-scraping/",
+    "url": "https://code-kitchen.tech/articles/00007-typescript-loop-statements/",
     "id": "seo",
     "score": 1
   },
   {
-    "url": "https://code-kitchen.tech/articles/00018-scrapy-rotating-proxies-tutorial-effective-proxy-rotation-for-stable-web-scraping/",
+    "url": "https://code-kitchen.tech/articles/00007-typescript-loop-statements/",
     "id": "pwa",
-    "score": 0.75
+    "score": 0.88
   },
   {
-    "url": "https://code-kitchen.tech/articles/00019-sns-strategy-with-science-of-spread/",
+    "url": "https://code-kitchen.tech/articles/00008-javascript-module-system/",
     "id": "performance",
     "score": 0.89
   },
   {
+    "url": "https://code-kitchen.tech/articles/00008-javascript-module-system/",
+    "id": "accessibility",
+    "score": 0.83
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00008-javascript-module-system/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00008-javascript-module-system/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00008-javascript-module-system/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00009-python-modules-introduction/",
+    "id": "performance",
+    "score": 0.94
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00009-python-modules-introduction/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00009-python-modules-introduction/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00009-python-modules-introduction/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00010-scrapy-response-css-efficient-web-scraping/",
+    "id": "performance",
+    "score": 0.92
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00010-scrapy-response-css-efficient-web-scraping/",
+    "id": "accessibility",
+    "score": 0.83
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00010-scrapy-response-css-efficient-web-scraping/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00010-scrapy-response-css-efficient-web-scraping/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00010-scrapy-response-css-efficient-web-scraping/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00011-python-special-methods-customizing-object-behavior/",
+    "id": "performance",
+    "score": 0.89
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00011-python-special-methods-customizing-object-behavior/",
+    "id": "accessibility",
+    "score": 0.81
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00011-python-special-methods-customizing-object-behavior/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00011-python-special-methods-customizing-object-behavior/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00011-python-special-methods-customizing-object-behavior/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00012-python-async-await-basics/",
+    "id": "performance",
+    "score": 0.92
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00012-python-async-await-basics/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00012-python-async-await-basics/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00012-python-async-await-basics/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00013-beginner-guide-progressive-web-apps-pwa/",
+    "id": "performance",
+    "score": 0.91
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00013-beginner-guide-progressive-web-apps-pwa/",
+    "id": "accessibility",
+    "score": 0.9
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00013-beginner-guide-progressive-web-apps-pwa/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00013-beginner-guide-progressive-web-apps-pwa/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00014-improve-website-performance-with-partytown/",
+    "id": "performance",
+    "score": 0.89
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00014-improve-website-performance-with-partytown/",
+    "id": "accessibility",
+    "score": 0.89
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00014-improve-website-performance-with-partytown/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00014-improve-website-performance-with-partytown/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00014-improve-website-performance-with-partytown/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00015-improving-javascript-performance-with-main-thread-web-worker-service-worker/",
+    "id": "performance",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00015-improving-javascript-performance-with-main-thread-web-worker-service-worker/",
+    "id": "accessibility",
+    "score": 0.84
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00015-improving-javascript-performance-with-main-thread-web-worker-service-worker/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00015-improving-javascript-performance-with-main-thread-web-worker-service-worker/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00015-improving-javascript-performance-with-main-thread-web-worker-service-worker/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00016-react-hooks-basics-for-beginners/",
+    "id": "performance",
+    "score": 0.93
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00016-react-hooks-basics-for-beginners/",
+    "id": "accessibility",
+    "score": 0.9
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00016-react-hooks-basics-for-beginners/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00016-react-hooks-basics-for-beginners/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00017-nextjs-14-metadata-for-seo-and-ux/",
+    "id": "performance",
+    "score": 0.95
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00017-nextjs-14-metadata-for-seo-and-ux/",
+    "id": "accessibility",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00017-nextjs-14-metadata-for-seo-and-ux/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00017-nextjs-14-metadata-for-seo-and-ux/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00017-nextjs-14-metadata-for-seo-and-ux/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00018-scrapy-rotating-proxies-tutorial-effective-proxy-rotation-for-stable-web-scraping/",
+    "id": "performance",
+    "score": 0.91
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00018-scrapy-rotating-proxies-tutorial-effective-proxy-rotation-for-stable-web-scraping/",
+    "id": "accessibility",
+    "score": 0.84
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00018-scrapy-rotating-proxies-tutorial-effective-proxy-rotation-for-stable-web-scraping/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00018-scrapy-rotating-proxies-tutorial-effective-proxy-rotation-for-stable-web-scraping/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00018-scrapy-rotating-proxies-tutorial-effective-proxy-rotation-for-stable-web-scraping/",
+    "id": "pwa",
+    "score": 0.75
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00019-sns-strategy-with-science-of-spread/",
+    "id": "performance",
+    "score": 0.79
+  },
+  {
     "url": "https://code-kitchen.tech/articles/00019-sns-strategy-with-science-of-spread/",
     "id": "accessibility",
-    "score": 0.94
+    "score": 0.88
   },
   {
     "url": "https://code-kitchen.tech/articles/00019-sns-strategy-with-science-of-spread/",
@@ -477,12 +452,12 @@
   {
     "url": "https://code-kitchen.tech/articles/00020-python-classmethod-usage-and-mechanism/",
     "id": "performance",
-    "score": 0.87
+    "score": 0.95
   },
   {
     "url": "https://code-kitchen.tech/articles/00020-python-classmethod-usage-and-mechanism/",
     "id": "accessibility",
-    "score": 0.88
+    "score": 0.81
   },
   {
     "url": "https://code-kitchen.tech/articles/00020-python-classmethod-usage-and-mechanism/",
@@ -502,12 +477,12 @@
   {
     "url": "https://code-kitchen.tech/articles/00021-browser-cache-optimization-web-performance/",
     "id": "performance",
-    "score": 0.93
+    "score": 0.91
   },
   {
     "url": "https://code-kitchen.tech/articles/00021-browser-cache-optimization-web-performance/",
     "id": "accessibility",
-    "score": 0.94
+    "score": 0.88
   },
   {
     "url": "https://code-kitchen.tech/articles/00021-browser-cache-optimization-web-performance/",
@@ -521,6 +496,421 @@
   },
   {
     "url": "https://code-kitchen.tech/articles/00021-browser-cache-optimization-web-performance/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00022-introduction-to-apache-airflow-for-beginner-data-engineers/",
+    "id": "performance",
+    "score": 0.94
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00022-introduction-to-apache-airflow-for-beginner-data-engineers/",
+    "id": "accessibility",
+    "score": 0.85
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00022-introduction-to-apache-airflow-for-beginner-data-engineers/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00022-introduction-to-apache-airflow-for-beginner-data-engineers/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00022-introduction-to-apache-airflow-for-beginner-data-engineers/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00023-service-worker-introduction-for-beginners/",
+    "id": "performance",
+    "score": 0.65
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00023-service-worker-introduction-for-beginners/",
+    "id": "accessibility",
+    "score": 0.85
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00023-service-worker-introduction-for-beginners/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00023-service-worker-introduction-for-beginners/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00023-service-worker-introduction-for-beginners/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00024-dependency-track-guide/",
+    "id": "performance",
+    "score": 0.92
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00024-dependency-track-guide/",
+    "id": "accessibility",
+    "score": 0.83
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00024-dependency-track-guide/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00024-dependency-track-guide/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00024-dependency-track-guide/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00025-python-dataclass-usage-and-examples/",
+    "id": "performance",
+    "score": 0.86
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00025-python-dataclass-usage-and-examples/",
+    "id": "accessibility",
+    "score": 0.81
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00025-python-dataclass-usage-and-examples/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00025-python-dataclass-usage-and-examples/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00025-python-dataclass-usage-and-examples/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00026-oauth2-basics-and-implementation-for-beginners/",
+    "id": "performance",
+    "score": 0.68
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00026-oauth2-basics-and-implementation-for-beginners/",
+    "id": "accessibility",
+    "score": 0.85
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00026-oauth2-basics-and-implementation-for-beginners/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00026-oauth2-basics-and-implementation-for-beginners/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00026-oauth2-basics-and-implementation-for-beginners/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00027-langchain-introduction-key-concepts-and-lifecycle-with-diagrams/",
+    "id": "performance",
+    "score": 0.91
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00027-langchain-introduction-key-concepts-and-lifecycle-with-diagrams/",
+    "id": "accessibility",
+    "score": 0.9
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00027-langchain-introduction-key-concepts-and-lifecycle-with-diagrams/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00027-langchain-introduction-key-concepts-and-lifecycle-with-diagrams/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00027-langchain-introduction-key-concepts-and-lifecycle-with-diagrams/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00028-trafilatura-web-main-content-extraction-library/",
+    "id": "performance",
+    "score": 0.94
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00028-trafilatura-web-main-content-extraction-library/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00028-trafilatura-web-main-content-extraction-library/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00028-trafilatura-web-main-content-extraction-library/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00029-recoil-introduction-state-management-library-for-react/",
+    "id": "performance",
+    "score": 0.91
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00029-recoil-introduction-state-management-library-for-react/",
+    "id": "accessibility",
+    "score": 0.83
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00029-recoil-introduction-state-management-library-for-react/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00029-recoil-introduction-state-management-library-for-react/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00029-recoil-introduction-state-management-library-for-react/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00030-mermaid-10-diagrams-guide/",
+    "id": "performance",
+    "score": 0.87
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00030-mermaid-10-diagrams-guide/",
+    "id": "accessibility",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00030-mermaid-10-diagrams-guide/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00030-mermaid-10-diagrams-guide/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00030-mermaid-10-diagrams-guide/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00031-python-moduleerror-modulenotfounderror-causes-solutions/",
+    "id": "performance",
+    "score": 0.73
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00031-python-moduleerror-modulenotfounderror-causes-solutions/",
+    "id": "accessibility",
+    "score": 0.81
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00031-python-moduleerror-modulenotfounderror-causes-solutions/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00031-python-moduleerror-modulenotfounderror-causes-solutions/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00031-python-moduleerror-modulenotfounderror-causes-solutions/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00032-terraform-s3-bucket-best-practices-cost-security/",
+    "id": "performance",
+    "score": 0.93
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00032-terraform-s3-bucket-best-practices-cost-security/",
+    "id": "accessibility",
+    "score": 0.83
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00032-terraform-s3-bucket-best-practices-cost-security/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00032-terraform-s3-bucket-best-practices-cost-security/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00033-aws-kms-basics-and-usage/",
+    "id": "performance",
+    "score": 0.93
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00033-aws-kms-basics-and-usage/",
+    "id": "accessibility",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00033-aws-kms-basics-and-usage/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00033-aws-kms-basics-and-usage/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00033-aws-kms-basics-and-usage/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00034-aws-rails-twelve-factor-app/",
+    "id": "performance",
+    "score": 0.9
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00034-aws-rails-twelve-factor-app/",
+    "id": "accessibility",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00034-aws-rails-twelve-factor-app/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00034-aws-rails-twelve-factor-app/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00034-aws-rails-twelve-factor-app/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00035-vegeta-load-testing-complete-guide/",
+    "id": "performance",
+    "score": 0.87
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00035-vegeta-load-testing-complete-guide/",
+    "id": "accessibility",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00035-vegeta-load-testing-complete-guide/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00035-vegeta-load-testing-complete-guide/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00035-vegeta-load-testing-complete-guide/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00036-frontend-perfomance/",
+    "id": "performance",
+    "score": 0.93
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00036-frontend-perfomance/",
+    "id": "accessibility",
+    "score": 0.85
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00036-frontend-perfomance/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00036-frontend-perfomance/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00036-frontend-perfomance/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00037-api-security-complete-guide-roadmap-for-secure-api-design-and-implementation/",
+    "id": "performance",
+    "score": 0.95
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00037-api-security-complete-guide-roadmap-for-secure-api-design-and-implementation/",
+    "id": "accessibility",
+    "score": 0.83
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00037-api-security-complete-guide-roadmap-for-secure-api-design-and-implementation/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00037-api-security-complete-guide-roadmap-for-secure-api-design-and-implementation/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00037-api-security-complete-guide-roadmap-for-secure-api-design-and-implementation/",
+    "id": "pwa",
+    "score": 0.88
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00038-introduction-to-crawlee-basic-concepts-lifecycle-and-usage/",
+    "id": "performance",
+    "score": 0.78
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00038-introduction-to-crawlee-basic-concepts-lifecycle-and-usage/",
+    "id": "accessibility",
+    "score": 0.83
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00038-introduction-to-crawlee-basic-concepts-lifecycle-and-usage/",
+    "id": "best-practices",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00038-introduction-to-crawlee-basic-concepts-lifecycle-and-usage/",
+    "id": "seo",
+    "score": 1
+  },
+  {
+    "url": "https://code-kitchen.tech/articles/00038-introduction-to-crawlee-basic-concepts-lifecycle-and-usage/",
     "id": "pwa",
     "score": 0.88
   }
