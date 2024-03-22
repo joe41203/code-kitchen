@@ -116,17 +116,17 @@ npm install crawlee
 Actorを定義するには、crawleeのCheerioCrawlerクラスを継承します。以下は、シンプルなActorの例です。
 
 ```javascript
-const { CheerioCrawler } = require('crawlee');
+const { CheerioCrawler } = require("crawlee");
 
 class MyActor extends CheerioCrawler {
-    async requestHandler({ $, request, enqueueLinks }) {
-        const title = $('title').text();
-        console.log(`Title of ${request.url}: ${title}`);
-        await enqueueLinks({
-            selector: 'a',
-            baseUrl: request.loadedUrl,
-        });
-    }
+  async requestHandler({ $, request, enqueueLinks }) {
+    const title = $("title").text();
+    console.log(`Title of ${request.url}: ${title}`);
+    await enqueueLinks({
+      selector: "a",
+      baseUrl: request.loadedUrl,
+    });
+  }
 }
 
 module.exports = MyActor;
@@ -139,15 +139,15 @@ module.exports = MyActor;
 Actorを定義したら、リクエストを生成して実行します。
 
 ```javascript
-const { Actor } = require('crawlee');
-const MyActor = require('./my-actor');
+const { Actor } = require("crawlee");
+const MyActor = require("./my-actor");
 
 (async () => {
-    const actor = new MyActor({
-        startUrls: ['https://www.example.com'],
-    });
+  const actor = new MyActor({
+    startUrls: ["https://www.example.com"],
+  });
 
-    await actor.run();
+  await actor.run();
 })();
 ```
 
@@ -158,27 +158,26 @@ const MyActor = require('./my-actor');
 レスポンスの処理とデータの保存は、Actorの requestHandler メソッド内で行います。以下は、レスポンスからデータを抽出し、JSONファイルに保存する例です。
 
 ```javascript
-const { CheerioCrawler, Dataset } = require('crawlee');
+const { CheerioCrawler, Dataset } = require("crawlee");
 
 class MyActor extends CheerioCrawler {
-    async requestHandler({ $, request }) {
-        const title = $('title').text();
-        const description = $('meta[name="description"]').attr('content');
+  async requestHandler({ $, request }) {
+    const title = $("title").text();
+    const description = $('meta[name="description"]').attr("content");
 
-        const dataset = await Dataset.open('my-dataset');
-        await dataset.pushData({
-            url: request.url,
-            title,
-            description,
-        });
-    }
+    const dataset = await Dataset.open("my-dataset");
+    await dataset.pushData({
+      url: request.url,
+      title,
+      description,
+    });
+  }
 }
 
 module.exports = MyActor;
 ```
 
 このActorは、Webページのタイトルとメタディスクリプションを抽出し、URLと一緒にDatasetに保存します。
-
 
 ## より詳細なトピック
 
@@ -187,11 +186,11 @@ module.exports = MyActor;
 Crawleeは、リクエストキューを自動的に管理しますが、必要に応じてキューの動作をカスタマイズすることができます。例えば、リクエストの優先度を設定したり、同時実行するリクエストの数を制限したりすることができます。
 
 ```javascript
-const { RequestQueue } = require('crawlee');
+const { RequestQueue } = require("crawlee");
 
 const requestQueue = await RequestQueue.open();
-await requestQueue.addRequest({ url: 'https://www.example.com', priority: 1 });
-await requestQueue.addRequest({ url: 'https://www.example.org', priority: 0 });
+await requestQueue.addRequest({ url: "https://www.example.com", priority: 1 });
+await requestQueue.addRequest({ url: "https://www.example.org", priority: 0 });
 ```
 
 このコードは、2つのリクエストをキューに追加し、priorityオプションを使って優先度を設定しています。
@@ -201,16 +200,16 @@ await requestQueue.addRequest({ url: 'https://www.example.org', priority: 0 });
 Crawleeは、リクエストの実行中に発生したエラーを自動的に処理しますが、必要に応じてエラーハンドリングのロジックをカスタマイズすることができます。
 
 ```javascript
-const { CheerioCrawler } = require('crawlee');
+const { CheerioCrawler } = require("crawlee");
 
 class MyActor extends CheerioCrawler {
-    async requestHandler({ request }) {
-        try {
-            // リクエストの処理
-        } catch (error) {
-            console.error(`Error processing ${request.url}: ${error.message}`);
-        }
+  async requestHandler({ request }) {
+    try {
+      // リクエストの処理
+    } catch (error) {
+      console.error(`Error processing ${request.url}: ${error.message}`);
     }
+  }
 }
 
 module.exports = MyActor;
@@ -223,16 +222,16 @@ module.exports = MyActor;
 Crawleeは、複数のリクエストを並列に実行することができます。並列処理を有効にするには、ActorのmaxConcurrencyオプションを設定します。
 
 ```javascript
-const { Actor } = require('crawlee');
-const MyActor = require('./my-actor');
+const { Actor } = require("crawlee");
+const MyActor = require("./my-actor");
 
 (async () => {
-    const actor = new MyActor({
-        startUrls: ['https://www.example.com'],
-        maxConcurrency: 10,
-    });
+  const actor = new MyActor({
+    startUrls: ["https://www.example.com"],
+    maxConcurrency: 10,
+  });
 
-    await actor.run();
+  await actor.run();
 })();
 ```
 
@@ -243,19 +242,19 @@ const MyActor = require('./my-actor');
 Crawleeは、プロキシサーバーを使ってリクエストを送信することができます。プロキシを設定するには、ActorのproxyConfigurationオプションを使用します。
 
 ```javascript
-const { Actor } = require('crawlee');
-const MyActor = require('./my-actor');
+const { Actor } = require("crawlee");
+const MyActor = require("./my-actor");
 
 (async () => {
-    const actor = new MyActor({
-        startUrls: ['https://www.example.com'],
-        proxyConfiguration: {
-            useApifyProxy: true,
-            apifyProxyGroups: ['RESIDENTIAL'],
-        },
-    });
+  const actor = new MyActor({
+    startUrls: ["https://www.example.com"],
+    proxyConfiguration: {
+      useApifyProxy: true,
+      apifyProxyGroups: ["RESIDENTIAL"],
+    },
+  });
 
-    await actor.run();
+  await actor.run();
 })();
 ```
 
@@ -280,4 +279,3 @@ Crawleeを使うことで、Webスクレイピングに関する多くの作業�
 - 公式ドキュメント: [https://crawlee.dev/](https://crawlee.dev/)
 - GitHub リポジトリ: [https://github.com/apify/crawlee](https://github.com/apify/crawlee)
 - Apify プラットフォーム: [https://apify.com/](https://apify.com/)
-
