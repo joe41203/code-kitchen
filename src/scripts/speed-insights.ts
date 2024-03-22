@@ -261,7 +261,7 @@ const main = async (): Promise<void> => {
       }
 
       // スリープ処理を追加 (例: 1秒待機)
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 200));
     }
   }
 
