@@ -20,7 +20,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@mermaid-js/mermaid-cli": "^10.8.0",
     "astro": "^4.5.5",
-    "astro-compress": "^2.2.15",
+    "astro-compress": "^2.2.17",
     "astro-robots-txt": "^1.0.0",
     "astro-seo": "^0.8.3",
     "astro-webmanifest": "^1.0.0",
