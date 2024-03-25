@@ -53,6 +53,7 @@ graph TD
 3. キャッシュやハッシュキーとして使いやすい
 
 サンプルコード（Ruby）:
+
 ```ruby
 string = "hello"
 string << " world"
@@ -68,6 +69,7 @@ symbol << :world #=> NoMethodError: undefined method `<<' for :hello:Symbol
 2. メモリの再利用が可能
 
 サンプルコード（Ruby）:
+
 ```ruby
 string = "hello"
 string << " world"
@@ -83,6 +85,7 @@ Rubyではシンボルと文字列を相互に変換するためのメソッド�
 シンボルを文字列に変換するには、`to_s`メソッドを使用します。
 
 サンプルコード（Ruby）:
+
 ```ruby
 symbol = :hello
 string = symbol.to_s
@@ -92,6 +95,7 @@ puts string #=> "hello"
 文字列をシンボルに変換するには、`to_sym`メソッドを使用します。
 
 サンプルコード（Ruby）:
+
 ```ruby
 string = "hello"
 symbol = string.to_sym
@@ -103,6 +107,7 @@ puts symbol #=> :hello
 また、`to_sym`メソッドを使用する際は、文字列の内容が有効なシンボルであることを確認する必要があります。有効でない文字列をシンボルに変換しようとすると、`ArgumentError`が発生します。
 
 サンプルコード（Ruby）:
+
 ```ruby
 invalid_string = "hello world"
 symbol = invalid_string.to_sym #=> ArgumentError: invalid symbol name
@@ -117,6 +122,7 @@ Rubyのハッシュでは、文字列とシンボルの両方をキーとして�
 文字列キーを使用する場合、同じ値の文字列であっても別のオブジェクトとして扱われます。
 
 サンプルコード（Ruby）:
+
 ```ruby
 hash = { "key" => "value" }
 puts hash["key"] #=> "value"
@@ -125,6 +131,7 @@ puts hash["key"] #=> "value"
 一方、シンボルキーを使用する場合、同じ値のシンボルは同一のオブジェクトとして扱われます。
 
 サンプルコード（Ruby）:
+
 ```ruby
 hash = { :key => "value" }
 puts hash[:key] #=> "value"
@@ -135,6 +142,7 @@ Railsにおいては、ハッシュのキーにシンボルを使用すること
 パフォーマンスとメモリ使用量の比較については、以下のようなベンチマークを実行して確認できます。
 
 サンプルコード（Ruby）:
+
 ```ruby
 require 'benchmark'
 
@@ -172,6 +180,7 @@ Symbol keys 21.230000   1.670000  22.900000 ( 23.615576)
 しかし、以下のように、あらかじめシンボルを作成しておき、ループ内では`to_sym`メソッドを呼び出さないようにすると、シンボルキーの方が高速になります。
 
 サンプルコード（Ruby）:
+
 ```ruby
 require 'benchmark'
 
@@ -208,6 +217,7 @@ Symbol keys  5.338033   0.122643   5.460676 (  5.487418)
 Rubyでは、`freeze`メソッドを使用してオブジェクトをフリーズ（凍結）できます。フリーズしたオブジェクトは、変更不可能になります。
 
 サンプルコード（Ruby）:
+
 ```ruby
 string = "hello"
 string.freeze
@@ -220,16 +230,16 @@ string << " world" #=> FrozenError: can't modify frozen String
 
 次の章では、Railsにおける文字列とシンボルの使い分けについて説明します。
 
-
-
 ## Railsにおける文字列とシンボルの使い分け
 
 Railsでは、文字列とシンボルを適切に使い分けることが重要です。以下に、モデル、コントローラー、ビューでの使用例を示します。
 
 ### モデル
+
 モデルでは、アソシエーションやバリデーションの定義にシンボルを使用します。
 
 サンプルコード（Ruby）:
+
 ```ruby
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
@@ -238,9 +248,11 @@ end
 ```
 
 ### コントローラー
+
 コントローラーでは、アクション名やストロングパラメータの指定にシンボルを使用します。
 
 サンプルコード（Ruby）:
+
 ```ruby
 class UsersController < ApplicationController
   def show
@@ -256,9 +268,11 @@ end
 ```
 
 ### ビュー
+
 ビューでは、リンクヘルパーやフォームヘルパーの引数にシンボルを使用します。
 
 サンプルコード（ERB）:
+
 ```erb
 <%= link_to 'Show', user_path(@user) %>
 <%= form_with(model: @user, local: true) do |form| %>
@@ -268,9 +282,11 @@ end
 ```
 
 ### ルーティング
+
 ルーティングでは、コントローラーとアクションの指定にシンボルを使用します。
 
 サンプルコード（Ruby）:
+
 ```ruby
 Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
@@ -294,6 +310,7 @@ Railsにおけるベストプラクティスとしては、以下のようなも
 3. シンボルガーベッジコレクションを有効にする
 
 サンプルコード（Ruby）:
+
 ```ruby
 # 悪い例
 user_input = params[:user_input]
