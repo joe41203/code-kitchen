@@ -22,9 +22,7 @@ export default defineConfig({
     sitemap({
       changefreq: 'daily',
       priority: 0.7,
-      lastmod: _ => {
-        return new Date().toISOString();
-      },
+      lastmod: new Date(),
     }),
     tailwind(),
     robotsTxt(),
