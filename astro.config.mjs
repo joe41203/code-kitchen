@@ -19,7 +19,13 @@ export default defineConfig({
   },
   integrations: [
     mdx(),
-    sitemap(),
+    sitemap({
+      changefreq: 'daily',
+      priority: 0.7,
+      lastmod: _ => {
+        return new Date().toISOString();
+      },
+    }),
     tailwind(),
     robotsTxt(),
     partytown({
