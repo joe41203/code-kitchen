@@ -12,7 +12,7 @@
     "fmt": "prettier --write ./src/**/*"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.9",
+    "@astrojs/check": "^0.5.10",
     "@astrojs/mdx": "^2.2.0",
     "@astrojs/partytown": "^2.0.4",
     "@astrojs/rss": "^4.0.5",
