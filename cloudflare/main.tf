@@ -69,7 +69,7 @@ resource "cloudflare_page_rule" "sitemap_cache_ignore" {
 resource "cloudflare_zone_settings_override" "brotli" {
   zone_id = cloudflare_zone.main.id
   settings {
-    brotli = "off"
+    brotli = "on"
   }
 }
 
