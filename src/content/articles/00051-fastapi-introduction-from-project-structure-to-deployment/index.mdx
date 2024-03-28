@@ -57,6 +57,7 @@ project_name/
 この構成では、プロジェクトのルートディレクトリに以下のディレクトリとファイルが含まれています：
 
 - `app/`: FastAPIアプリケーションのメインコードを含むディレクトリ
+
   - `main.py`: FastAPIアプリケーションのエントリーポイント
   - `dependencies.py`: 依存関係の注入を管理するファイル
   - `routers/`: APIエンドポイントを定義するルーターを含むディレクトリ
@@ -65,6 +66,7 @@ project_name/
   - `services/`: ビジネスロジックを実装するサービス層を含むディレクトリ
 
 - `tests/`: テストコードを含むディレクトリ
+
   - `conftest.py`: pytestのフィクスチャを定義するファイル
 
 - `alembic/`: データベースマイグレーションを管理するAlembicの設定ファイルを含むディレクトリ
@@ -78,7 +80,6 @@ project_name/
 このディレクトリ構成は、関心の分離（Separation of Concerns）の原則に従っており、コードの異なる部分を論理的に分割しています。これにより、プロジェクトの拡張性とメンテナンス性が向上します。
 
 続く章では、この構成に基づいてFastAPIプロジェクトを構築していきます。
-
 
 ## 3. FastAPIの基本
 
@@ -165,7 +166,6 @@ async def get_user(user_id: int, age: int = None):
 FastAPIは、これらのパラメータを自動的に検証し、適切な型に変換します。例えば、`user_id`は整数型として定義されているため、FastAPIは自動的に文字列を整数に変換しようとします。変換できない場合は、適切なエラーレスポンスを返します。
 
 この章では、FastAPIの基本的なルーティングとHTTPメソッドについて説明しました。次の章では、リクエストとレスポンスの処理について詳しく見ていきます。
-
 
 ## 5. リクエストとレスポンス
 
@@ -325,7 +325,6 @@ register_tortoise(
 FastAPIとデータベースを統合することで、エンドポイントからデータベースへの読み書きが可能になります。これにより、アプリケーションにデータの永続化機能を追加することができます。
 
 次の章では、認証と認可について説明します。
-
 
 ## 7. 認証と認可
 
@@ -523,8 +522,6 @@ FastAPIは、非同期処理を使用してパフォーマンスを最適化し�
 
 次の章では、テストとデプロイについて説明します。
 
-
-
 ## 9. テストとデプロイ
 
 ### テスト
@@ -570,26 +567,26 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Run tests
-      run: |
-        pytest
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests
+        run: |
+          pytest
 ```
 
 このワークフローは、mainブランチへのプッシュまたはプルリクエストのたびに実行されます。ワークフローは、Pythonの設定、依存関係のインストール、pytestの実行を行います。
