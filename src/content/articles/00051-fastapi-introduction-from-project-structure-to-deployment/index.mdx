@@ -1,0 +1,655 @@
+---
+title: "FastAPI入門: プロジェクト構成からデプロイまで"
+description: "FastAPIは、Pythonで高性能なWebAPIを構築するための最新のフレームワークです。この記事では、プログラマー5年目を対象に、FastAPIの基本概念からベストプラクティスまでを解説します。適切なプロジェクト構成、データベース統合、認証、非同期処理、テスト、デプロイなどの実用的なトピックを取り上げ、サンプルコードとMermaidダイアグラムを使用して理解を深めます。FastAPIを使いこなし、拡張性とメンテナンス性に優れたAPIを開発しましょう"
+pubDate: "2024-03-29"
+cover: "./hero.webp"
+tags: [fastapi, python]
+index: 51
+---
+
+## 1. はじめに
+
+近年、Pythonを使用したWeb API開発の世界では、FastAPIが大きな注目を集めています。FastAPIは、Python 3.6以降のタイプヒントを活用し、高性能でモダンなWebAPIを構築するためのフレームワークです。FastAPIは、開発者の生産性と読みやすいコードを重視しながら、自動ドキュメント生成、コード検証、パフォーマンスの最適化など、多くの優れた機能を提供します。
+
+FastAPIを学ぶメリットは数多くあります。まず、FastAPIを使用することで、開発者はPythonの最新の機能を活用し、型安全で保守性の高いコードを書くことができます。また、FastAPIは自動的にSwagger UIとReDocを生成するため、APIドキュメントの管理が容易になります。さらに、FastAPIはAsynchronous Server Gateway Interface（ASGI）をサポートしているため、非同期処理を活用して高いパフォーマンスを実現できます。
+
+本記事では、FastAPIの基本概念からベストプラクティスまでを解説します。適切なプロジェクト構成、データベース統合、認証、非同期処理、テスト、デプロイなどの実用的なトピックを取り上げ理解を深めます。この記事を通じて、FastAPIを使いこなし、拡張性とメンテナンス性に優れたAPIを開発するための知識を身につけることができるでしょう。
+
+FastAPIの基礎から応用まで、一緒に探索していきましょう。
+
+## 2. プロジェクトの構成
+
+FastAPIプロジェクトを始める前に、適切なディレクトリ構成を理解することが重要です。ベストプラクティスに従ったプロジェクト構成は、コードの可読性、拡張性、メンテナンス性を向上させます。ここでは、FastAPIプロジェクトのベストなディレクトリ構成について説明します。
+
+```
+project_name/
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── dependencies.py
+│   ├── routers/
+│   │   ├── __init__.py
+│   │   ├── users.py
+│   │   └── items.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── user.py
+│   │   └── item.py
+│   ├── schemas/
+│   │   ├── __init__.py
+│   │   ├── user.py
+│   │   └── item.py
+│   └── services/
+│       ├── __init__.py
+│       ├── user_service.py
+│       └── item_service.py
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── test_users.py
+│   └── test_items.py
+├── alembic/
+├── requirements.txt
+├── Dockerfile
+└── docker-compose.yml
+```
+
+この構成では、プロジェクトのルートディレクトリに以下のディレクトリとファイルが含まれています：
+
+- `app/`: FastAPIアプリケーションのメインコードを含むディレクトリ
+  - `main.py`: FastAPIアプリケーションのエントリーポイント
+  - `dependencies.py`: 依存関係の注入を管理するファイル
+  - `routers/`: APIエンドポイントを定義するルーターを含むディレクトリ
+  - `models/`: データベースモデルを定義するファイルを含むディレクトリ
+  - `schemas/`: Pydanticスキーマ（リクエスト/レスポンスのデータ構造）を定義するファイルを含むディレクトリ
+  - `services/`: ビジネスロジックを実装するサービス層を含むディレクトリ
+
+- `tests/`: テストコードを含むディレクトリ
+  - `conftest.py`: pytestのフィクスチャを定義するファイル
+
+- `alembic/`: データベースマイグレーションを管理するAlembicの設定ファイルを含むディレクトリ
+
+- `requirements.txt`: プロジェクトの依存関係を記述するファイル
+
+- `Dockerfile`: アプリケーションのDockerイメージをビルドするための設定ファイル
+
+- `docker-compose.yml`: マルチコンテナアプリケーションを定義し、実行するためのDocker Composeファイル
+
+このディレクトリ構成は、関心の分離（Separation of Concerns）の原則に従っており、コードの異なる部分を論理的に分割しています。これにより、プロジェクトの拡張性とメンテナンス性が向上します。
+
+続く章では、この構成に基づいてFastAPIプロジェクトを構築していきます。
+
+
+## 3. FastAPIの基本
+
+FastAPIを使い始めるには、まずFastAPIをインストールする必要があります。以下のコマンドを実行して、FastAPIとその依存関係をインストールします：
+
+```bash
+pip install fastapi uvicorn
+```
+
+FastAPIは、ASGI（Asynchronous Server Gateway Interface）ウェブフレームワークの上に構築されています。uvicornは、高性能なASGIウェブサーバーで、FastAPIアプリケーションを実行するために使用します。
+
+次に、最小限のFastAPIアプリケーションを作成してみましょう。`app/main.py`ファイルを以下のように記述します：
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+async def root():
+    return {"message": "Hello, World!"}
+```
+
+このコードでは、`FastAPI`クラスのインスタンスを作成し、`app`変数に代入しています。`@app.get("/")`デコレータを使用して、ルートエンドポイント（`/`）にGETリクエストが送信されたときに実行される関数を定義しています。この関数は、`{"message": "Hello, World!"}`というJSONオブジェクトを返します。
+
+アプリケーションを実行するには、以下のコマンドを使用します：
+
+```bash
+uvicorn app.main:app --reload
+```
+
+このコマンドは、`app/main.py`ファイルの`app`オブジェクトを指定してuvicornサーバーを起動します。`--reload`オプションを指定すると、コードの変更時にサーバーが自動的に再起動されます。
+
+FastAPIの優れた機能の1つは、自動APIドキュメントの生成です。アプリケーションを実行すると、以下のURLでSwagger UIとReDocによるインタラクティブなAPIドキュメントにアクセスできます：
+
+- Swagger UI: `http://localhost:8000/docs`
+- ReDoc: `http://localhost:8000/redoc`
+
+これらのドキュメントは、FastAPIがアプリケーションのコードを解析することで自動的に生成されます。開発者は、APIの仕様を手動で記述する必要がなく、コードとドキュメントの同期を維持できます。
+
+## 4. ルーティングとHTTPメソッド
+
+FastAPIでは、APIエンドポイントを定義するために、デコレータを使用します。デコレータは、関数やクラスに追加の機能を提供する特殊な構文です。FastAPIには、HTTPメソッドに対応するデコレータが用意されています：
+
+- `@app.get()`
+- `@app.post()`
+- `@app.put()`
+- `@app.delete()`
+
+これらのデコレータを使用して、エンドポイントのパスと、そのエンドポイントで実行される関数を定義します。以下は、`/users`エンドポイントの例です：
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/users")
+async def get_users():
+    return {"users": ["Alice", "Bob", "Carol"]}
+
+@app.post("/users")
+async def create_user(name: str):
+    return {"message": f"User {name} created"}
+```
+
+この例では、`/users`エンドポイントに2つのHTTPメソッドを定義しています。GETリクエストが送信されると、`get_users`関数が実行され、ユーザーのリストが返されます。POSTリクエストが送信されると、`create_user`関数が実行され、新しいユーザーが作成されます。
+
+FastAPIでは、パスパラメータとクエリパラメータを使用してエンドポイントを定義することもできます。パスパラメータは、エンドポイントのパス内に変数を定義するために使用され、クエリパラメータは、URLの末尾に追加される変数です。以下は、パスパラメータとクエリパラメータの例です：
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/users/{user_id}")
+async def get_user(user_id: int, age: int = None):
+    if age:
+        return {"user_id": user_id, "age": age}
+    return {"user_id": user_id}
+```
+
+この例では、`/users/{user_id}`エンドポイントを定義しています。`user_id`はパスパラメータで、関数の引数として渡されます。`age`はクエリパラメータで、デフォルト値が`None`に設定されています。クエリパラメータは、`/users/1?age=30`のようにURLの末尾に追加されます。
+
+FastAPIは、これらのパラメータを自動的に検証し、適切な型に変換します。例えば、`user_id`は整数型として定義されているため、FastAPIは自動的に文字列を整数に変換しようとします。変換できない場合は、適切なエラーレスポンスを返します。
+
+この章では、FastAPIの基本的なルーティングとHTTPメソッドについて説明しました。次の章では、リクエストとレスポンスの処理について詳しく見ていきます。
+
+
+## 5. リクエストとレスポンス
+
+FastAPIでは、Pydanticライブラリを使用してリクエストボディの検証とシリアライゼーションを行います。Pydanticは、Pythonのタイプヒントを使用してデータ構造を定義し、受信したデータを検証および変換するための強力なツールです。
+
+以下は、Pydanticを使用してリクエストボディを検証する例です：
+
+```python
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class User(BaseModel):
+    name: str
+    email: str
+    age: int
+
+@app.post("/users")
+async def create_user(user: User):
+    return user
+```
+
+この例では、`User`クラスを定義して、リクエストボディの構造を指定しています。`User`クラスは、`BaseModel`を継承し、`name`、`email`、`age`のフィールドを持っています。`create_user`関数は、`user`パラメータをPydanticの`User`モデルとして受け取ります。FastAPIは、受信したJSONデータを自動的に`User`モデルに変換し、検証します。
+
+リクエストボディが`User`モデルの定義と一致しない場合、FastAPIは自動的に適切なエラーレスポンスを返します。これにより、無効なデータが処理されることを防ぎ、コードの安全性と堅牢性が向上します。
+
+FastAPIでは、レスポンスもPydanticモデルを使用して定義できます。以下は、レスポンスモデルを使用する例です：
+
+```python
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class UserIn(BaseModel):
+    name: str
+    email: str
+    age: int
+
+class UserOut(BaseModel):
+    id: int
+    name: str
+    email: str
+
+@app.post("/users", response_model=UserOut)
+async def create_user(user: UserIn):
+    # Save user to database and generate ID
+    user_id = ...
+    return UserOut(id=user_id, name=user.name, email=user.email)
+```
+
+この例では、`UserIn`モデルを使用してリクエストボディを検証し、`UserOut`モデルを使用してレスポンスの構造を定義しています。`create_user`関数は、`response_model`パラメータを使用して、レスポンスが`UserOut`モデルに準拠していることを示しています。これにより、APIの契約が明確になり、クライアントとサーバー間の通信が改善されます。
+
+FastAPIでは、ステータスコードを明示的に設定することもできます。以下は、ステータスコードを設定する例です：
+
+```python
+from fastapi import FastAPI, status
+
+app = FastAPI()
+
+@app.post("/users", status_code=status.HTTP_201_CREATED)
+async def create_user(user: User):
+    # Save user to database
+    return user
+```
+
+この例では、`status_code`パラメータを使用して、成功レスポンスのステータスコードを`201 Created`に設定しています。FastAPIには、`status`モジュールに一般的なHTTPステータスコードが定義されており、可読性の高いコードを書くことができます。
+
+この章では、FastAPIにおけるリクエストとレスポンスの処理について説明しました。次の章では、FastAPIとデータベースの統合について見ていきます。
+
+## 6. データベース統合
+
+実際のアプリケーションでは、データの永続化のためにデータベースを使用することが一般的です。FastAPIは、様々なデータベースとORMライブラリと統合することができます。ここでは、SQLAlchemyとTortoise ORMの2つのよく使われるライブラリを紹介します。
+
+### SQLAlchemy
+
+SQLAlchemyは、Pythonで最も人気のあるORMの1つです。以下は、SQLAlchemyをFastAPIと統合する例です：
+
+```python
+from fastapi import FastAPI, Depends
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+app = FastAPI()
+
+# SQLAlchemy setup
+SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
+    email = Column(String, unique=True, index=True)
+
+Base.metadata.create_all(bind=engine)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+@app.post("/users")
+async def create_user(name: str, email: str, db: SessionLocal = Depends(get_db)):
+    user = User(name=name, email=email)
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+    return user
+```
+
+この例では、SQLAlchemyを使用してデータベース接続を設定し、`User`モデルを定義しています。`get_db`関数は、データベースセッションを提供する依存関係です。`create_user`関数は、`Depends`を使用して`get_db`関数から取得したデータベースセッションを受け取り、新しいユーザーをデータベースに追加します。
+
+### Tortoise ORM
+
+Tortoise ORMは、Pythonの非同期ORMライブラリであり、FastAPIとシームレスに統合できます。以下は、Tortoise ORMをFastAPIと統合する例です：
+
+```python
+from fastapi import FastAPI
+from tortoise.models import Model
+from tortoise import fields
+from tortoise.contrib.fastapi import register_tortoise
+
+app = FastAPI()
+
+class User(Model):
+    id = fields.IntField(pk=True)
+    name = fields.CharField(max_length=100)
+    email = fields.CharField(max_length=100, unique=True)
+
+    class Meta:
+        table = "users"
+
+@app.post("/users")
+async def create_user(name: str, email: str):
+    user = await User.create(name=name, email=email)
+    return user
+
+register_tortoise(
+    app,
+    db_url="sqlite://db.sqlite3",
+    modules={"models": ["main"]},
+    generate_schemas=True,
+    add_exception_handlers=True,
+)
+```
+
+この例では、`User`モデルを定義し、`register_tortoise`関数を使用してTortoise ORMをFastAPIアプリケーションに登録しています。`create_user`関数は、Tortoise ORMの`create`メソッドを使用して新しいユーザーをデータベースに追加します。
+
+FastAPIとデータベースを統合することで、エンドポイントからデータベースへの読み書きが可能になります。これにより、アプリケーションにデータの永続化機能を追加することができます。
+
+次の章では、認証と認可について説明します。
+
+
+## 7. 認証と認可
+
+Web APIを開発する際、認証と認可は重要な概念です。認証は、ユーザーが主張する通りの人物であることを確認するプロセスであり、認可は、認証されたユーザーにリソースへのアクセス権を付与するプロセスです。FastAPIには、これらの機能を実装するための様々なツールが用意されています。
+
+### JWT認証
+
+JSON Web Token（JWT）は、ユーザーを認証するための一般的な方法です。JWTは、暗号化されたトークンにユーザー情報を埋め込み、サーバーとクライアント間で安全に情報をやり取りします。FastAPIでJWT認証を実装するには、`python-jose`ライブラリを使用します。
+
+以下は、JWTを使用した認証の例です：
+
+```python
+from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from jose import JWTError, jwt
+from passlib.context import CryptContext
+from pydantic import BaseModel
+from typing import Optional
+
+app = FastAPI()
+
+# JWT setup
+SECRET_KEY = "your-secret-key"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+class User(BaseModel):
+    username: str
+    email: Optional[str] = None
+    full_name: Optional[str] = None
+    disabled: Optional[bool] = None
+
+class UserInDB(User):
+    hashed_password: str
+
+def verify_password(plain_password, hashed_password):
+    return pwd_context.verify(plain_password, hashed_password)
+
+def get_password_hash(password):
+    return pwd_context.hash(password)
+
+def get_user(db, username: str):
+    if username in db:
+        user_dict = db[username]
+        return UserInDB(**user_dict)
+
+def authenticate_user(fake_db, username: str, password: str):
+    user = get_user(fake_db, username)
+    if not user:
+        return False
+    if not verify_password(password, user.hashed_password):
+        return False
+    return user
+
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
+    to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.utcnow() + expires_delta
+    else:
+        expire = datetime.utcnow() + timedelta(minutes=15)
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return encoded_jwt
+
+async def get_current_user(token: str = Depends(oauth2_scheme)):
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username: str = payload.get("sub")
+        if username is None:
+            raise credentials_exception
+    except JWTError:
+        raise credentials_exception
+    user = get_user(fake_users_db, username)
+    if user is None:
+        raise credentials_exception
+    return user
+
+@app.post("/token")
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    user = authenticate_user(fake_users_db, form_data.username, form_data.password)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect username or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(
+        data={"sub": user.username}, expires_delta=access_token_expires
+    )
+    return {"access_token": access_token, "token_type": "bearer"}
+
+@app.get("/users/me")
+async def read_users_me(current_user: User = Depends(get_current_user)):
+    return current_user
+```
+
+この例では、ユーザーの認証情報を検証し、JWTトークンを生成します。`/token`エンドポイントは、ユーザー名とパスワードを受け取り、トークンを返します。`/users/me`エンドポイントは、トークンを検証し、現在のユーザーの情報を返します。
+
+### OAuth2
+
+OAuth2は、サードパーティのアプリケーションがユーザーに代わってリソースにアクセスするための認証プロトコルです。FastAPIは、OAuth2の実装をサポートしており、`authlib`や`python-oauth2`などのライブラリと統合することができます。
+
+OAuth2の詳細な実装は、このチュートリアルの範囲を超えていますが、FastAPIのドキュメントには、OAuth2の統合に関する詳細な情報が記載されています。
+
+### ロールベースのアクセス制御（RBAC）
+
+ロールベースのアクセス制御（RBAC）は、ユーザーの役割に基づいてリソースへのアクセスを制限する方法です。FastAPIでは、依存関係の注入を使用してRBACを実装できます。
+
+以下は、RBACの簡単な例です：
+
+```python
+from fastapi import FastAPI, Depends, HTTPException
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class User(BaseModel):
+    username: str
+    role: str
+
+def get_user(username: str):
+    # Simulated user database
+    users = {
+        "alice": User(username="alice", role="admin"),
+        "bob": User(username="bob", role="user"),
+    }
+    return users.get(username)
+
+def get_current_user(username: str):
+    user = get_user(username)
+    if not user:
+        raise HTTPException(status_code=400, detail="User not found")
+    return user
+
+def admin_required(user: User = Depends(get_current_user)):
+    if user.role != "admin":
+        raise HTTPException(status_code=403, detail="Admin access required")
+    return user
+
+@app.get("/admin")
+async def admin_endpoint(user: User = Depends(admin_required)):
+    return {"message": "Hello, admin!"}
+
+@app.get("/users/{username}")
+async def user_endpoint(user: User = Depends(get_current_user)):
+    return {"message": f"Hello, {user.username}!"}
+```
+
+この例では、`admin_required`依存関係は、ユーザーの役割が管理者であることを確認します。`/admin`エンドポイントは、管理者のみがアクセスできます。`/users/{username}`エンドポイントは、認証されたユーザーがアクセスできます。
+
+認証と認可は、Web APIのセキュリティにとって不可欠な要素です。FastAPIは、JWT、OAuth2、RBACなどの一般的な認証・認可メカニズムを実装するためのツールを提供しています。
+
+次の章では、FastAPIを使用した非同期プログラミングについて説明します。
+
+## 8. 非同期処理
+
+FastAPIは、非同期プログラミングをネイティブにサポートしています。非同期処理を使用すると、I/O バウンドなタスク（例えば、データベースクエリやHTTPリクエストなど）を効率的に処理できます。FastAPIは、Pythonの `asyncio` ライブラリの上に構築されており、非同期関数を使用してエンドポイントを定義できます。
+
+以下は、非同期処理を使用したFastAPIの例です：
+
+```python
+from fastapi import FastAPI
+import asyncio
+
+app = FastAPI()
+
+async def slow_operation():
+    await asyncio.sleep(1)
+    return "Slow operation completed"
+
+@app.get("/async")
+async def async_endpoint():
+    result = await slow_operation()
+    return {"message": result}
+```
+
+この例では、`slow_operation`関数は1秒間のスリープを模擬しています。`async_endpoint`は非同期関数として定義され、`slow_operation`の完了を待ってから結果を返します。
+
+非同期処理を使用する際は、いくつかのベストプラクティスに従うことが重要です：
+
+1. 非同期関数では、`await`を使用して他の非同期関数を呼び出します。
+2. I/O バウンドなタスクには非同期処理を使用し、CPU バウンドなタスクには通常の同期処理を使用します。
+3. サードパーティのライブラリを使用する場合は、非同期対応のライブラリを選択します（例えば、`aiohttp`や`asyncpg`など）。
+
+FastAPIは、非同期処理を使用してパフォーマンスを最適化し、同時接続数の多いアプリケーションを構築するための優れたフレームワークです。
+
+次の章では、テストとデプロイについて説明します。
+
+
+
+## 9. テストとデプロイ
+
+### テスト
+
+アプリケーションのテストは、品質を確保し、リグレッションを防ぐために不可欠です。FastAPIは、Pythonの標準的なテストフレームワークであるpytestと seamlessly に統合できます。
+
+以下は、FastAPIアプリケーションのテストの例です：
+
+```python
+from fastapi import FastAPI
+from fastapi.testclient import TestClient
+
+app = FastAPI()
+
+@app.get("/")
+async def read_main():
+    return {"msg": "Hello World"}
+
+client = TestClient(app)
+
+def test_read_main():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"msg": "Hello World"}
+```
+
+この例では、`TestClient`を使用してFastAPIアプリケーションのインスタンスを作成し、テストクライアントを介してエンドポイントを呼び出しています。`test_read_main`関数は、レスポンスのステータスコードとJSONの内容を検証します。
+
+テストを実行するには、以下のコマンドを使用します：
+
+```bash
+pytest test_main.py
+```
+
+### CI/CD
+
+継続的インテグレーション（CI）と継続的デリバリー（CD）は、現代のソフトウェア開発における重要な実践です。FastAPIプロジェクトでは、GitHub ActionsなどのCIプラットフォームを使用してCI/CDパイプラインを設定できます。
+
+以下は、GitHub Actionsを使用したCI/CDの例です：
+
+```yaml
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run tests
+      run: |
+        pytest
+```
+
+このワークフローは、mainブランチへのプッシュまたはプルリクエストのたびに実行されます。ワークフローは、Pythonの設定、依存関係のインストール、pytestの実行を行います。
+
+### デプロイ
+
+FastAPIアプリケーションは、Docker を使用してコンテナ化し、Kubernetesなどのコンテナオーケストレーションプラットフォームにデプロイできます。
+
+以下は、FastAPIアプリケーションをDockerfileでコンテナ化する例です：
+
+```dockerfile
+FROM python:3.9
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+
+このDockerfileは、Pythonイメージをベースにして、必要な依存関係をインストールし、アプリケーションのコードをコピーします。`CMD`命令は、uvicornを使用してFastAPIアプリケーションを起動します。
+
+Dockerイメージをビルドするには、以下のコマンドを使用します：
+
+```bash
+docker build -t myimage .
+```
+
+イメージを実行するには、以下のコマンドを使用します：
+
+```bash
+docker run -p 8000:8000 myimage
+```
+
+FastAPIアプリケーションをKubernetesにデプロイする詳細な手順は、このチュートリアルの範囲を超えていますが、KubernetesのDeploymentとServiceを使用してアプリケーションをデプロイできます。
+
+テスト、CI/CD、デプロイは、品質と信頼性の高いアプリケーションを構築するための重要な要素です。FastAPIは、これらの実践と容易に統合できる柔軟性を備えています。
+
+次の章では、チュートリアルのまとめと次のステップについて説明します。
+
+## 10. まとめ
+
+このチュートリアルでは、FastAPIの基本から応用までを学びました。主なトピックは以下の通りです：
+
+1. FastAPIの基本概念とプロジェクト構成
+2. ルーティングとHTTPメソッドの使用法
+3. リクエストとレスポンスの処理
+4. データベース統合（SQLAlchemyとTortoise ORM）
+5. 認証と認可（JWT、OAuth2、RBAC）
+6. 非同期処理
+7. テストとデプロイ
+
+FastAPIは、Pythonの型ヒントとPydanticを活用することで、開発者にとって直感的で使いやすいフレームワークになっています。また、自動ドキュメント生成、コード検証、パフォーマンスの最適化など、多くの優れた機能を提供しています。
+
+FastAPIは、幅広いアプリケーションに適しています。APIの開発、マイクロサービスアーキテクチャ、機械学習モデルのサービング、Webアプリケーションのバックエンドなど、様々なユースケースで利用できます。
+
+FastAPIの学習を続けるために、以下のリソースを参考にすることをお勧めします：
+
+1. [公式ドキュメント](https://fastapi.tiangolo.com/)
+2. [FastAPIを使用したプロジェクトの例](https://github.com/tiangolo/fastapi/tree/master/examples)
